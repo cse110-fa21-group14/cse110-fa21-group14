@@ -1,7 +1,7 @@
 # CSE 110 Fall 2021 Working Agreement (Created: 10/12/2021)
 ## Group Info
-Group: 14
-Instructor: Powell
+Group: 14 \
+Instructor: Powell \
 Team Name: Heart Bakers
 
 ## Communication expectations
