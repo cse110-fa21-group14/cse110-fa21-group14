@@ -56,7 +56,11 @@ Hey! I’m a fourth year cognitive science student with a specialization in Mach
 
 GitHub Link: [Click Here to Check Out Their GitHub!](https://github.com/XiaoshuoYao) <br />
 
+**Kyle Zhong** <br />
+About Kyle: <br />
+Hello world! My name is Kyle, 4th year Math-Computer Science Student. I am an extrovert professionally and introvert privately. During my freetime, I like being active and outdoor. I love to gym, run, badminton, etc...  <br />
 
+GitHub Link: [Click Here to Check Out Their GitHub!](https://github.com/XiaoshuoYao) <br />
 
 **TJ Alo** <br />
 About TJ: <br />
