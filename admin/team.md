@@ -1,5 +1,6 @@
 # **Meet the Heart-Bakers!**
-![Brand Image](admin/branding/grouplogo.png)
+![Brand Image](/admin/branding/grouplogo.png)
+
 ## **Our Values:**
 
 1. Puntuality
