@@ -1,5 +1,5 @@
 # **Meet the Heart-Bakers!**
-//Brand TBD - Insert when image is made
+![Brand Image](admin/branding/grouplogo.PNG)
 ## **Our Values:**
 
 1. Puntuality
