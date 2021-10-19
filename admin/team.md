@@ -1,9 +1,14 @@
+<img style="float:right" src="grouplogo.PNG">
+
 # **Meet the Heart-Bakers!**
+<<<<<<< HEAD:admin/meetings/team.md
+=======
 ![Brand Image](/admin/branding/grouplogo.png)
+>>>>>>> 9fbe776b7a9abb43ee063b548d48e96994ee7b79:admin/team.md
 
 ## **Our Values:**
 
-1. Puntuality
+1. Punctuality
 2. Respect
 3. Acceptance of New Ideas
 4. Kindness
