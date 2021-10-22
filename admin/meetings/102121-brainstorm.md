@@ -24,7 +24,7 @@
         - Discuss what Makayla heard in Office Hours
           - prof recs spoonacular api
           - user stories are mainly so you can keep the user in mind
-            - template: as a [bleh], i want [blah] (should help frame features from a user perspective)
+            - template: as a [_____], i want [______] (should help frame features from a user perspective)
               - should work from the user inwards rather than technology outwards; the technology should support the goals of my app rather than what i want to show i can do as a developer
           - we can just imagine that anything's possible at first and then delve into what's actually possible
           - both domain specific + human side is super important
@@ -32,7 +32,7 @@
             - We came up with the idea of maybe catering this web app to old people?? explore this more
               - Big text, very easy for old people to use
 ###     For Next Time
-        - N/A
+        - keep working on miro ideas.
 ## Decisions Made:
     - N/A
 ## Ending Time: 4:00 PM
