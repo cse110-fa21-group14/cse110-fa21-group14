@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Header */
+header{
+    background-color: #ff6961;
+    
+}
+header #main-bar{
+    display: incline-block;
+    margin: 20px 200px 20px;
+}
+header .float-right{
+    float: right;
+    margin-right: 50px;
+}
+header #site-name{
+    float: left;
+    color: white;
+    
+}
+
+header #search-bar{
+    margin-right: 0px;
+    height: 30px;
+    border-radius: 2%;
+    border: none;
+    outline: none;
+    padding-left: 5px;
+}
+
+header button{
+    height: 30px;
+    padding: 5px;
+    background-color: white;
+    border: none;
+    outline: none;
+}
+
+header button:hover{
+    cursor: pointer;
+}
+
+/* Main (Recipes page) */
+main{
+  margin: 20px 200px 20px;
+}
+main #recipe-page-info{
+  display: incline-block;
+}
+main #sort-button{
+  margin-right: 20px;
+}
+main button{
+  padding: 5px;
+  border-color: #ff6961;
+  background-color: #ff6961;
+  color: white;
+  height: 50px;
+  width: 100px;
+  margin-top: 60px;
+  font-size: 20px;
+}
+main button:hover{
+  cursor:pointer;
+  background-color: white;
+  color: #ff6961;
+ 
+  
+}
+main .float-right{
+  float: right;
+}
+
+main #recipes-title{
+  font-size: 100px;
+  float: left;
+}
+
+  
