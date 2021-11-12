@@ -82,4 +82,13 @@ main #recipes-title{
   float: left;
 }
 
-  
+/* Home Page */
+main #home-reccommended-button{
+  height: 50px;
+  width: 200px;
+}
+
+main #home-recipes-button{
+  height: 50px;
+  width: 200px;
+}
