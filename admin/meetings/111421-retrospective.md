@@ -22,8 +22,8 @@
 ###     Unfinished Business
         - N/A
 ###     Business for Today
+[board for activity](https://miro.com/app/board/o9J_lj81fnU=/)
         - Retrospective Notes
-        - [board for activity](https://miro.com/app/board/o9J_lj81fnU=/)
         - Continue:
           - Frontend and Backend individual meetings
           - Divide and Conquer tasks
