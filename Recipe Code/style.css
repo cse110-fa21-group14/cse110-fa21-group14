@@ -12,7 +12,7 @@ header{
     
 }
 header #main-bar{
-    display: incline-block;
+    
     margin: 20px 200px 20px;
 }
 header .float-right{
@@ -37,9 +37,17 @@ header #search-bar{
 header button{
     height: 30px;
     padding: 5px;
-    background-color: white;
+    font-size: 16px;
+    overflow-y: hidden;
+    color: white;
+    background-color: #ff6961;
     border: none;
     outline: none;
+}
+
+header a:visited{
+    text-decoration: none;
+    color: white;
 }
 
 header button:hover{
@@ -49,10 +57,9 @@ header button:hover{
 /* Main (Recipes page) */
 main{
   margin: 20px 200px 20px;
+  
 }
-main #recipe-page-info{
-  display: incline-block;
-}
+
 main #sort-button{
   margin-right: 20px;
 }
@@ -65,6 +72,7 @@ main button{
   width: 100px;
   margin-top: 60px;
   font-size: 20px;
+  border-radius: 5px;
 }
 main button:hover{
   cursor:pointer;
@@ -77,9 +85,53 @@ main .float-right{
   float: right;
 }
 
-main #recipes-title{
-  font-size: 100px;
+main #page-title{
+  font-size: 90px;
   float: left;
+}
+
+main #recipe-page-info{
+  display: inline-flexbox;
+  position: relative;
+  bottom: 20px;
+}
+
+main #back-button{
+  position: fixed;
+  bottom: 20px;
+}
+
+
+/* Test Recipe Card */
+main #recipe-list{
+  margin: auto;
+}
+main #recipe-list article{
+  display: inline-block;
+  margin-left: 50px;
+}
+main #recipe-list article{
+  width: 400px;
+}
+
+main #recipe-card-test{
+  border: 2px solid gray;
+  border-radius: 5px;
+  height: 560px;
+}
+
+main #recipe-text{
+  margin: 8px;
+}
+
+main .recipe-title{
+  font-size: 30px;
+  font-weight: 600;
+}
+
+main .cook-time{
+  float: right;
+  color: #ff6961;
 }
 
   
