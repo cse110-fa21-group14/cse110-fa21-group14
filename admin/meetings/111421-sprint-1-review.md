@@ -45,10 +45,10 @@
           - Pop up for features, button, styling on the recipe page
         - Harsheta
           - Create and edit recipe page
-![User Recipe Page](/admin/meetings/images/UserRecipeListS1.jpg)
 ![Home Page](/admin/meetings/images/HomePageS1.png)
-![Create Edit](/admin/meetings/images/CreateEditS1.png)
+![User Recipe Page](/admin/meetings/images/UserRecipeListS1.jpg)
 ![Recipe popup](/admin/meetings/images/RecipepopupwindowS1.png)
+![Create Edit](/admin/meetings/images/CreateEditS1.png)
 ![Delete Confirmation Page](/admin/meetings/images/DeleteConfirmationS1.png)
 ![Backend Testing](/admin/meetings/images/BackendTestingAreaS1.png)
 ![Spoonacular Dictionary](/admin/meetings/images/SpoonaculardictionaryS1.png)
