@@ -45,19 +45,22 @@
           - Pop up for features, button, styling on the recipe page
         - Harsheta
           - Create and edit recipe page
-Frontend:
+#### Frontend:
 ![Home Page](/admin/meetings/images/HomePageS1.png)
 ![User Recipe Page](/admin/meetings/images/UserRecipeListS1.jpg)
 ![Recipe popup](/admin/meetings/images/RecipepopupwindowS1.png)
 ![Create Edit](/admin/meetings/images/CreateEditS1.png)
 ![Delete Confirmation Page](/admin/meetings/images/DeleteConfirmationS1.png)
-Backend:
+
+#### Backend:
 ![Backend Testing](/admin/meetings/images/BackendTestingAreaS1.png)
 ![Spoonacular Dictionary](/admin/meetings/images/SpoonaculardictionaryS1.png)
 ![Spoonacular Ingredients](/admin/meetings/images/SpoonacularIngredientsS1.png)
 ![Local Storage of Recipes](/admin/meetings/images/LocalStorgaeofUserRecipeS1.png)
-CICD pipeline
+
+#### CICD pipeline
 ![Spoonacular Ingredients](/admin/meetings/images/JSDocsS1.png)
+
 ###     For Next Time
         - N/A
 ## Decisions Made:
