@@ -51,6 +51,8 @@
 ![Recipe popup](/admin/meetings/images/RecipepopupwindowS1.png)
 ![Delete Confirmation Page](/admin/meetings/images/DeleteConfirmationS1.png)
 ![Backend Testing](/admin/meetings/images/BackendTestingAreaS1.png)
+![Spoonacular Dictionary](/admin/meetings/images/SpoonaculardictionaryS1.png)
+![Spoonacular Ingredients](/admin/meetings/images/SpoonacularIngredientsS1.png)
 ###     For Next Time
         - N/A
 ## Decisions Made:
