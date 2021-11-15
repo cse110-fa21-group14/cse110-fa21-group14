@@ -23,6 +23,7 @@
         - N/A
 ###     Business for Today
 [board for activity](https://miro.com/app/board/o9J_lj81fnU=/)
+
         - Retrospective Notes
         - Continue:
           - Frontend and Backend individual meetings
