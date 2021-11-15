@@ -1,62 +1,72 @@
 * {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  background-color: #c4c4c4;
 }
 
 /* Header */
-header{
-    background-color: #ff6961;
-    
+header {
+  background-color: #ff6961;
 }
-header #main-bar{
-    display: incline-block;
-    margin: 20px 200px 20px;
+header #main-bar {
+  display: incline-block;
+  margin: 20px 200px 20px;
+  background-color: #ff6961;
 }
-header .float-right{
-    float: right;
-    margin-right: 50px;
+header .float-right {
+  float: right;
+  margin-right: 50px;
 }
-header #site-name{
-    float: left;
-    color: white;
-    
+header #grouplogo {
+  position: absolute;
+  top: 5px;
+  left: 95px;
 }
-
-header #search-bar{
-    margin-right: 0px;
-    height: 30px;
-    border-radius: 2%;
-    border: none;
-    outline: none;
-    padding-left: 5px;
+header #site-name {
+  float: left;
+  color: white;
+  background-color: #ff6961;
 }
 
-header button{
-    height: 30px;
-    padding: 5px;
-    background-color: white;
-    border: none;
-    outline: none;
+header #search-bar {
+  margin-right: 0px;
+  height: 30px;
+  border-radius: 2%;
+  border: none;
+  outline: none;
+  padding-left: 5px;
 }
 
-header button:hover{
-    cursor: pointer;
+header button {
+  height: 30px;
+  padding: 5px;
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+header button:hover {
+  cursor: pointer;
 }
 
 /* Main (Recipes page) */
-main{
+main #recipe-create {
+  overflow: auto;
+}
+
+main {
   margin: 20px 200px 20px;
 }
-main #recipe-page-info{
+main #recipe-page-info {
   display: incline-block;
 }
-main #sort-button{
+main #sort-button {
   margin-right: 20px;
 }
-main button{
+main button {
   padding: 5px;
   border-color: #ff6961;
   background-color: #ff6961;
@@ -66,20 +76,212 @@ main button{
   margin-top: 60px;
   font-size: 20px;
 }
-main button:hover{
-  cursor:pointer;
+main button:hover {
+  cursor: pointer;
   background-color: white;
   color: #ff6961;
- 
-  
 }
-main .float-right{
+main .float-right {
   float: right;
 }
 
-main #recipes-title{
+main #title-bar {
+  position: absolute;
+  width: 320px;
+  height: 30px;
+  left: 38px;
+  top: 90px;
+  border-radius: 15px;
+  border-color: #ffe4e4;
+  font-size: 16px;
+  text-indent: 10%;
+  background-color: #ffe4e4;
+}
+
+main #rectangle {
+  position: absolute;
+  width: 250px;
+  height: 150px;
+  left: 38px;
+  top: 130px;
+
+  background: #ffe4e4;
+  border-radius: 15px;
+}
+
+main #camera {
+  position: absolute;
+  width: 59px;
+  height: 48px;
+  left: 140px;
+  top: 180px;
+
+  background-color: #ffe4e4;
+}
+
+main #Ingredients {
+  position: absolute;
+  width: 369px;
+  height: 48px;
+  left: 38px;
+  top: 300px;
+}
+
+main #rectangle2 {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  left: 38px;
+  top: 340px;
+
+  background: #ffe4e4;
+  border-radius: 15px;
+}
+
+main #Ingredient-bar {
+  position: absolute;
+  width: 150px;
+  height: 30px;
+  left: 45px;
+  top: 350px;
+
+  background: #ff6961;
+  border-color: #ff6961;
+  border-radius: 15px;
+}
+
+main #Amount-bar {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  left: 220px;
+  top: 350px;
+
+  background: #ff6961;
+  border-color: #ff6961;
+  border-radius: 15px;
+}
+
+main #Unit-bar {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  left: 340px;
+  top: 350px;
+
+  background: #ff6961;
+  border-color: #ff6961;
+  border-radius: 15px;
+}
+
+main #remove {
+  position: absolute;
+  width: 59px;
+  height: 48px;
+  left: 495px;
+  top: 355px;
+  border-radius: 10px;
+
+  background-color: #ff6961;
+}
+
+main #add {
+  position: absolute;
+  height: 48px;
+  left: 38px;
+  top: 400px;
+
+  color: #ff6961;
+}
+
+main #Instructions {
+  position: absolute;
+  width: 369px;
+  height: 48px;
+  left: 38px;
+  top: 440px;
+}
+
+main #recipes-title {
   font-size: 100px;
   float: left;
 }
 
-  
+main #inst-text {
+  position: absolute;
+  width: 500px;
+  height: 175px;
+  left: 38px;
+  top: 470px;
+
+  border-radius: 15px;
+  border-color: #ffe4e4;
+  background-color: #ffe4e4;
+}
+
+main #inst-text[type="text"] {
+  color: black;
+}
+
+main #save {
+  position: absolute;
+  width: 150px;
+  right: 38px;
+  top: 470px;
+  border-color: #ff6961;
+  background-color: #ff6961;
+  border-radius: 15px;
+  color: white;
+}
+
+main #cancel {
+  position: absolute;
+  width: 150px;
+  right: 38px;
+  top: 1000px;
+  border-color: #ff6961;
+  background-color: #ff6961;
+  border-radius: 15px;
+  color: white;
+}
+
+main #tags {
+  position: absolute;
+  width: 320px;
+  height: 30px;
+  right: 38px;
+  top: 90px;
+}
+
+main #add-tag {
+  position: absolute;
+  width: 250px;
+  height: 30px;
+  right: 110px;
+  top: 130px;
+
+  border-radius: 15px;
+  border-color: #ff6961;
+  background-color: #ff6961;
+}
+
+main #remove1 {
+  position: absolute;
+  width: 59px;
+  height: 30px;
+  right: 120px;
+  top: 135px;
+  border-radius: 10px;
+
+  background-color: #ff6961;
+}
+
+main #add1 {
+  position: absolute;
+  height: 30px;
+  right: 200px;
+  top: 180px;
+  border-radius: 10px;
+
+  color: #ff6961;
+}
