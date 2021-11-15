@@ -45,7 +45,11 @@
           - Pop up for features, button, styling on the recipe page
         - Harsheta
           - Create and edit recipe page
-
+      ![User Recipe Page](admin/meetings/images/User Recipe List.jpg)
+      ![Home Page](admin/meetings/images/Home Page.png)
+      ![Recipe popup](admin/meetings/images/Recipe popup window.png)
+      ![Delete Confirmation Page](admin/meetings/images/Delete Confirmation.png)
+      ![Backend Testing](admin/meetings/images/Backend Testing Area.png)
 ###     For Next Time
         - N/A
 ## Decisions Made:
