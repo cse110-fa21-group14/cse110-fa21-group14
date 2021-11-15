@@ -47,6 +47,7 @@
           - Create and edit recipe page
 ![User Recipe Page](/admin/meetings/images/UserRecipeListS1.jpg)
 ![Home Page](/admin/meetings/images/HomePageS1.png)
+![Create Edit](/admin/meetings/images/CreateEditS1.png)
 ![Recipe popup](/admin/meetings/images/RecipepopupwindowS1.png)
 ![Delete Confirmation Page](/admin/meetings/images/DeleteConfirmationS1.png)
 ![Backend Testing](/admin/meetings/images/BackendTestingAreaS1.png)
