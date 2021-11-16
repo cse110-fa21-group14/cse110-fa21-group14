@@ -13,7 +13,7 @@ header{
 }
 header #main-bar{
     
-    margin: 20px 200px 20px;
+    margin:  5vh 13vw 5vh;
 }
 header .float-right{
     float: right;
@@ -56,7 +56,7 @@ header button:hover{
 
 /* Main (Recipes page) */
 main{
-  margin: 20px 200px 20px;
+  margin:  5vh 13vw 5vh;
   
 }
 
