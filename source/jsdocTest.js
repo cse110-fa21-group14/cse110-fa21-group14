@@ -1,25 +1,15 @@
-//test file
+// test file
 
 /**
  * @type {string}
  */
- const word = 'Hello';
-
- /**
- * @param {*} num1 first number
- * @param {*} num2 second number
- * @returns sum
- */
-  function sum(num1, num2) {
-    return num1 + num2;  
-  }
+const word = 'Hello';
 
 /**
  * @param {*} num1 first number
  * @param {*} num2 second number
  * @returns sum
  */
-   function product(num1, num2) {
-    return num1 * num2;  
-  }
-
+function sum (num1, num2) {
+  return num1 + num2
+}
