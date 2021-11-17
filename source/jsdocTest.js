@@ -1,4 +1,4 @@
-//test file
+// test file
 
 /**
  * @type {string}
@@ -13,4 +13,3 @@
   function sum(num1, num2) {
     return num1 + num2;  
   }
-
