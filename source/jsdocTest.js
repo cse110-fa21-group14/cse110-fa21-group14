@@ -14,3 +14,12 @@
     return num1 + num2;  
   }
 
+/**
+ * @param {*} num1 first number
+ * @param {*} num2 second number
+ * @returns sum
+ */
+   function product(num1, num2) {
+    return num1 * num2;  
+  }
+
