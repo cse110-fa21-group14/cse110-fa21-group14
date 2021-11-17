@@ -54,6 +54,45 @@ header button:hover{
     cursor: pointer;
 }
 
+/*Grocery list button in header */
+header #grocery-list-popup{
+    width: 1000px;
+    height: 400px;
+    overflow: auto;
+    background-color: White;
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 1.5%;
+    padding: 10px;
+}
+
+header #grocery-list-title{
+    text-align: center;
+}
+header #grocery-list-close{
+    background-color: white;
+    color: black;
+}
+
+header #grocery-list-overlay{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9;
+    display: none;
+}
+header #grocery-list-overlay.show{
+    display: block;
+}
+
+
 /* Main (Recipes page) */
 main{
   margin: 5vh 13vw 5vh;

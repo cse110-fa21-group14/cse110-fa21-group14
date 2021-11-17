@@ -15,8 +15,22 @@
                 <h1 id="site-name">App Name</h1>
                 <input type="text" id="search-bar" class="float-right" placeholder="Search">
                 <button id="recommended-recipes" class="float-right"><a href="recommended.html">Recommended Recipes</a></button>
-                <button id="grocery-list" class="float-right">Grocery list</button>
+                <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
                 
+                <script>
+                    function popOpen(){
+                        document.getElementById('grocery-list-overlay').classList.add('show');
+                    }
+                    function popClose(){
+                        document.getElementById('grocery-list-overlay').classList.remove('show');
+                    }
+                </script>
+                <div id="grocery-list-overlay">
+                    <div id='grocery-list-popup'>
+                        <button id="grocery-list-close" class="float-right" onclick="popClose()">X</button>
+                        <p id="grocery-list-title">Grocery List</p>
+                    </div>
+                </div>
             </section>
         </header>
         <main>
