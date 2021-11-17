@@ -18,5 +18,5 @@ jobs:
         
         with:
           source_dir: ./source
-          output_dir: ./out
+          output_dir: ./docs
           config_file: jsdoc.json
