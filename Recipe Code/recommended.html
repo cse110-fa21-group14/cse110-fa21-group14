@@ -19,10 +19,12 @@
                 
                 <script>
                     function popOpen(){
-                        document.getElementById('grocery-list-overlay').classList.add('show');
+                        document.getElementById("popups").classList.add("show");
+                        document.getElementById('grocery-list-popup').classList.add('show');
                     }
                     function popClose(){
-                        document.getElementById('grocery-list-overlay').classList.remove('show');
+                        document.getElementById('grocery-list-popup').classList.remove('show');
+                        document.getElementById("popups").classList.remove("show");
                     }
                     function p() {
                         document.getElementById("popups").classList.add("show");
@@ -35,30 +37,6 @@
                         document.getElementById("popups").classList.remove("show");
                     }
                 </script>
-                <div id="grocery-list-overlay">
-                    <div id='grocery-list-popup'>
-                        <button id="grocery-list-close" class="float-right" onclick="popClose()">&#x2715</button>
-                        <div id="grocery-list-content">
-                            <p id="grocery-list-title">Grocery List</p>
-                            <ul id="grocery-list">
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                                <li> Sample text</li>
-                            </ul>
-
-                            <input type="text" id="new-grocery-item" placeholder="New item...">
-                            
-                        </div>
-                        <button id="clear-all" class="float-right">Clear</button>
-                    </div>
-                </div>
             </section>
         </header>
         <main>
@@ -70,6 +48,28 @@
             <button id="back-button"><span>&#8592</span>Back</button>
         </main>
         <div id="popups">
+            <section id='grocery-list-popup' class="popup">
+                <button id="grocery-list-close" class="float-right close-button" onclick="popClose()"> X </button>
+                <div id="grocery-list-content">
+                    <p id="grocery-list-title">Grocery List</p>
+                    <ul id="grocery-list">
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                        <li> Sample text</li>
+                    </ul>
+
+                    <input type="text" id="new-grocery-item" placeholder="New item...">
+                    
+                </div>
+                <button id="clear-all" class="float-right">Clear</button>
+            </section>
             <section id="recommended-recipe-popup" class="popup recipe-pages">
                 <button id="recommended-recipe-close" class="float-right line-spacing close-button" onclick="pClose()">X</button>
                 <h2 id="recipe-name" class="line-spacing">Recipe Name</h2>
