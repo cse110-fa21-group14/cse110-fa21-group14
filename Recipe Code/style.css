@@ -52,6 +52,20 @@ header button:hover{
     cursor: pointer;
 }
 
+/* Home Page */
+main #home-reccommended-button{
+  height: 50px;
+  width: 200px;
+}
+
+main #home-recipes-button{
+  height: 50px;
+  width: 200px;
+=======
+section #tags{
+  margin: 10px;
+}
+
 /* Main (Recipes page) */
 main{
   margin: 5vh 13vw 5vh;
@@ -337,8 +351,4 @@ section #sort-by{
 
 section .sort{
   margin-right: 10px;
-}
-
-section #tags{
-  margin: 10px;
 }
