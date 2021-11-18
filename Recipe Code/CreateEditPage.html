@@ -8,7 +8,7 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
         </style>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="edit_style.css">
     </head>
     <body>
         <header>
@@ -22,26 +22,60 @@
         </header>
         <main>
             <section id="recipe-create">
-                <input type="text" id="title-bar" class="float-left" placeholder="Recipe Title">
-                <div id="rectangle"></div>
-                <img id="camera" src="./camera.PNG" alt="camera" style="width:50px;height:50px;">
+                <input type="text" id="title-bar" placeholder="Recipe Title">
+                <input type="file" id="filetag">
+                <div id="insert-image">
+                    <img src="" id="preview">
+                </div>
                 <h2 id="Ingredients">Ingredients</h2>
-                <div id="rectangle2"></div>
-                <input type="text" id="Ingredient-bar" class="float-left" placeholder="Ingredient">
-                <input type="text" id="Amount-bar" class="float-left" placeholder="Amount">
-                <input type="text" id="Unit-bar" class="float-left" placeholder="Unit">
-                <img id="remove" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                <section id="add-ingredient">
+                    <div id="rectangle2"></div>
+                    <input type="text" id="Ingredient-bar" class="float-left" placeholder="Ingredient">
+                    <input type="text" id="Amount-bar" class="float-left" placeholder="Amount">
+                    <input type="text" id="Unit-bar" class="float-left" placeholder="Unit">
+                    <img id="remove" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                </section>
                 <h3 id="add">+ Add Another Ingredient</h3>
                 <h3 id="Instructions">Instructions</h3>
-                <div id="rectangle3"></div>
-                <input type="text" id="inst-text" class="float-left" placeholder="Enter Instructions">
+                <textarea id="inst-text" name="inst-text" rows="5" cols="33">Enter Instructions Here.</textarea>>
+                <ol id="grocery-list">
+                    <li> Sample text</li>
+                    <li> Sample text</li>
+                    <li> Sample text</li>
+                    <li> Sample text</li>
+                </ol>
                 <button id="save" class="float-right">Save</button>
                 <button id="cancel" class="float-right">Cancel</button>
-                <input type="text" id="add-tag" class="float-right" placeholder="Enter Tag">
                 <h3 id="tags">Tags</h3>
-                <img id="remove1" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                <section id ="tag section">
+                    <input type="text" id="add-tag" class="float-right" placeholder="Enter Tag">
+                    <img id="remove1" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                </section>
                 <h3 id="add1">+ Add Another Tag</h3>
             </section>
         </main>
+        <script>
+            var fileTag = document.getElementById("filetag"),
+            preview = document.getElementById("preview");
+    
+            fileTag.addEventListener("change", function() {
+                changeImage(this);
+            });
+
+            function changeImage(input) {
+            var reader;
+
+            if (input.files && input.files[0]) {
+            reader = new FileReader();
+
+            reader.onload = function(e) {
+            preview.setAttribute('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+            }
+            }   
+          </script>
     </body>
 </html>
+
