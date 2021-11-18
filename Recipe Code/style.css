@@ -12,9 +12,9 @@ header{
     
 }
 header #main-bar{
-    display: incline-block;
-    margin: 20px 200px 20px;
+    margin: 3vh 13vw 3vh;
 }
+
 header .float-right{
     float: right;
     margin-right: 50px;
@@ -22,37 +22,55 @@ header .float-right{
 header #site-name{
     float: left;
     color: white;
-    
 }
 
-header #search-bar{
-    margin-right: 0px;
-    height: 30px;
-    border-radius: 2%;
-    border: none;
-    outline: none;
-    padding-left: 5px;
+header #recommended-recipes{
+    margin-right: 0;
+}
+
+header #my-recipes{
+  margin-right: 0;
 }
 
 header button{
     height: 30px;
     padding: 5px;
-    background-color: white;
+    font-size: 16px;
+    overflow-y: hidden;
+    color: white;
+    background-color: #ff6961;
     border: none;
     outline: none;
+}
+
+header a:visited{
+    text-decoration: none;
+    color: white;
 }
 
 header button:hover{
     cursor: pointer;
 }
 
+/* Home Page */
+main #home-reccommended-button{
+  height: 50px;
+  width: 200px;
+}
+
+main #home-recipes-button{
+  height: 50px;
+  width: 200px;
+=======
+section #tags{
+  margin: 10px;
+}
+
 /* Main (Recipes page) */
 main{
-  margin: 20px 200px 20px;
+  margin: 5vh 13vw 5vh;
 }
-main #recipe-page-info{
-  display: incline-block;
-}
+
 main #sort-button{
   margin-right: 20px;
 }
@@ -65,30 +83,272 @@ main button{
   width: 100px;
   margin-top: 60px;
   font-size: 20px;
+  border-radius: 5px;
 }
 main button:hover{
   cursor:pointer;
   background-color: white;
   color: #ff6961;
- 
-  
 }
+
 main .float-right{
   float: right;
 }
 
-main #recipes-title{
-  font-size: 100px;
+main #page-title{
+  font-size: 90px;
+  float: left;
+}
+main #search-bar{
+  margin-top: 60px;
+  margin-right: 20px;
+  height: 35px;
+  padding: 5px;
+  font-size: 20px;
+}
+main #recipe-page-info{
+  display: inline-flexbox;
+  position: relative;
+  bottom: 20px;
+}
+
+main #back-button{
+  position: fixed;
+  bottom: 20px;
+}
+
+
+/* Test Recipe Card */
+main #recipe-list{
+  margin: auto;
+}
+main #recipe-list article{
+  display: inline-block;
+  margin-left: 50px;
+  width: 20vw;
+  height: 45vh;
+  
+}
+
+main article img{
+  object-fit: contain;
+  height: 26vh;
+  
+}
+main #recipe-card-test{
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+main #recipe-text{
+  margin: 10px;;
+  
+}
+
+main .recipe-title{
+  font-size: 30px;
+  font-weight: 600;
+}
+
+main .cook-time{
+  float: right;
+  color: #ff6961;
+  padding-top: 0.5vh;
+}
+
+/* Popups */
+
+#popups{
+  display: none;
+  position: absolute;
+  top: 0vh; left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(256,256,256,0.2);
+}
+
+#popups.show{
+  display: block;
+}
+
+#popups .popup{
+  display: none;
+  position: absolute;
+  padding: 2vh 2vw 2vh;
+  
+  border-radius: 1vw;
+  
+  overflow: auto;
+}
+
+#popups #grocery-list-popup{
+  width: 40vw;
+  height: 90vh;
+  overflow: auto;
+  background-color: White;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 1.5%;
+  padding: 20px;
+}
+
+#popups .recipe-pages{
+  top: 16vh; left: 3vw;
+  background-color: white;
+  width: 90vw;
+  height: 75vh;
+  border: thick double;
+  border-color: #c4c4c4;
+}
+
+#popups #sort-filter-popup{
+  top: 20vh; left: 10vw;
+  background-color: #ffe4e4;
+  width: 76vw;
+  height: 66vh;
+}
+
+#delete-confirmation{
+  display: none;
+  position: absolute;
+
+  top: 0vh; left: 0vw;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+#delete-confirmation #delete-box{
+  position: absolute;
+
+  top: 30vh; left: 30vw;
+  padding: 10vh 5vw;
+  background-color: #c4c4c4;
+  width: 30vw;
+  height: 20vh;
+
+  font-size: bigger;
+  text-align: center;
+}
+
+#popups .show{
+  display: block;
+}
+
+#delete-confirmation.show{
+  display: block;
+}
+
+/* Recipe Page */
+
+section .close-button{
+  font-size: bigger;
+  width: 30px;
+  height: 30px;
+  background-color: #ff6961;
+  color: white;
+
+  border-color: #ff6961;
+  border-radius: 15px;
+}
+
+.line-spacing{
+  margin: 5px 0px;
+}
+
+section #grocery-list-content{
+  text-align: center;
+}
+section #grocery-list-title{
+font-size: 20px;
+font-weight: 700;
+}
+
+section #grocery-list{
+padding-top: 20px;
+
+list-style-position: inside;
+list-style-type: circle;
+}
+
+section #grocery-list li{
+padding-bottom: 10px;
+}
+
+section .recipe-button{
+  padding: 7px 10px;
+  background-color: #ffe4e4;
+
+  border-color: #ffe4e4;
+  border-radius: 10px;
+}
+
+section #edit-recipe{
+  position: absolute;
+  top: 8vh;
+  left: 68vw;
+}
+
+section #delete-recipe{
+  position: absolute;
+  top: 15vh;
+  left: 68vw;
+}
+
+section .delete-button{
+  margin: 0vh 4vw;
+}
+
+section #recipe-tags{
+  position: absolute;
+  top: 22vh;
+  left: 68vw;
+  width: 20vw;
+  height: 58vh;
+  padding: 1vh 1vw 1vh;
+
+  overflow: auto;
+}
+
+section .tag{
+  margin: 1px 1px 0px;
+  padding: 3px 5px;
+  display: inline-block;
+  background-color: #ff6961;
+
+  border-color: #ff6961;
+  border-radius: 10px;
+}
+
+div .float-right{
+  float: right;
+}
+
+div .float-left{
   float: left;
 }
 
-/* Home Page */
-main #home-reccommended-button{
-  height: 50px;
-  width: 200px;
+li{
+  overflow-x: visible;
+  margin-left: 20px;
 }
 
-main #home-recipes-button{
-  height: 50px;
-  width: 200px;
+section #tracker{
+  font-size: smaller;
+  color: red;
+}
+
+section #ingredients-header{
+  display: inline;
+}
+
+section #sort-by{
+  margin: 15px;
+}
+
+section .sort{
+  margin-right: 10px;
 }
