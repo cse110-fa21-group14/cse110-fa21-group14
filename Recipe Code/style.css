@@ -52,61 +52,6 @@ header button:hover{
     cursor: pointer;
 }
 
-/*Grocery list button in header */
-header #grocery-list-popup{
-    width: 40vw;
-    height: 90vh;
-    overflow: auto;
-    background-color: White;
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    border-radius: 1.5%;
-    padding: 20px;
-}
-
-
-header #grocery-list-close{
-    background-color: white;
-    color: black;
-}
-
-header #grocery-list-overlay{
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 3;
-    display: none;
-}
-header #grocery-list-overlay.show{
-    display: block;
-}
-header #grocery-list-content{
-    text-align: center;
-}
-header #grocery-list-title{
-  font-size: 20px;
-  font-weight: 700;
-}
-
-header #grocery-list{
-  padding-top: 20px;
-  
-  list-style-position: inside;
-  list-style-type: circle;
-}
-
-header #grocery-list li{
-  padding-bottom: 10px;
-}
-
-
 /* Main (Recipes page) */
 main{
   margin: 5vh 13vw 5vh;
@@ -197,4 +142,203 @@ main .cook-time{
   padding-top: 0.5vh;
 }
 
+/* Popups */
+
+#popups{
+  display: none;
+  position: absolute;
+  top: 0vh; left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(256,256,256,0.2);
+}
+
+#popups.show{
+  display: block;
+}
+
+#popups .popup{
+  display: none;
+  position: absolute;
+  padding: 2vh 2vw 2vh;
   
+  border-radius: 1vw;
+  
+  overflow: auto;
+}
+
+#popups #grocery-list-popup{
+  width: 40vw;
+  height: 90vh;
+  overflow: auto;
+  background-color: White;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 1.5%;
+  padding: 20px;
+}
+
+#popups .recipe-pages{
+  top: 16vh; left: 3vw;
+  background-color: white;
+  width: 90vw;
+  height: 75vh;
+  border: thick double;
+  border-color: #c4c4c4;
+}
+
+#popups #sort-filter-popup{
+  top: 20vh; left: 10vw;
+  background-color: #ffe4e4;
+  width: 76vw;
+  height: 66vh;
+}
+
+#delete-confirmation{
+  display: none;
+  position: absolute;
+
+  top: 0vh; left: 0vw;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+#delete-confirmation #delete-box{
+  position: absolute;
+
+  top: 30vh; left: 30vw;
+  padding: 10vh 5vw;
+  background-color: #c4c4c4;
+  width: 30vw;
+  height: 20vh;
+
+  font-size: bigger;
+  text-align: center;
+}
+
+#popups .show{
+  display: block;
+}
+
+#delete-confirmation.show{
+  display: block;
+}
+
+/* Recipe Page */
+
+section .close-button{
+  font-size: bigger;
+  width: 30px;
+  height: 30px;
+  background-color: #ff6961;
+  color: white;
+
+  border-color: #ff6961;
+  border-radius: 15px;
+}
+
+.line-spacing{
+  margin: 5px 0px;
+}
+
+section #grocery-list-content{
+  text-align: center;
+}
+section #grocery-list-title{
+font-size: 20px;
+font-weight: 700;
+}
+
+section #grocery-list{
+padding-top: 20px;
+
+list-style-position: inside;
+list-style-type: circle;
+}
+
+section #grocery-list li{
+padding-bottom: 10px;
+}
+
+section .recipe-button{
+  padding: 7px 10px;
+  background-color: #ffe4e4;
+
+  border-color: #ffe4e4;
+  border-radius: 10px;
+}
+
+section #edit-recipe{
+  position: absolute;
+  top: 8vh;
+  left: 68vw;
+}
+
+section #delete-recipe{
+  position: absolute;
+  top: 15vh;
+  left: 68vw;
+}
+
+section .delete-button{
+  margin: 0vh 4vw;
+}
+
+section #recipe-tags{
+  position: absolute;
+  top: 22vh;
+  left: 68vw;
+  width: 20vw;
+  height: 58vh;
+  padding: 1vh 1vw 1vh;
+
+  overflow: auto;
+}
+
+section .tag{
+  margin: 1px 1px 0px;
+  padding: 3px 5px;
+  display: inline-block;
+  background-color: #ff6961;
+
+  border-color: #ff6961;
+  border-radius: 10px;
+}
+
+div .float-right{
+  float: right;
+}
+
+div .float-left{
+  float: left;
+}
+
+li{
+  overflow-x: visible;
+  margin-left: 20px;
+}
+
+section #tracker{
+  font-size: smaller;
+  color: red;
+}
+
+section #ingredients-header{
+  display: inline;
+}
+
+section #sort-by{
+  margin: 15px;
+}
+
+section .sort{
+  margin-right: 10px;
+}
+
+section #tags{
+  margin: 10px;
+}
