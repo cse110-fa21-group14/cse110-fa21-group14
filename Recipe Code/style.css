@@ -6,6 +6,11 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* Links */
+a:hover{
+  color: green;
+}
+
 /* Header */
 header{
     background-color: #ff6961;
@@ -53,17 +58,9 @@ header button:hover{
 }
 
 /* Home Page */
-main #home-reccommended-button{
+main .home-button{
   height: 50px;
   width: 200px;
-}
-
-main #home-recipes-button{
-  height: 50px;
-  width: 200px;
-=======
-section #tags{
-  margin: 10px;
 }
 
 /* Main (Recipes page) */
@@ -351,4 +348,8 @@ section #sort-by{
 
 section .sort{
   margin-right: 10px;
+}
+
+section #tags{
+  margin: 10px;
 }

@@ -12,159 +12,16 @@
     <body>
         <header>
             <section id="main-bar">
-                <h1 id="site-name">App Name</h1>
-                
-                <button id="recommended-recipes" class="float-right"><a href="recommended.html">Recommended Recipes</a></button>
-                <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
-                
-                <script>
-                    function popOpen(){
-                        document.getElementById("popups").classList.add("show");
-                        document.getElementById('grocery-list-popup').classList.add('show');
-                    }
-                    function popClose(){
-                        document.getElementById('grocery-list-popup').classList.remove('show');
-                        document.getElementById("popups").classList.remove("show");
-                    }
-                    function test() {
-                    document.getElementById("popups").classList.add("show");
-                    document.getElementById("recipe-popup").classList.add("show");
-                    }
-                    function testClose() {
-                        document.getElementById("recipe-popup").classList.remove("show");
-                        document.getElementById("popups").classList.remove("show");
-                    }
-                    function sf() {
-                        document.getElementById("popups").classList.add("show");
-                        var test_popup = document.getElementById("sort-filter-popup");
-                        test_popup.classList.add("show");
-                    }
-                    function sfClose() {
-                        var test_popup = document.getElementById("sort-filter-popup");
-                        test_popup.classList.remove("show");
-                        document.getElementById("popups").classList.remove("show");
-                    }
-                    function deleteConfirm() {
-                        var test_popup = document.getElementById("delete-confirmation");
-                        test_popup.classList.add("show");
-                    }
-                    function deleteClose() {
-                        var test_popup = document.getElementById("delete-confirmation");
-                        test_popup.classList.remove("show");
-                    }
-                </script>
+                <a href="index.html"><h1 id="site-name">App Name</h1></a>
             </section>
         </header>
         <main>
-            <section id="recipe-page-info">
-                <h1 id="page-title">My Recipes</h1>
-                <button id="add-button" class="float-right">Add</button>
-                <button id="sort-button" class="float-right" onclick="sf()">Sort</button>
-                <input type="text" id="search-bar" class="float-right" placeholder="Search">
-            </section>
-            
-            <section id="recipe-list">
-                <article id="recipe-card-test" onclick="test()">
-                    <img src="images/cookies.jpg" alt="Recipe image">
-                    <div id="recipe-text">
-                        <p class="recipe-title">Grandma's Cookies</p>
-                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
-                        <p class="cook-time">20 min</p>
-                    </div>
-                </article>
-                <article id="recipe-card-test" onclick="test()">
-                    <img src="images/cookies.jpg" alt="Recipe image">
-                    <div id="recipe-text">
-                        <p class="recipe-title">Grandma's Cookies</p>
-                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
-                        <p class="cook-time">20 min</p>
-                    </div>
-                </article>
-                <article id="recipe-card-test" onclick="test()">
-                    <img src="images/cookies.jpg" alt="Recipe image">
-                    <div id="recipe-text">
-                        <p class="recipe-title">Grandma's Cookies</p>
-                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
-                        <p class="cook-time">20 min</p>
-                    </div>
-                </article>
+            <section id="featured-recipe">
+                <h2 id="recipe-otd-title">Recipe of the Day</h2>
                 
             </section>
-            <button id="back-button"><span>&#8592</span> Back</button>
+            <a href="recommended.html"><button id="home-recommended-button" class="float-left home-button">Recommended</button></a>
+            <a href="user.html"><button id="home-recipes-button" class="float-right home-button">My Recipes</button></a>
         </main>
-        <div id="popups">
-            <section id='grocery-list-popup' class="popup">
-                <button id="grocery-list-close" class="float-right close-button" onclick="popClose()"> X </button>
-                <div id="grocery-list-content">
-                    <p id="grocery-list-title">Grocery List</p>
-                    <ul id="grocery-list">
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                    </ul>
-
-                    <input type="text" id="new-grocery-item" placeholder="New item...">
-                    
-                </div>
-                <button id="clear-all" class="float-right">Clear</button>
-            </section>
-            <section id="recipe-popup" class="popup recipe-pages">
-                <button type="button" id="recipe-close" class="float-right line-spacing close-button" onclick="testClose()">X</button>
-                <button type="button" id="edit-recipe" class="float-right recipe-button">Edit Recipe</button>
-                <button type="button" id="delete-recipe" class="float-right recipe-button" onclick="deleteConfirm()">Delete Recipe</button>
-                <div id="recipe-tags" class="float-right">
-                    <h3 id="tags-header" class="line-spacing">Tags</h3>
-                    <p id="no-recipe-tags-yet">There are no tags.</p>
-                    <p class="tag"> Tag 1 </p>
-                </div>
-                <h2 id="recipe-name" class="line-spacing">Recipe Name</h2>
-                <p id="tracker" class="line-spacing">You have made this <span id="tracker-count">X</span> times, most recent time was <span id="tracker-days">Y</span> days ago.</p>
-                <img id="recipe-image" class="line-spacing" alt="Image of Dish"> <br>
-                <h3 id="ingredients-header" class="line-spacing">Ingredients</h3>
-                <span>1 <input type="range" min="1" max="10" step="1"> 10 | Number of servings: <span id="serving-value">Z</span></span>
-                <ul id="ingredients" class="line-spacing">
-                    <li>0 Units of Ingredient 1</li>
-                </ul>
-                <button id="add-grocery" class="line-spacing recipe-button">Add to Grocery List</button>
-                <h3 id="instructions-header" class="line-spacing">Instructions</h3>
-                <ol id="instructions" class="line-spacing">
-                    <li>Do something.</li>
-                    <li>Do something else.</li>
-                </ol>
-                <button id="track" class="line-spacing recipe-button">Just Made</button>
-            </section>
-            <section id="sort-filter-popup" class="popup">
-                <button id="sort-filter-close" class="float-right line-spacing close-button" onclick="sfClose()">X</button>
-                <h2 id="sort-by-header" class="line-spacing">Sort Recipes By:</h2>
-                <div id="sort-by">
-                    <input type="radio" id="most-made" name="sort"><label for="most-made" class="sort"> Most Made </label>
-                    <input type="radio" id="least-made" name="sort"><label for="least-made" class="sort"> Least Made </label>
-                    <input type="radio" id="alphabetical" name="sort" checked><label for="alphabetical" class="sort"> Alphabetical Order (A-Z) </label>
-                    <input type="radio" id="newest" name="sort"><label for="newest" class="sort"> Newest to Oldest </label>
-                    <input type="radio" id="oldest" name="sort"><label for="oldest" class="sort"> Oldest to Newest </label>
-                </div>
-                <hr>
-                <h2 id="filter-tags" class="line-spacing">Filter By Tags:</h2>
-                <div id="tags">
-                    <p id="no-tags-yet">There are no tags.</p>
-                    <button id="tag-1" class="line-spacing tag">Tag 1</button>
-                </div>
-            </section>
-        </div>
-        <section id="delete-confirmation">
-            <div id="delete-box">
-                <p>Are you sure you want to delete '<span id="delete-recipe-name">Recipe Name</span>'?</p>
-                <br>
-                <button type="button" id="delete-yes" class="recipe-button delete-button"> Yes </button>
-                <button type="button" id="delete-no" class="recipe-button delete-button" onclick="deleteClose()"> No </button>
-            </div>
-        </section>
     </body>
 </html>
