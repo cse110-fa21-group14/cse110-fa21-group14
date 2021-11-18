@@ -3,8 +3,8 @@
 ## Meeting Subject: Progress check in and planning
 ## Location: Zoom
 ## Starting Time: 4:00pm
-## Attendance List:
-###     Members Present
+## Attendance List
+### Members Present
             1. Kyle
             2. Maddie
             3. Ashritha
@@ -16,10 +16,10 @@
             9. TJ
             10. Sam
             11. Robin
-###     Members Absent
+### Members Absent
             1. Laurence
-## Agenda:
-###     Unfinished Business
+## Agenda
+### Unfinished Business
         - finish demo since we got cut off last time
         - frontend 
             - stuff isn't connected but showed our code
@@ -35,7 +35,7 @@
             - 3 workflows (linting, codacy, jsdoc)
             - JSDoc isn't working on GitHub Actions (but works locally)
             - can ask Ashritha for help if get too stuck
-###     Business for Today
+### Business for Today
         - Ashritha says we are on track!
         - advice for integration
             - backend can discuss any functions they make with frontend
@@ -64,11 +64,11 @@
             - TJ and Mikayla on frontend
             - Kyle, Laurence, Robin on backend
             - Friday afternoon 12:30p-2p on zoom
-###     For Next Time
+### For Next Time
         - integrate front and back end
         - have CRUD features working by Monday
         - status video due by Monday (Nov 22 - hard deadline!!)
         - CI/CD phase 2 due Nov 30 (will need tests, complete pipeline done)
-## Decisions Made:
+## Decisions Made
     - We made the decision to have representatives from each team meet on Friday because that will be most efficient.
 ## Ending Time: 4:40pm
