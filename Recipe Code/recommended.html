@@ -13,16 +13,49 @@
         <header>
             <section id="main-bar">
                 <h1 id="site-name">App Name</h1>
-                <input type="text" id="search-bar" class="float-right" placeholder="Search">
-                <button id="my-recipes" class="float-right"><a href="index.html">My Recipes</a></button>
-                <button id="grocery-list" class="float-right">Grocery list</button>
                 
+                <button id="my-recipes" class="float-right"><a href="index.html">My Recipes</a></button>
+                <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
+                
+                <script>
+                    function popOpen(){
+                        document.getElementById('grocery-list-overlay').classList.add('show');
+                    }
+                    function popClose(){
+                        document.getElementById('grocery-list-overlay').classList.remove('show');
+                    }
+                </script>
+                <div id="grocery-list-overlay">
+                    <div id='grocery-list-popup'>
+                        <button id="grocery-list-close" class="float-right" onclick="popClose()">&#x2715</button>
+                        <div id="grocery-list-content">
+                            <p id="grocery-list-title">Grocery List</p>
+                            <ul id="grocery-list">
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                            </ul>
+
+                            <input type="text" id="new-grocery-item" placeholder="New item...">
+                            
+                        </div>
+                        <button id="clear-all" class="float-right">Clear</button>
+                    </div>
+                </div>
             </section>
         </header>
         <main>
             <section id="recipe-page-info">
                 <h1 id="page-title">Recommended</h1>
                 <button id="sort-button" class="float-right">Sort</button>
+                <input type="text" id="search-bar" class="float-right" placeholder="Search">
             </section>
             <button id="back-button"><span>&#8592</span>Back</button>
         </main>

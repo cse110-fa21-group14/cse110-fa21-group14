@@ -12,9 +12,9 @@ header{
     
 }
 header #main-bar{
-    
     margin: 3vh 13vw 3vh;
 }
+
 header .float-right{
     float: right;
     margin-right: 50px;
@@ -22,16 +22,14 @@ header .float-right{
 header #site-name{
     float: left;
     color: white;
-    
 }
 
-header #search-bar{
-    margin-right: 0px;
-    height: 30px;
-    border-radius: 2%;
-    border: none;
-    outline: none;
-    padding-left: 5px;
+header #recommended-recipes{
+    margin-right: 0;
+}
+
+header #my-recipes{
+  margin-right: 0;
 }
 
 header button{
@@ -56,8 +54,8 @@ header button:hover{
 
 /*Grocery list button in header */
 header #grocery-list-popup{
-    width: 1000px;
-    height: 400px;
+    width: 40vw;
+    height: 90vh;
     overflow: auto;
     background-color: White;
     display: block;
@@ -67,12 +65,10 @@ header #grocery-list-popup{
     transform: translate(-50%, -50%);
     z-index: 1;
     border-radius: 1.5%;
-    padding: 10px;
+    padding: 20px;
 }
 
-header #grocery-list-title{
-    text-align: center;
-}
+
 header #grocery-list-close{
     background-color: white;
     color: black;
@@ -85,18 +81,35 @@ header #grocery-list-overlay{
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 9;
+    z-index: 3;
     display: none;
 }
 header #grocery-list-overlay.show{
     display: block;
+}
+header #grocery-list-content{
+    text-align: center;
+}
+header #grocery-list-title{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+header #grocery-list{
+  padding-top: 20px;
+  
+  list-style-position: inside;
+  list-style-type: circle;
+}
+
+header #grocery-list li{
+  padding-bottom: 10px;
 }
 
 
 /* Main (Recipes page) */
 main{
   margin: 5vh 13vw 5vh;
-  
 }
 
 main #sort-button{
@@ -117,9 +130,8 @@ main button:hover{
   cursor:pointer;
   background-color: white;
   color: #ff6961;
- 
-  
 }
+
 main .float-right{
   float: right;
 }
@@ -128,7 +140,13 @@ main #page-title{
   font-size: 90px;
   float: left;
 }
-
+main #search-bar{
+  margin-top: 60px;
+  margin-right: 20px;
+  height: 35px;
+  padding: 5px;
+  font-size: 20px;
+}
 main #recipe-page-info{
   display: inline-flexbox;
   position: relative;
@@ -148,19 +166,24 @@ main #recipe-list{
 main #recipe-list article{
   display: inline-block;
   margin-left: 50px;
-}
-main #recipe-list article{
-  width: 400px;
+  width: 20vw;
+  height: 45vh;
+  
 }
 
+main article img{
+  object-fit: contain;
+  height: 26vh;
+  
+}
 main #recipe-card-test{
   border: 2px solid gray;
   border-radius: 5px;
-  height: 560px;
 }
 
 main #recipe-text{
-  margin: 8px;
+  margin: 10px;;
+  
 }
 
 main .recipe-title{
@@ -171,6 +194,7 @@ main .recipe-title{
 main .cook-time{
   float: right;
   color: #ff6961;
+  padding-top: 0.5vh;
 }
 
   

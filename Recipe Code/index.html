@@ -13,7 +13,7 @@
         <header>
             <section id="main-bar">
                 <h1 id="site-name">App Name</h1>
-                <input type="text" id="search-bar" class="float-right" placeholder="Search">
+                
                 <button id="recommended-recipes" class="float-right"><a href="recommended.html">Recommended Recipes</a></button>
                 <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
                 
@@ -27,8 +27,26 @@
                 </script>
                 <div id="grocery-list-overlay">
                     <div id='grocery-list-popup'>
-                        <button id="grocery-list-close" class="float-right" onclick="popClose()">X</button>
-                        <p id="grocery-list-title">Grocery List</p>
+                        <button id="grocery-list-close" class="float-right" onclick="popClose()">&#x2715</button>
+                        <div id="grocery-list-content">
+                            <p id="grocery-list-title">Grocery List</p>
+                            <ul id="grocery-list">
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                                <li> Sample text</li>
+                            </ul>
+
+                            <input type="text" id="new-grocery-item" placeholder="New item...">
+                            
+                        </div>
+                        <button id="clear-all" class="float-right">Clear</button>
                     </div>
                 </div>
             </section>
@@ -38,7 +56,9 @@
                 <h1 id="page-title">My Recipes</h1>
                 <button id="add-button" class="float-right">Add</button>
                 <button id="sort-button" class="float-right">Sort</button>
+                <input type="text" id="search-bar" class="float-right" placeholder="Search">
             </section>
+            
             <section id="recipe-list">
                 <article id="recipe-card-test">
                     <img src="images/cookies.jpg" alt="Recipe image">
@@ -64,6 +84,7 @@
                         <p class="cook-time">20 min</p>
                     </div>
                 </article>
+                
             </section>
             <button id="back-button"><span>&#8592</span>Back</button>
             
