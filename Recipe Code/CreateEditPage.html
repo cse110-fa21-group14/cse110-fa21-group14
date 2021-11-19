@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, intial-scale=1.0" />
+        <meta name="description" content="Recipe storage" />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        </style>
+        <link rel="stylesheet" href="edit_style.css">
+    </head>
+    <body>
+        <header>
+            <section id="main-bar">
+                <img id="grouplogo" src="./grouplogo.PNG" alt="grouplogo" style="width:65px;height:65px;">
+                <h1 id="site-name">App Name</h1>
+               <!-- <input type="text" id="search-bar" class="float-right" placeholder="Search">
+                <button id="grocery-list" class="float-right">Grocery list</button>
+                <button id="likes-list" class="float-right">Likes</button> -->
+            </section>
+        </header>
+        <main>
+            <section id="recipe-create">
+                <input type="text" id="title-bar" placeholder="Recipe Title">
+                <input type="file" id="filetag">
+                <div id="insert-image">
+                    <img src="" id="preview">
+                </div>
+                <h2 id="Ingredients">Ingredients</h2>
+                <section id="add-ingredient">
+                    <div id="rectangle2"></div>
+                    <input type="text" id="Ingredient-bar" class="float-left" placeholder="Ingredient">
+                    <input type="text" id="Amount-bar" class="float-left" placeholder="Amount">
+                    <input type="text" id="Unit-bar" class="float-left" placeholder="Unit">
+                    <img id="remove" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                </section>
+                <h3 id="add">+ Add Another Ingredient</h3>
+                <h3 id="Instructions">Instructions</h3>
+                <textarea id="inst-text" name="inst-text" rows="5" cols="33">Enter Instructions Here.</textarea>>
+                <ol id="grocery-list">
+                    <li> Sample text</li>
+                    <li> Sample text</li>
+                    <li> Sample text</li>
+                    <li> Sample text</li>
+                </ol>
+                <button id="save" class="float-right">Save</button>
+                <button id="cancel" class="float-right">Cancel</button>
+                <h3 id="tags">Tags</h3>
+                <section id ="tag section">
+                    <input type="text" id="add-tag" class="float-right" placeholder="Enter Tag">
+                    <img id="remove1" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                </section>
+                <h3 id="add1">+ Add Another Tag</h3>
+            </section>
+        </main>
+        <script>
+            var fileTag = document.getElementById("filetag"),
+            preview = document.getElementById("preview");
+    
+            fileTag.addEventListener("change", function() {
+                changeImage(this);
+            });
+
+            function changeImage(input) {
+            var reader;
+
+            if (input.files && input.files[0]) {
+            reader = new FileReader();
+
+            reader.onload = function(e) {
+            preview.setAttribute('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+            }
+            }   
+          </script>
+    </body>
+</html>
+
