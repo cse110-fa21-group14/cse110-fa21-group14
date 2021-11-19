@@ -22,7 +22,7 @@
             - will explain pipeline and codacy, linter so people can understand
             - formatting comments for functions in a specific way so jsdocs can read it
 ### Business for Today
-        - Minor notes
+        - Some notes to keep in mind
             - Front end doesn't have any button/event listeners set up
             - backend will only use javascript
             - type of ID to use for user and rec recipes (timestamp?)
