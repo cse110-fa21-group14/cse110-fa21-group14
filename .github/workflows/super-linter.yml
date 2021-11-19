@@ -8,9 +8,7 @@ name: Lint Code Base
 
 on:
   push:
-    branches: 
-        -main
-        -meeting-notes
+    branches: [ main, meeting-notes ]
   pull_request:
     branches: [ main ]
 jobs:
