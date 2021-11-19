@@ -20,6 +20,7 @@
         - Pipeline progress
             - waiting on Ashritha for jsdocs but can continue without it
             - will explain pipeline and codacy, linter so people can understand
+            - formatting comments for functions in a specific way so jsdocs can read it
 ### Business for Today
         - Minor notes
             - Front end doesn't have any button/event listeners set up
