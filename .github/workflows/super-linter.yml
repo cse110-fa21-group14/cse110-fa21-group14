@@ -10,7 +10,7 @@ on:
   push:
     branches: [ main, meeting-notes ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, meeting-notes ]
 jobs:
   run-lint:
     runs-on: ubuntu-latest
