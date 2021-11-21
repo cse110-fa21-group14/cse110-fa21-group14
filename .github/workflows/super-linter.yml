@@ -8,9 +8,9 @@ name: Lint Code Base
 
 on:
   push:
-    branches: [ main, testBranch ]
+    branches: [ main, testBranch, meeting-notes, recommended-and-my-recipes-page ]
   pull_request:
-    branches: [ main, testBranch ]
+    branches: [ main, testBranch, meeting-notes, recommended-and-my-recipes-page ]
 jobs:
   run-lint:
     runs-on: ubuntu-latest
