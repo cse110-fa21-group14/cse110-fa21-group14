@@ -3,5 +3,5 @@
 /**
  * @type {string}
  */
-const word = 'Hello';
+const word = 'Hello ';
 
