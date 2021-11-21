@@ -13,50 +13,59 @@
     <body>
         <header>
             <section id="main-bar">
-                <img id="grouplogo" src="./grouplogo.PNG" alt="grouplogo" style="width:65px;height:65px;">
-                <h1 id="site-name">App Name</h1>
-               <!-- <input type="text" id="search-bar" class="float-right" placeholder="Search">
-                <button id="grocery-list" class="float-right">Grocery list</button>
-                <button id="likes-list" class="float-right">Likes</button> -->
+                <a href="index.html">
+                    <img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo">
+                    <h1 id="site-name">App Name</h1>
+                </a>
             </section>
         </header>
         <main>
             <section id="recipe-create">
-                <input type="text" id="title-bar" placeholder="Recipe Title">
-                <input type="file" id="filetag">
-                <div id="insert-image">
-                    <img src="" id="preview">
+                <section id="input-tags" class="float-right">
+                    <h2 id="input-tags-header" class="line-spacing">Tags</h2>
+                    <div id="tag-input" class="line-spacing">
+                        <input type="text" id="tag-name-input"class="input-elements" placeholder="Enter Tag">
+                        <img id="remove-tag" class="edit-icons input-spacing" src="./remove.PNG" alt="Remove">
+                    </div>
+                    <h3 id="add-tag" class="add-element line-spacing">+ Add Another Tag</h3>
+                </section>
+                <div id="insert-name">
+                    <input type="text" id="input-recipe-name" class="line-spacing" placeholder="Recipe Name">
+                    <span id="name-error"> </span>
                 </div>
-                <h2 id="Ingredients">Ingredients</h2>
-                <section id="add-ingredient">
-                    <div id="rectangle2"></div>
-                    <input type="text" id="Ingredient-bar" class="float-left" placeholder="Ingredient">
-                    <input type="text" id="Amount-bar" class="float-left" placeholder="Amount">
-                    <input type="text" id="Unit-bar" class="float-left" placeholder="Unit">
-                    <img id="remove" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                <div id="insert-image" class="line-spacing">
+                    <img id="file-preview" alt="Insert an image for this recipe.">
+                </div>
+                <input type="file" id="input-file" class="line-spacing">
+                <section id="input-ingredients">
+                    <h2 id="input-ingredients-header" class="line-spacing">Ingredients</h2>
+                    <div id="ingredient-input" class="line-spacing">
+                        <input type="text" id="name-input" class="input-elements input-spacing" placeholder="Ingredient Name">
+                        <input type="text" id="amount-input" class="input-elements input-spacing" placeholder="Amount">
+                        <input type="text" id="unit-input" class="input-elements input-spacing" placeholder="Unit">
+                        <img id="remove-ingredient" class="edit-icons input-spacing" src="./remove.PNG" alt="Remove">
+                    </div>
+                    <h3 id="add-ingredient" class="add-element line-spacing">+ Add Another Ingredient</h3>
                 </section>
-                <h3 id="add">+ Add Another Ingredient</h3>
-                <h3 id="Instructions">Instructions</h3>
-                <textarea id="inst-text" name="inst-text" rows="5" cols="33">Enter Instructions Here.</textarea>>
-                <ol id="grocery-list">
-                    <li> Sample text</li>
-                    <li> Sample text</li>
-                    <li> Sample text</li>
-                    <li> Sample text</li>
-                </ol>
-                <a href="user.html"><button id="save" class="float-right">Save</button></a>
-                <a href="user.html"><button id="cancel" class="float-right">Cancel</button></a>
-                <h3 id="tags">Tags</h3>
-                <section id ="tag section">
-                    <input type="text" id="add-tag" class="float-right" placeholder="Enter Tag">
-                    <img id="remove1" src="./remove.PNG" alt="remove" style="width:25px;height:25px;">
+                <section id="input-instructions">
+                    <h2 id="input-instructions-header" class="line-spacing">Instructions</h2>
+                    <ol id="instructions-input-list" class="line-spacing">
+                        <li class="step-input">
+                            <textarea id="step-input-box" rows="2" cols="50" placeholder="Enter instruction step here."></textarea>
+                            <img id="remove-step" class="input-spacing" src="./remove.PNG" alt="Remove">
+                        </li>
+                    </ol>
+                    <h3 id="add-instruction-step" class="add-element line-spacing">+ Add Another Step</h3>
                 </section>
-                <h3 id="add1">+ Add Another Tag</h3>
+                <section id="create-edit-buttons">
+                    <a href="user.html"><button id="save-recipe" class="float-right create-edit-button">Save</button></a>
+                    <a href="user.html"><button id="cancel-recipe" class="float-right create-edit-button">Cancel</button></a>
+                </section>
             </section>
         </main>
         <script>
-            var fileTag = document.getElementById("filetag"),
-            preview = document.getElementById("preview");
+            var fileTag = document.getElementById("input-file"),
+            preview = document.getElementById("file-preview");
     
             fileTag.addEventListener("change", function() {
                 changeImage(this);

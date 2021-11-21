@@ -12,7 +12,10 @@
     <body>
         <header>
             <section id="main-bar">
-                <a href="index.html"><h1 id="site-name">App Name</h1></a>
+                <a href="index.html">
+                    <img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo">
+                    <h1 id="site-name">App Name</h1>
+                </a>
                 
                 <a href="user.html"><button id="my-recipes" class="float-right">My Recipes</button></a>
                 <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
@@ -42,7 +45,6 @@
         <main>
             <section id="recipe-page-info">
                 <h1 id="page-title">Recommended</h1>
-                <button id="sort-button" class="float-right">Sort</button>
                 <input type="text" id="search-bar" class="float-right" placeholder="Search">
             </section>
             <a href="index.html"><button id="back-button"><span>&#8592</span> Back</button></a>
@@ -50,25 +52,13 @@
         <div id="popups">
             <section id='grocery-list-popup' class="popup">
                 <button id="grocery-list-close" class="float-right close-button" onclick="popClose()"> X </button>
-                <div id="grocery-list-content">
-                    <p id="grocery-list-title">Grocery List</p>
-                    <ul id="grocery-list">
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                        <li> Sample text</li>
-                    </ul>
-
-                    <input type="text" id="new-grocery-item" placeholder="New item...">
-                    
+                <h2 id="grocery-list-header">Grocery List</h2>
+                <div class="grocery-list-item">
+                    <input type="checkbox" id="grocery-list-item-1" name="item-1-name"><label for="grocery-list-item-1"> Item 1 Name</label>
                 </div>
-                <button id="clear-all" class="float-right">Clear</button>
+                <div class="grocery-list-item">
+                    <input type="checkbox" id="grocery-list-item-2" name="item-2-name"><label for="grocery-list-item-2"> Item 2 Name</label>
+                </div>
             </section>
             <section id="recommended-recipe-popup" class="popup recipe-pages">
                 <button id="recommended-recipe-close" class="float-right line-spacing close-button" onclick="pClose()">X</button>
