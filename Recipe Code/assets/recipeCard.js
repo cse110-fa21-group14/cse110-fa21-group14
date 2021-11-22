@@ -1,4 +1,4 @@
-import backend.js;
+const backend = require('../testing/backend src/backend.js');
 class RecipeCard extends HTMLElement{
     constructor(){
         super();
@@ -41,14 +41,14 @@ class RecipeCard extends HTMLElement{
         
 
         //img 
-        img.setAttribute('src', get('image'));
+        img.setAttribute('src', backend.get('image'));
         img.setAttribute('alt', 'Recipe Image');
         card.appendChild(img);
 
         //attaching title and ingredients to div recipe text
         recipeText.classList.add('recipe-text');
         recipeTitle.classList.add('recipe-title');
-        recipeTitle.innerHTML = get('name');
+        recipeTitle.innerHTML = backend.get('name');
 
         recipeText.appendChild(recipeTitle);
         card.appendChild(recipeText);

@@ -15,12 +15,12 @@ $("#upload").change(function () {
         FR.onload = function (e) {
             console.log(e.target.result);
             var imgBase64 = e.target.result
-            imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""));
+            imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""), imgUrl);
         };
         FR.readAsDataURL(this.files[0]);
     }
 });
-function imgToURL(imgBase64) {
+function imgToURL(imgBase64, imgURL) {
     $.ajax({
         url: 'https://api.imgur.com/3/image',
         headers: {

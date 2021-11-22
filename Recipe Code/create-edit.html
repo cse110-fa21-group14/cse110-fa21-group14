@@ -9,6 +9,7 @@
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
         </style>
         <link rel="stylesheet" href="style.css">
+        <script src="../testing/frontend src/frontend.js" type="module"></script>
     </head>
     <body>
         <header>
@@ -20,7 +21,7 @@
             </section>
         </header>
         <main>
-            <section id="recipe-create">
+            <form id="recipe-create">
                 <section id="input-tags" class="float-right">
                     <h2 id="input-tags-header" class="line-spacing">Tags</h2>
                     <div id="tag-input" class="line-spacing">
@@ -61,7 +62,7 @@
                     <a href="user.html"><button id="save-recipe" class="float-right create-edit-button">Save</button></a>
                     <a href="user.html"><button id="cancel-recipe" class="float-right create-edit-button">Cancel</button></a>
                 </section>
-            </section>
+            </form>
         </main>
         <script>
             var fileTag = document.getElementById("input-file"),
