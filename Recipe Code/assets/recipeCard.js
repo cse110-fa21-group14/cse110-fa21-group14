@@ -1,11 +1,11 @@
-const backend = require('../testing/backend src/backend.js');
+import {get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe} from '/testing/backend src/backend.js';
 class RecipeCard extends HTMLElement{
     constructor(){
         super();
         let shadow = this.attachShadow({mode: 'open'});
     }
     set data(data){
-        styleElem.innerHTML = styles;
+        let shadow = this.shadowRoot;
         const styleElem = document.createElement('style');
         const styles = `
             article{
@@ -41,19 +41,19 @@ class RecipeCard extends HTMLElement{
         
 
         //img 
-        img.setAttribute('src', backend.get('image'));
+        img.setAttribute('src', get('image'));
         img.setAttribute('alt', 'Recipe Image');
         card.appendChild(img);
 
         //attaching title and ingredients to div recipe text
         recipeText.classList.add('recipe-text');
         recipeTitle.classList.add('recipe-title');
-        recipeTitle.innerHTML = backend.get('name');
+        recipeTitle.innerHTML = get('name');
 
         recipeText.appendChild(recipeTitle);
         card.appendChild(recipeText);
         shadow.appendChild(card);
-        shadow.appenedChild(styleElem);
+        shadow.appendChild(styleElem);
     }  
 }
 

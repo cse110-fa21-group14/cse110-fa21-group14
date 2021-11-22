@@ -10,11 +10,13 @@
         </style>
         <link rel="stylesheet" href="style.css">
         <script src="../testing/frontend src/frontend.js" type="module"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="assets/recipeCard.js" type="module"></script>
     </head>
     <body>
         <header>
             <section id="main-bar">
-                <a href="index.html">
+                <a href="user.html">
                     <img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo">
                     <h1 id="site-name">App Name</h1>
                 </a>
@@ -58,11 +60,12 @@
                     </ol>
                     <h3 id="add-instruction-step" class="add-element line-spacing">+ Add Another Step</h3>
                 </section>
-                <section id="create-edit-buttons">
-                    <a href="user.html"><button id="save-recipe" class="float-right create-edit-button">Save</button></a>
-                    <a href="user.html"><button id="cancel-recipe" class="float-right create-edit-button">Cancel</button></a>
-                </section>
+                
             </form>
+            <section id="create-edit-buttons">
+                <a href="user.html"><button id="save-recipe" class="float-right create-edit-button">Save</button></a>
+                <a href="user.html"><button id="cancel-recipe" class="float-right create-edit-button">Cancel</button></a>
+            </section>
         </main>
         <script>
             var fileTag = document.getElementById("input-file"),
