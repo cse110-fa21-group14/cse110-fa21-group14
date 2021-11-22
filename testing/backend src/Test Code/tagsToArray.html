@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class='textfields'>
+        <input type="text" class='tags'><br>
+    </div>
+    <button class="add">Add</button><br><br>
+    <button class="save">Save</button>
+
+</body>
+
+</html>
+
+<script>
+    const button = document.querySelector('.add');
+    const yur = document.querySelector('.textfields');
+    const save = document.querySelector('.save');
+
+    var tagVal = [];
+    button.addEventListener("click", function () {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('class', 'tags');
+        const bk = document.createElement('br');
+        yur.appendChild(input);
+        yur.appendChild(bk);
+        yur.appendChild(bk);
+    });
+
+
+    save.addEventListener("click", function () {
+        var tags = document.querySelectorAll('.tags');
+        console.log(tags)
+        tags.forEach(function (item) {
+            tagVal.push(item.value)
+        })
+        console.log(tagVal)
+    });
+
+</script>
