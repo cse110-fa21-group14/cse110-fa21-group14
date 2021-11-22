@@ -22,7 +22,7 @@ jobs:
             - name: Build
               uses: andstor/jsdoc-action@v1
               with:
-                  source_dir: ./'Recipe Code'
+                  source_dir: ./admin
                   recurse: true
                   output_dir: ./jsdoc
 
