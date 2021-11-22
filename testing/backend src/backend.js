@@ -45,7 +45,7 @@ var imgURL;
 //         FR.readAsDataURL(this.files[0]);
 //     }
 // });
-export function imgToURL(imgBase64) {
+export function imgToURL(imgBase64, imgURL) {
     $.ajax({
         url: 'https://api.imgur.com/3/image',
         headers: {
@@ -62,6 +62,7 @@ export function imgToURL(imgBase64) {
             console.log(imgURL);
         }
     });
+    return imgURL;
 }
 
 //store the recipe object in localstorage

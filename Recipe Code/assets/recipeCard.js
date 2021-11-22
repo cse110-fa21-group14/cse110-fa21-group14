@@ -1,4 +1,4 @@
-import {get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe} from '/testing/backend src/backend.js';
+
 class RecipeCard extends HTMLElement{
     constructor(){
         super();
@@ -10,7 +10,7 @@ class RecipeCard extends HTMLElement{
         const styles = `
             article{
                 display: inline-block;
-                margin-left: 50px;
+                margin-left: 53px;
                 width: 20vw;
                 height: 45vh;
                 border: 2px solid gray;
@@ -39,16 +39,17 @@ class RecipeCard extends HTMLElement{
         var recipeText = document.createElement('div');
         var recipeTitle = document.createElement('p');
         
-
+        //adding popup to card
+        card.setAttribute('onclick', 'test()');
         //img 
-        img.setAttribute('src', get('image'));
+        //img.setAttribute('src', data.img);
         img.setAttribute('alt', 'Recipe Image');
         card.appendChild(img);
 
         //attaching title and ingredients to div recipe text
         recipeText.classList.add('recipe-text');
         recipeTitle.classList.add('recipe-title');
-        recipeTitle.innerHTML = get('name');
+        recipeTitle.innerHTML = data.name;
 
         recipeText.appendChild(recipeTitle);
         card.appendChild(recipeText);
