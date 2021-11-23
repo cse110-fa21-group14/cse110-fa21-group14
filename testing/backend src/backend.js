@@ -33,7 +33,6 @@ export function getAll() {
 }
 
 //prepare image link for export when uploaded 
-var imgURL;
 // $("#input-file").change(function () {
 //     if (this.files && this.files[0]) {
 //         var FR = new FileReader();
@@ -45,30 +44,36 @@ var imgURL;
 //         FR.readAsDataURL(this.files[0]);
 //     }
 // });
-export function imgToURL(imgBase64, imgURL) {
-    $.ajax({
-        url: 'https://api.imgur.com/3/image',
-        headers: {
-            Authorization: 'Client-ID 883b97261443d3c'
-        },
-        type: 'POST',
-        data: {
-            image: imgBase64,
-            type: 'base64'
-        },
-        success: function (result) {
-            imgURL = result.data.link;
-
-            console.log(imgURL);
-        }
+export async function imgToURL(imgBase64) {
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: 'https://api.imgur.com/3/image',
+            headers: {
+                Authorization: 'Client-ID 883b97261443d3c'
+            },
+            type: 'POST',
+            data: {
+                image: imgBase64,
+                type: 'base64'
+            },
+            success: function (result) {
+                resolve(result.data.link);
+            },
+            error: function (err) {
+                reject(err)
+            }
+        });
     });
-    return imgURL;
+
 }
 
 //store the recipe object in localstorage
 export function save(recipe) {
     if (!localStorage.getItem('recipeData')) {
         localStorage.setItem('recipeData', JSON.stringify([]))
+    }
+    if (get(recipe.id)) {
+        deleteRecipe(id)
     }
     var data = JSON.parse(localStorage.getItem('recipeData'))
     data.push(recipe)
