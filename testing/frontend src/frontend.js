@@ -1,4 +1,4 @@
-import {get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe} from '../backend src/backend.js';
+import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe } from '../backend src/backend.js';
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tag-name-input');
 const name = document.getElementById('input-recipe-name');
@@ -10,8 +10,8 @@ const recipeList = document.getElementById('recipe-list');
 var currId;
 
 var imgURL;
-async function init(){
-    
+async function init() {
+
     $("#input-file").change(function () {
         if (this.files && this.files[0]) {
             var FR = new FileReader();
@@ -23,29 +23,29 @@ async function init(){
             FR.readAsDataURL(this.files[0]);
         }
     });
-    
-    function makeList(){
+
+    function makeList() {
         let recipes = getAll();
-        if(recipes && recipeList){
-            for (const [key, value] of Object.entries(recipes)){
+        if (recipes && recipeList) {
+            for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
                 let recipe = value;
                 console.log(recipe);
                 newCard.data = recipe;
-                newCard.addEventListener('click', function() {
+                newCard.addEventListener('click', function () {
                     // how to access the specific json file
                     // populate the tags
                     currId = recipe.id;
                     let tagsSection = document.getElementById('recipe-tags');
                     tagsSection.innerHTML = '';
                     let tagsList = recipe.tags;
-                    if(tagsList.length == 0) {
+                    if (tagsList.length == 0) {
                         let noTags = document.createElement('p');
                         noTags.innerHTML = 'There are no tags.';
                         tagsSection.appendChild(noTags);
                     }
                     else {
-                        for(let i = 0; i < tagsList.length; i++) {
+                        for (let i = 0; i < tagsList.length; i++) {
                             let newTag = document.createElement('p');
                             newTag.classList.add('tag');
                             newTag.innerHTML = ` ${tagsList[i]} `;
@@ -54,7 +54,7 @@ async function init(){
                     }
                     // populate recipe name
                     let recipeName = document.getElementById('recipe-name');
-                    
+
                     recipeName.innerHTML = recipe.name;
                     // populate tracker
                     // let trackerCount = document.getElementById('tracker-count');
@@ -62,14 +62,14 @@ async function init(){
                     let lastMade = document.getElementById('tracker-date');
                     lastMade.innerHTML = recipe.name;
                     // populate image
-                    // let recipeImage = document.getElementById('recipe-image');
-                    // recipeImage.setAttribute('src', recipe.img);
+                    let recipeImage = document.getElementById('recipe-image');
+                    recipeImage.setAttribute('src', recipe.img);
                     // populate ingredients
                     // needs to change default value of the slider to the number of servings
                     let ingredientList = document.getElementById('ingredients');
                     ingredientList.innerHTML = '';
                     let ingList = recipe.ingredients['ingredients'];
-                    for(let i = 0; i < ingList.length; i++) {
+                    for (let i = 0; i < ingList.length; i++) {
                         let newIng = document.createElement('li');
                         newIng.innerHTML = `${ingList[i]['amount']} ${ingList[i]['unit']} of ${ingList[i]['ingName']}`;
                         ingredientList.appendChild(newIng);
@@ -88,16 +88,16 @@ async function init(){
                 recipeList.appendChild(newCard);
             }
         }
-         
+
     }
     const saveButton = document.getElementById('save-recipe');
     let newRecipe;
-    
+
     //I put this if statment because it avoids a reading null error - TJ
-    if (saveButton){
-        
+    if (saveButton) {
+
         saveButton.addEventListener('click', (event) => {
-            
+
             let date = Date.now();
             newRecipe = {
                 id: Math.floor(100000 + Math.random() * 900000),
@@ -106,7 +106,7 @@ async function init(){
                 ingredients: {
                     proportion: 1,
                     ingredients: [
-                        {ingName: ingName.value, amount: ingAmount.value, unit: ingUnitInput.value}
+                        { ingName: ingName.value, amount: ingAmount.value, unit: ingUnitInput.value }
                     ],
                 },
                 steps: steps.value,
@@ -115,28 +115,28 @@ async function init(){
                 made: new Date(date),
             }
             save(newRecipe);
-            window.location.href = 'user.html'; 
+            window.location.href = 'user.html';
         });
     }
-    
+
     const editButton = document.getElementById('edit-recipe');
-    
-    if (editButton){
+
+    if (editButton) {
         console.log(editButton);
         editButton.addEventListener('click', (event) => {
-            window.location.href = 'create-edit.html'; 
+            window.location.href = 'create-edit.html';
             deleteRecipe(currId);
         });
     }
-    
+
     const deleteButton = document.getElementById('delete-yes');
-    if (deleteButton){
+    if (deleteButton) {
         deleteButton.addEventListener('click', (event) => {
             deleteRecipe(currId);
             location.reload();
         });
     }
-    
+
     makeList();
-    
+
 };

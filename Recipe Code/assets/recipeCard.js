@@ -1,10 +1,10 @@
 
-class RecipeCard extends HTMLElement{
-    constructor(){
+class RecipeCard extends HTMLElement {
+    constructor() {
         super();
-        let shadow = this.attachShadow({mode: 'open'});
+        let shadow = this.attachShadow({ mode: 'open' });
     }
-    set data(data){
+    set data(data) {
         let shadow = this.shadowRoot;
         const styleElem = document.createElement('style');
         const styles = `
@@ -31,18 +31,17 @@ class RecipeCard extends HTMLElement{
                 font-weight: 600;
             }
         `;
-        styleElem.innerHTML = styles; 
+        styleElem.innerHTML = styles;
 
         //creating elements for recipe card
         const card = document.createElement('article');
         var img = document.createElement('img');
         var recipeText = document.createElement('div');
         var recipeTitle = document.createElement('p');
-        
+
         //adding popup to card
         card.setAttribute('onclick', 'test()');
-        //img 
-        //img.setAttribute('src', data.img);
+        img.setAttribute('src', data.img);
         img.setAttribute('alt', 'Recipe Image');
         card.appendChild(img);
 
@@ -55,7 +54,7 @@ class RecipeCard extends HTMLElement{
         card.appendChild(recipeText);
         shadow.appendChild(card);
         shadow.appendChild(styleElem);
-    }  
+    }
 }
 
 customElements.define('recipe-card', RecipeCard);
