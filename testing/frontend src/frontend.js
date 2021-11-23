@@ -18,7 +18,12 @@ async function init() {
             FR.onload = function (e) {
                 console.log(e.target.result);
                 var imgBase64 = e.target.result
-                imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""), imgURL);
+                imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "")).then(function (data) {
+                    imgURL = data;
+                    console.log(imgURL)
+                }).catch(function (err) {
+                    console.log(err)
+                })
             };
             FR.readAsDataURL(this.files[0]);
         }
