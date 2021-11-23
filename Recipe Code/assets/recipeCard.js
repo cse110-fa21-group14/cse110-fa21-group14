@@ -43,6 +43,8 @@ class RecipeCard extends HTMLElement {
         card.setAttribute('onclick', 'test()');
         img.setAttribute('src', data.img);
         img.setAttribute('alt', 'Recipe Image');
+        img.setAttribute('width', '100%');
+        img.setAttribute('height', '100%');
         card.appendChild(img);
 
         //attaching title and ingredients to div recipe text
