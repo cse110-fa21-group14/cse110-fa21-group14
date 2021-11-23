@@ -215,10 +215,10 @@ main #back-button{
 }
 
 /* Test Recipe Card */
-main #recipe-list{
+main .list{
   margin: auto;
 }
-main #recipe-list article{
+main .list article{
   display: inline-block;
   margin-left: 50px;
   width: 20vw;

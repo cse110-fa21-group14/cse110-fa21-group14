@@ -40,7 +40,7 @@ class RecipeCard extends HTMLElement{
         var recipeTitle = document.createElement('p');
         
         //adding popup to card
-        card.setAttribute('onclick', 'test()');
+        card.setAttribute('onclick', 'recipePopUp()');
         //img 
         //img.setAttribute('src', data.img);
         img.setAttribute('alt', 'Recipe Image');
