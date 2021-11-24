@@ -26,7 +26,7 @@ async function init() {
     let editIngredientUnit = document.getElementById("unit-input").setAttribute("value", editRecipeObject.ingredients["ingredients"][0].unit);
     console.log(editRecipeObject.ingredients["ingredients"][0].amount);
 
-    //let editImage = document.getElementById("file-preview").src = editRecipeObject.img;
+    let editImage = document.getElementById("file-preview").src = editRecipeObject.img;
     console.log(editRecipeObject.i)
     //TODO preload the image
 }
