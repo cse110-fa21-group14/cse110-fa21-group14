@@ -1,4 +1,6 @@
+
 import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
+
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tag-name-input');
 const name = document.getElementById('input-recipe-name');
@@ -99,6 +101,7 @@ async function init() {
     const saveButton = document.getElementById('save-recipe');
     let newRecipe;
 
+
     if (saveButton) {
 
         saveButton.addEventListener('click', (event) => {
@@ -118,21 +121,14 @@ async function init() {
                 serving: servings.value,
                 tags: [tags.value],
                 made: new Date(date),
+                makeCount: 0
             }
             save(newRecipe);
             window.location.href = 'user.html';
         });
     }
 
-    const editButton = document.getElementById('edit-recipe');
 
-    if (editButton) {
-        console.log(editButton);
-        editButton.addEventListener('click', (event) => {
-            window.location.href = 'create-edit.html';
-            deleteRecipe(currId);
-        });
-    }
 
     const deleteButton = document.getElementById('delete-yes');
     if (deleteButton) {
@@ -142,13 +138,39 @@ async function init() {
         });
     }
 
+
+
     makeList();
+
 
 };
 
+
+const editButton = document.getElementById('edit-recipe');
+
+if (editButton) {
+    console.log(editButton);
+    editButton.addEventListener('click', (event) => {
+        window.location.href = 'create-edit.html';
+        localStorage.setItem("editId", currId);
+    });
+}
+
+
+let justMadeBtn = document.getElementById("track");
+justMadeBtn.addEventListener("click", e => {
+    let currRecipe = get(currId);
+    
+    currRecipe.makeCount = currRecipe.makeCount + 1;
+    deleteRecipe(currId);
+    save(currRecipe);
+
+})
+
+/*
 var query = document.querySelector('#search-bar');
 query.addEventListener('keyup', search);
-var toDisplay = [];
+var toDisplay = []; */
 
 function search() {
     const data = JSON.parse(localStorage.getItem('recipeData'))

@@ -3,18 +3,18 @@
 ## Meeting Subject: 
 ## Location: 
 ## Starting Time:
-## Attendance List:
-###     Members Present
+## Attendance List
+### Members Present
             1. Fake McFakePerson
-###     Members Absent
+### Members Absent
             1. Fake McFakePerson
-## Agenda:
-###     Unfinished Business
+## Agenda
+### Unfinished Business
         - N/A
-###     Business for Today
+### Business for Today
         - N/A
-###     For Next Time
+### For Next Time
         - N/A
-## Decisions Made:
+## Decisions Made
     - We made the decision to ____ because ____.
 ## Ending Time: 

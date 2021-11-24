@@ -12,7 +12,8 @@
         steps: steps.value,                                     pass in directly HTML
         serving: int,                                           pass in directly HTML
         tags: [string],                                         convert input -> [] in frontend.js (see tagsToArray:41)
-        made: Date                                              capture and store Date when save button is clicked
+        made: Date
+        makeCount: int                                              capture and store Date when save button is clicked
     }
 */
 
