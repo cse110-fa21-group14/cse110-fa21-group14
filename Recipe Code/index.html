@@ -8,24 +8,24 @@
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
         </style>
         <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
             <section id="main-bar">
-                <h1 id="site-name">App Name</h1>
-                <input type="text" id="search-bar" class="float-right" placeholder="Search">
-                <button id="grocery-list" class="float-right">Grocery list</button>
-                <button id="likes-list" class="float-right">Likes</button>
+                <a href="index.html">
+                    <img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo">
+                    <h1 id="site-name">App Name</h1>
+                </a>
             </section>
         </header>
         <main>
-            <section id="recipe-page-info">
-                <h1 id="recipes-title">Recipes</h1>
-                <button id="add-button" class="float-right">Add</button>
-                <button id="sort-button" class="float-right">Sort</button>
+            <section id="featured-recipe">
+                <h2 id="recipe-otd-title">Recipe of the Day</h2>
                 
             </section>
-            
+            <a href="recommended.html"><button id="home-recommended-button" class="float-left home-button">Recommended</button></a>
+            <a href="user.html"><button id="home-recipes-button" class="float-right home-button">My Recipes</button></a>
         </main>
     </body>
 </html>
