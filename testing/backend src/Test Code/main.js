@@ -103,6 +103,7 @@ function lookup() {
 }
 query.addEventListener('keyup', lookup);
 
+
 const clearfunc = () => {
     localStorage.clear()
     location.reload();
@@ -121,4 +122,47 @@ function deleteRecipe(id) {
 function getAll() {
     //console.log(JSON.parse(localStorage.getItem('recipeData')));
     return (JSON.parse(localStorage.getItem('recipeData')));
+}
+
+function sortAll(recipes,method){
+    switch (method) {
+        // least made
+        case 'lm':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                return firstEl.made - secondEl.made;
+            });
+        // most made
+        case 'mm':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                return secondEl.made - firstEl.made;
+            });
+        // alphabetical
+        case 'alpha':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                nameA = firstEl.name;
+                nameB = secondEl.name;
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            });
+        // date of creation
+        case 'mod':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                createdA = firstEl.created;
+                createdB = secondEl.created;
+                if (createdA < createdB) {
+                    return -1;
+                }
+                if (createdA > createdB) {
+                    return 1;
+                }
+                return 0;
+            });
+        default:
+            console.log('please input a valid sort type');
+    }
 }

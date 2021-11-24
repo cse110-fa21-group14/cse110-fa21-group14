@@ -32,7 +32,7 @@
                         document.getElementById('grocery-list-popup').classList.remove('show');
                         document.getElementById("popups").classList.remove("show");
                     }
-                    function p() {
+                    function recommendedPopUp() {
                         document.getElementById("popups").classList.add("show");
                         var test_popup = document.getElementById("recommended-recipe-popup");
                         test_popup.classList.add("show");
@@ -49,6 +49,33 @@
             <section id="recipe-page-info">
                 <h1 id="page-title">Recommended</h1>
                 <input type="text" id="search-bar" class="float-right" placeholder="Search">
+            </section>
+            <section id="recommended-list" class="list">
+                <article id="recipe-card-test" onclick="recommendedPopUp()">
+                    <img src="images/cookies.jpg" alt="Recipe image">
+                    <div id="recipe-text">
+                        <p class="recipe-title">Grandma's Cookies</p>
+                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
+                        <p class="cook-time">20 min</p>
+                    </div>
+                </article>
+                <article id="recipe-card-test" onclick="recommendedPopUp()">
+                    <img src="images/cookies.jpg" alt="Recipe image">
+                    <div id="recipe-text">
+                        <p class="recipe-title">Grandma's Cookies</p>
+                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
+                        <p class="cook-time">20 min</p>
+                    </div>
+                </article>
+                <article id="recipe-card-test" onclick="recommendedPopUp()">
+                    <img src="images/cookies.jpg" alt="Recipe image">
+                    <div id="recipe-text">
+                        <p class="recipe-title">Grandma's Cookies</p>
+                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
+                        <p class="cook-time">20 min</p>
+                    </div>
+                </article>
+                
             </section>
             <a href="index.html"><button id="back-button"><span>&#8592</span> Back</button></a>
         </main>

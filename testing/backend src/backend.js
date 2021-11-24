@@ -34,7 +34,6 @@ export function getAll() {
 }
 
 //prepare image link for export when uploaded 
-var imgURL;
 // $("#input-file").change(function () {
 //     if (this.files && this.files[0]) {
 //         var FR = new FileReader();
@@ -46,30 +45,36 @@ var imgURL;
 //         FR.readAsDataURL(this.files[0]);
 //     }
 // });
-export function imgToURL(imgBase64, imgURL) {
-    $.ajax({
-        url: 'https://api.imgur.com/3/image',
-        headers: {
-            Authorization: 'Client-ID 883b97261443d3c'
-        },
-        type: 'POST',
-        data: {
-            image: imgBase64,
-            type: 'base64'
-        },
-        success: function (result) {
-            imgURL = result.data.link;
-
-            console.log(imgURL);
-        }
+export async function imgToURL(imgBase64) {
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: 'https://api.imgur.com/3/image',
+            headers: {
+                Authorization: 'Client-ID 883b97261443d3c'
+            },
+            type: 'POST',
+            data: {
+                image: imgBase64,
+                type: 'base64'
+            },
+            success: function (result) {
+                resolve(result.data.link);
+            },
+            error: function (err) {
+                reject(err)
+            }
+        });
     });
-    return imgURL;
+
 }
 
 //store the recipe object in localstorage
 export function save(recipe) {
     if (!localStorage.getItem('recipeData')) {
         localStorage.setItem('recipeData', JSON.stringify([]))
+    }
+    if (get(recipe.id)) {
+        deleteRecipe(id)
     }
     var data = JSON.parse(localStorage.getItem('recipeData'))
     data.push(recipe)
@@ -83,5 +88,90 @@ export function saveToLocalStorage(data) {
 
 //delete recipe given id in localstorage
 export function deleteRecipe(id) {
-    saveToLocalStorage(getAll().filter(recipe => id != recipe.id))
+    saveToLocalStorage(getAll().filter(recipe => id != recipe.id));
+}
+
+var grocery = []
+//adds the ingredients of a recipe to the grocery list
+export function addToGroceryList(recipe){
+    for (var ing in recipe.ingredients.ingredients){
+        grocery.push({name: ingName, done: false});
+    }
+}
+/* for frontend.js: 
+    to check: <checkbox>.addAttriute("checked")
+    to uncheck: <checkbox>.removeAttribute("checked")
+*/
+
+//returns grocery list as [{name: string, done: boolean}]
+export function groceryList (){
+    if (checkedOff){
+        grocery = [];
+    }
+    return grocery.filter(recipe => !recipe.done)
+}
+//helper function to see if the entire grocery list is checked off
+function checkedOff(){
+    var flag = true;
+    for(ing in grocery){
+        if(!ing.done){
+            flag = false;
+        }
+    }
+    return flag;
+}
+
+/*
+ * sort all the recipes according to a given order 
+ *
+ * method:
+ * 'lm': least made
+ * 'mm': most made
+ * 'alpha': alphabetical
+ * 'mod':date of creation
+ * 
+ * @return: a sorted list of all recipe according to the designateed method
+ */
+export function sortAll(method){
+    let recipes = getAll();
+    switch (method) {
+        // least made
+        case 'lm':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                return firstEl.made - secondEl.made;
+            });
+        // most made
+        case 'mm':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                return secondEl.made - firstEl.made;
+            });
+        // alphabetical
+        case 'alpha':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                nameA = firstEl.name;
+                nameB = secondEl.name;
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            });
+        // date of creation
+        case 'mod':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                createdA = firstEl.created;
+                createdB = secondEl.created;
+                if (createdA < createdB) {
+                    return -1;
+                }
+                if (createdA > createdB) {
+                    return 1;
+                }
+                return 0;
+            });
+        default:
+            console.log('please input a valid sort type');
+    }
 }

@@ -1,4 +1,6 @@
-import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe } from '../backend src/backend.js';
+
+import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
+
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tag-name-input');
 const name = document.getElementById('input-recipe-name');
@@ -7,6 +9,7 @@ const ingAmount = document.getElementById('amount-input');
 const ingUnitInput = document.getElementById('unit-input');
 const steps = document.getElementById('step-input-box');
 const recipeList = document.getElementById('recipe-list');
+const servings = document.getElementById('serving-number');
 var currId;
 
 var imgURL;
@@ -18,7 +21,12 @@ async function init() {
             FR.onload = function (e) {
                 console.log(e.target.result);
                 var imgBase64 = e.target.result
-                imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""), imgURL);
+                imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "")).then(function (data) {
+                    imgURL = data;
+                    console.log(imgURL)
+                }).catch(function (err) {
+                    console.log(err)
+                })
             };
             FR.readAsDataURL(this.files[0]);
         }
@@ -62,8 +70,8 @@ async function init() {
                     let lastMade = document.getElementById('tracker-date');
                     lastMade.innerHTML = recipe.name;
                     // populate image
-                    // let recipeImage = document.getElementById('recipe-image');
-                    // recipeImage.setAttribute('src', recipe.img);
+                    let recipeImage = document.getElementById('recipe-image');
+                    recipeImage.setAttribute('src', recipe.img);
                     // populate ingredients
                     // needs to change default value of the slider to the number of servings
                     let ingredientList = document.getElementById('ingredients');
@@ -93,7 +101,7 @@ async function init() {
     const saveButton = document.getElementById('save-recipe');
     let newRecipe;
 
-    //I put this if statment because it avoids a reading null error - TJ
+
     if (saveButton) {
 
         saveButton.addEventListener('click', (event) => {
@@ -110,7 +118,7 @@ async function init() {
                     ],
                 },
                 steps: steps.value,
-                serving: 1,
+                serving: servings.value,
                 tags: [tags.value],
                 made: new Date(date),
                 makeCount: 0
@@ -119,8 +127,6 @@ async function init() {
             window.location.href = 'user.html';
         });
     }
-
-
 
 
 
@@ -160,3 +166,17 @@ justMadeBtn.addEventListener("click", e => {
     save(currRecipe);
 
 })
+
+/*
+var query = document.querySelector('#search-bar');
+query.addEventListener('keyup', search);
+var toDisplay = []; */
+
+function search() {
+    const data = JSON.parse(localStorage.getItem('recipeData'))
+    var toRisplay = data.filter(function (item) {
+        return query.value == item.name.substring(0, query.value.length)
+    })
+    return(toDisplay)
+}
+
