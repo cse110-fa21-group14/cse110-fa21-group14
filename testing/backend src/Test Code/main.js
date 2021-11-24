@@ -15,12 +15,20 @@ $("#upload").change(function () {
         FR.onload = function (e) {
             console.log(e.target.result);
             var imgBase64 = e.target.result
+<<<<<<< HEAD
             imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""));
+=======
+            imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""), imgUrl);
+>>>>>>> 6e0ce747113a35ac801919a66ce06375b31a6936
         };
         FR.readAsDataURL(this.files[0]);
     }
 });
+<<<<<<< HEAD
 function imgToURL(imgBase64) {
+=======
+function imgToURL(imgBase64, imgURL) {
+>>>>>>> 6e0ce747113a35ac801919a66ce06375b31a6936
     $.ajax({
         url: 'https://api.imgur.com/3/image',
         headers: {
