@@ -1,5 +1,6 @@
 
 import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
+import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
 
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tag-name-input');
@@ -9,6 +10,7 @@ const ingAmount = document.getElementById('amount-input');
 const ingUnitInput = document.getElementById('unit-input');
 const steps = document.getElementById('step-input-box');
 const recipeList = document.getElementById('recipe-list');
+const recList = document.getElementById('recommended-list');
 const servings = document.getElementById('serving-number');
 var currId;
 
@@ -37,9 +39,11 @@ async function init() {
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
+                newCard.setAttribute('onclick', 'recipePopUp()');
                 let recipe = value;
                 console.log(recipe);
                 newCard.data = recipe;
+                //populates recipePopUp()
                 newCard.addEventListener('click', function () {
                     // how to access the specific json file
                     // populate the tags
@@ -72,6 +76,10 @@ async function init() {
                     // populate image
                     let recipeImage = document.getElementById('recipe-image');
                     recipeImage.setAttribute('src', recipe.img);
+                    //populate serving
+                    let serving = document.getElementById('serving-value');
+                    serving.innerHTML = '';
+                    serving.innerHTML = recipe.serving;
                     // populate ingredients
                     // needs to change default value of the slider to the number of servings
                     let ingredientList = document.getElementById('ingredients');
@@ -98,14 +106,12 @@ async function init() {
         }
 
     }
+
+    
     const saveButton = document.getElementById('save-recipe');
     let newRecipe;
-
-
     if (saveButton) {
-
         saveButton.addEventListener('click', (event) => {
-
             let date = Date.now();
             newRecipe = {
                 id: Math.floor(100000 + Math.random() * 900000),
@@ -128,8 +134,6 @@ async function init() {
         });
     }
 
-
-
     const deleteButton = document.getElementById('delete-yes');
     if (deleteButton) {
         deleteButton.addEventListener('click', (event) => {
@@ -138,11 +142,24 @@ async function init() {
         });
     }
 
+    const recipeOTD = document.getElementById('home-recipe-card');
+    console.log(recipeOTD);
+    if(recipeOTD){
+        const otdImg = document.querySelector('#home-recipe-card img');
+        const otdTitle = document.getElementById('home-recipe-title');
+        const otdIngredients = document.getElementById('home-ingredients');
+        const otdCookTime = document.getElementById('home-cook-time');
+        //once JSON is made for recommended recipes, would pull values from here
+        otdImg.setAttribute('src', 'camera.png');
+        otdImg.setAttribute('alt', 'Recipe Image');
+        otdTitle.innerHTML = 'Test';
+        otdIngredients.innerHTML = 'This, is, a, test';
+        otdCookTime.innerHTML = 'Awesome sauce';
+    }
 
-
+    //functions called every time page is created
     makeList();
-
-
+    makeRecList();
 };
 
 
@@ -158,14 +175,17 @@ if (editButton) {
 
 
 let justMadeBtn = document.getElementById("track");
-justMadeBtn.addEventListener("click", e => {
-    let currRecipe = get(currId);
+if (justMadeBtn){
+    justMadeBtn.addEventListener("click", e => {
+        let currRecipe = get(currId);
+        
+        currRecipe.makeCount = currRecipe.makeCount + 1;
+        deleteRecipe(currId);
+        save(currRecipe);
     
-    currRecipe.makeCount = currRecipe.makeCount + 1;
-    deleteRecipe(currId);
-    save(currRecipe);
+    })
+}
 
-})
 
 /*
 var query = document.querySelector('#search-bar');

@@ -8,6 +8,7 @@
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
         </style>
         <link rel="stylesheet" href="style.css">
+        <script src="../testing/frontend src/frontend.js" type="module"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
@@ -20,12 +21,59 @@
             </section>
         </header>
         <main>
+            <script>
+                function recommendedPopUp() {
+                        document.getElementById("popups").classList.add("show");
+                        var test_popup = document.getElementById("recommended-recipe-popup");
+                        test_popup.classList.add("show");
+                    }
+                    function pClose() {
+                        var test_popup = document.getElementById("recommended-recipe-popup");
+                        test_popup.classList.remove("show");
+                        document.getElementById("popups").classList.remove("show");
+                    }
+            </script>
             <section id="featured-recipe">
                 <h2 id="recipe-otd-title">Recipe of the Day</h2>
-                
+                <article id="home-recipe-card" onclick="recommendedPopUp()">
+                    <img src="images/cookies.jpg" alt="Recipe image">
+                    <div id="home-recipe-text">
+                        <p id="home-recipe-title">Grandma's Cookies</p>
+                        <p id="home-ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
+                        <p id="home-cook-time">20 min</p>
+                    </div>
+                </article>
             </section>
             <a href="recommended.html"><button id="home-recommended-button" class="float-left home-button">Recommended</button></a>
             <a href="user.html"><button id="home-recipes-button" class="float-right home-button">My Recipes</button></a>
         </main>
+        <div id="popups">
+            <section id='grocery-list-popup' class="popup">
+                <button id="grocery-list-close" class="float-right close-button" onclick="popClose()"> X </button>
+                <h2 id="grocery-list-header">Grocery List</h2>
+                <div class="grocery-list-item">
+                    <input type="checkbox" id="grocery-list-item-1" name="item-1-name"><label for="grocery-list-item-1"> Item 1 Name</label>
+                </div>
+                <div class="grocery-list-item">
+                    <input type="checkbox" id="grocery-list-item-2" name="item-2-name"><label for="grocery-list-item-2"> Item 2 Name</label>
+                </div>
+            </section>
+            <section id="recommended-recipe-popup" class="popup recipe-pages">
+                <button id="recommended-recipe-close" class="float-right line-spacing close-button" onclick="pClose()">X</button>
+                <h2 id="recipe-name" class="line-spacing">Recipe Name</h2>
+                <img id="recipe-image" class="line-spacing" alt="Image of Dish"> <br>
+                <h3 id="ingredients-header" class="line-spacing">Ingredients</h3>
+                <span>Number of servings: <span id="serving-value">Z</span></span>
+                <ul id="ingredients" class="line-spacing">
+                    <li>0 Units of Ingredient 1</li>
+                </ul>
+                <h3 id="instructions-header" class="line-spacing">Instructions</h3>
+                <ol id="instructions" class="line-spacing">
+                    <li>Do something.</li>
+                    <li>Do something else.</li>
+                </ol>
+                <button id="add-recipe" class="line-spacing recipe-button">+ Add to my own list</button>
+            </section>
+        </div>
     </body>
 </html>
