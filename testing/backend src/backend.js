@@ -131,24 +131,23 @@ function checkedOff(){
  * 
  * @return: a sorted list of all recipe according to the designateed method
  */
-export function sortAll(method){
-    let recipes = getAll();
-    switch (method) {
+export function sortAll(recipes, method){
+    switch (method){
         // least made
-        case 'lm':
-            return recipes.sort(function compareFn(firstEl, secondEl){
-                return firstEl.made - secondEl.made;
-            });
-        // most made
-        case 'mm':
-            return recipes.sort(function compareFn(firstEl, secondEl){
-                return secondEl.made - firstEl.made;
-            });
+        // case 'least-made':
+        //     return recipes.sort(function compareFn(firstEl, secondEl){
+        //         return firstEl.made - secondEl.made;
+        //     });
+        // // most made
+        // case 'most-made':
+        //     return recipes.sort(function compareFn(firstEl, secondEl){
+        //         return secondEl.made - firstEl.made;
+        //     });
         // alphabetical
-        case 'alpha':
+        case 'alphabetical':
             return recipes.sort(function compareFn(firstEl, secondEl){
-                nameA = firstEl.name;
-                nameB = secondEl.name;
+                let nameA = firstEl.name;
+                let nameB = secondEl.name;
                 if (nameA < nameB) {
                     return -1;
                 }
@@ -157,11 +156,25 @@ export function sortAll(method){
                 }
                 return 0;
             });
+            
         // date of creation
-        case 'mod':
+        case 'newest':
             return recipes.sort(function compareFn(firstEl, secondEl){
-                createdA = firstEl.created;
-                createdB = secondEl.created;
+                let createdA = firstEl.made;
+                let createdB = secondEl.made;
+                if (createdA > createdB) {
+                    return -1;
+                }
+                if (createdA < createdB) {
+                    return 1;
+                }
+                return 0;
+            });
+            
+        case 'oldest':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                let createdA = firstEl.made;
+                let createdB = secondEl.made;
                 if (createdA < createdB) {
                     return -1;
                 }
@@ -171,6 +184,6 @@ export function sortAll(method){
                 return 0;
             });
         default:
-            console.log('please input a valid sort type');
+            console.log('sort not working');
     }
 }

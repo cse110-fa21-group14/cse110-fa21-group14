@@ -151,15 +151,15 @@
         <section id="sort-filter-popup" class="popup">
             <button id="sort-filter-close" class="float-right line-spacing close-button" onclick="sfClose()">X</button>
             <h2 id="sort-by-header" class="line-spacing">Sort Recipes By:</h2>
-            <div id="sort-by">
+            <form id="sort-by">
                 <input type="radio" id="most-made" name="sort"><label for="most-made" class="sort"> Most Made </label>
                 <input type="radio" id="least-made" name="sort"><label for="least-made" class="sort"> Least Made
                 </label>
-                <input type="radio" id="alphabetical" name="sort" checked><label for="alphabetical" class="sort">
+                <input type="radio" id="alphabetical" name="sort"><label for="alphabetical" class="sort">
                     Alphabetical Order (A-Z) </label>
-                <input type="radio" id="newest" name="sort"><label for="newest" class="sort"> Newest to Oldest </label>
+                <input type="radio" id="newest" name="sort" ><label for="newest" class="sort"> Newest to Oldest </label>
                 <input type="radio" id="oldest" name="sort"><label for="oldest" class="sort"> Oldest to Newest </label>
-            </div>
+            </form>
             <hr>
             <h2 id="filter-tags" class="line-spacing">Filter By Tags:</h2>
             <div id="tags">

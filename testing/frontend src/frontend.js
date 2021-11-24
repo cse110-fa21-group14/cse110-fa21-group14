@@ -8,6 +8,13 @@ const ingUnitInput = document.getElementById('unit-input');
 const steps = document.getElementById('step-input-box');
 const recipeList = document.getElementById('recipe-list');
 const servings = document.getElementById('serving-number');
+const sorting = document.getElementById('sort-by');
+const sort_close = document.getElementById('sort-filter-close');
+
+if (!localStorage.getItem('sorting')) {
+    localStorage.setItem('sorting', JSON.stringify('alphabetical'))
+}
+
 var currId;
 
 var imgURL;
@@ -32,6 +39,11 @@ async function init() {
 
     function makeList() {
         let recipes = getAll();
+
+        let sortingMethod = localStorage.getItem('sorting');
+        localStorage.setItem('sorting', 'alphabetical');
+        recipes = sortAll(recipes, sortingMethod);
+        
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
@@ -142,8 +154,12 @@ async function init() {
         });
     }
 
-    makeList();
+    sort_close.addEventListener('click', (event) => {
+        localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
+        location.reload();
+    });
 
+    makeList();
 };
 
 var query = document.querySelector('#search-bar');
@@ -157,4 +173,3 @@ function search() {
     })
     return(toDisplay)
 }
-
