@@ -124,10 +124,11 @@ function checkedOff(){
  * sort all the recipes according to a given order 
  *
  * method:
- * 'lm': least made
- * 'mm': most made
- * 'alpha': alphabetical
- * 'mod':date of creation
+ * 'least-made': least made (not working)
+ * 'most-made': most made (not working)
+ * 'alphabetical': alphabetical
+ * 'newest': newest date of creation
+ * 'oldest': oldest date of creation
  * 
  * @return: a sorted list of all recipe according to the designateed method
  */
