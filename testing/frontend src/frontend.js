@@ -1,4 +1,4 @@
-import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
+import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll } from '../backend src/backend.js';
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tag-name-input');
 const name = document.getElementById('input-recipe-name');
@@ -38,12 +38,12 @@ async function init() {
     });
 
     function makeList() {
-        let recipes = getAll();
-
+        recipeList.innerHTML = '';
+        let recipes = search();
         let sortingMethod = localStorage.getItem('sorting');
         localStorage.setItem('sorting', 'alphabetical');
         recipes = sortAll(recipes, sortingMethod);
-        
+
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
@@ -160,16 +160,17 @@ async function init() {
     });
 
     makeList();
+    var query = document.querySelector('#search-bar');
+    query.addEventListener('keyup', makeList);
+
+    function search() {
+        query = document.querySelector('#search-bar');
+        var toDisplay = getAll().filter(function (item) {
+            return query.value == item.name.substring(0, query.value.length)
+        });
+        console.log(toDisplay)
+        return toDisplay
+    }
+
 };
 
-var query = document.querySelector('#search-bar');
-query.addEventListener('keyup', search);
-var toDisplay = [];
-
-function search() {
-    const data = JSON.parse(localStorage.getItem('recipeData'))
-    var toRisplay = data.filter(function (item) {
-        return query.value == item.name.substring(0, query.value.length)
-    })
-    return(toDisplay)
-}

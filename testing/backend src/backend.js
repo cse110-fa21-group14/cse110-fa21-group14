@@ -92,9 +92,9 @@ export function deleteRecipe(id) {
 
 var grocery = []
 //adds the ingredients of a recipe to the grocery list
-export function addToGroceryList(recipe){
-    for (var ing in recipe.ingredients.ingredients){
-        grocery.push({name: ingName, done: false});
+export function addToGroceryList(recipe) {
+    for (var ing in recipe.ingredients.ingredients) {
+        grocery.push({ name: ingName, done: false });
     }
 }
 /* for frontend.js: 
@@ -103,17 +103,17 @@ export function addToGroceryList(recipe){
 */
 
 //returns grocery list as [{name: string, done: boolean}]
-export function groceryList (){
-    if (checkedOff){
+export function groceryList() {
+    if (checkedOff) {
         grocery = [];
     }
     return grocery.filter(recipe => !recipe.done)
 }
 //helper function to see if the entire grocery list is checked off
-function checkedOff(){
+function checkedOff() {
     var flag = true;
-    for(ing in grocery){
-        if(!ing.done){
+    for (ing in grocery) {
+        if (!ing.done) {
             flag = false;
         }
     }
@@ -131,8 +131,9 @@ function checkedOff(){
  * 
  * @return: a sorted list of all recipe according to the designateed method
  */
-export function sortAll(recipes, method){
-    switch (method){
+export function sortAll(recipes, method) {
+    console.log(method)
+    switch (method) {
         // least made
         // case 'least-made':
         //     return recipes.sort(function compareFn(firstEl, secondEl){
@@ -145,7 +146,7 @@ export function sortAll(recipes, method){
         //     });
         // alphabetical
         case 'alphabetical':
-            return recipes.sort(function compareFn(firstEl, secondEl){
+            return recipes.sort(function compareFn(firstEl, secondEl) {
                 let nameA = firstEl.name;
                 let nameB = secondEl.name;
                 if (nameA < nameB) {
@@ -156,10 +157,10 @@ export function sortAll(recipes, method){
                 }
                 return 0;
             });
-            
+
         // date of creation
         case 'newest':
-            return recipes.sort(function compareFn(firstEl, secondEl){
+            return recipes.sort(function compareFn(firstEl, secondEl) {
                 let createdA = firstEl.made;
                 let createdB = secondEl.made;
                 if (createdA > createdB) {
@@ -170,9 +171,9 @@ export function sortAll(recipes, method){
                 }
                 return 0;
             });
-            
+
         case 'oldest':
-            return recipes.sort(function compareFn(firstEl, secondEl){
+            return recipes.sort(function compareFn(firstEl, secondEl) {
                 let createdA = firstEl.made;
                 let createdB = secondEl.made;
                 if (createdA < createdB) {
