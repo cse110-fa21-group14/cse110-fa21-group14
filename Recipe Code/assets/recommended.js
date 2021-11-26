@@ -24,7 +24,7 @@ function populateRecPage(data) {
             // needs to change default value of the slider to the number of servings
             let ingredientList = document.getElementById('ingredients');
             ingredientList.innerHTML = '';
-            let ingList = recipe.ingredients['ingredients'];
+            let ingList = recipe.ingredients;
             for (let i = 0; i < ingList.length; i++) {
                 let newIng = document.createElement('li');
                 newIng.innerHTML = `${ingList[i]['amount']} ${ingList[i]['unit']} of ${ingList[i]['name']}`;
@@ -41,11 +41,15 @@ function populateRecPage(data) {
             }
             
         });
-        console.log(newCard);
-        document.getElementById('recommended-list').appendChild(newCard);
+        
+        if(document.getElementById('recommended-list')){
+            document.getElementById('recommended-list').appendChild(newCard);
+        }
+        
     }
     
 }
+
 // Once page loads, render recommended recipe cards.
 export function makeRecList() {
     console.log("loaded");
@@ -55,5 +59,5 @@ export function makeRecList() {
     })
     .then(data => {
         populateRecPage(data);
-    });
+    })
 }

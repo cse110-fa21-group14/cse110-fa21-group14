@@ -30,7 +30,7 @@ class RecipeCard extends HTMLElement {
                 margin: 10px;
             }
             .recipe-title{
-                font-size: 30px;
+                font-size: 3vh;
                 font-weight: 600;
             }
         `;

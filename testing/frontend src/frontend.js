@@ -1,7 +1,7 @@
 
 import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
 import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
-
+import {makeRecipeOTD} from '/Recipe Code/assets/recipeOTD.js'; 
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tag-name-input');
 const name = document.getElementById('input-recipe-name');
@@ -142,24 +142,16 @@ async function init() {
         });
     }
 
-    const recipeOTD = document.getElementById('home-recipe-card');
-    console.log(recipeOTD);
-    if(recipeOTD){
-        const otdImg = document.querySelector('#home-recipe-card img');
-        const otdTitle = document.getElementById('home-recipe-title');
-        const otdIngredients = document.getElementById('home-ingredients');
-        const otdCookTime = document.getElementById('home-cook-time');
-        //once JSON is made for recommended recipes, would pull values from here
-        otdImg.setAttribute('src', 'camera.png');
-        otdImg.setAttribute('alt', 'Recipe Image');
-        otdTitle.innerHTML = 'Test';
-        otdIngredients.innerHTML = 'This, is, a, test';
-        otdCookTime.innerHTML = 'Awesome sauce';
-    }
+    
 
     //functions called every time page is created
     makeList();
     makeRecList();
+
+    if(document.getElementById('home-recipe-card')){
+        makeRecipeOTD();
+    }
+    
 };
 
 
