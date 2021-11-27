@@ -142,16 +142,7 @@ main #input-recipe-name {
   border-color: #ffe4e4;
 }
 
-main #insert-image{
-  width: 20vw;
-  height: 20vh;
-
-  border: solid;
-  border-color: #c4c4c4;
-  overflow: hidden;
-}
-
-#insert-image img{
+main #file-preview{
   width: 20vw;
   height: 20vh;
 
@@ -168,7 +159,11 @@ main .add-element{
   color: #ff6961;
 }
 
-main #tag-input {
+main .add-element:hover{
+  text-decoration: underline;
+}
+
+main .tag-input {
   width: 16vw;
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -177,7 +172,7 @@ main #tag-input {
   border-radius: 10px;
 }
 
-main #ingredient-input {
+main .ingredient-input {
   width: 48vw;
   display: grid;
   grid-template-columns: 3fr 3fr 3fr 1fr;
@@ -196,7 +191,9 @@ main .input-elements{
   border-radius: 10px;
 }
 
-main #step-input-box {
+/* Instruction Input */
+
+main .instruction-input {
   padding-left: 5px;
 
   background-color: #ffe4e4;
@@ -204,7 +201,7 @@ main #step-input-box {
   border-color: #ffe4e4;
 }
 
-main #remove-step{
+main .remove-step{
   width: 39px;
   height: 39px;
   background-color: #ffe4e4;
@@ -431,13 +428,19 @@ section .delete-button{
   margin: 0vh 4vw;
 }
 
-section #recipe-tags{
+section #tags-header{
   position: absolute;
   top: 22vh;
   left: 68vw;
+}
+
+section #recipe-tags{
+  position: absolute;
+  top: 28vh;
+  left: 68vw;
   width: 20vw;
   height: 58vh;
-  padding: 1vh 1vw 1vh;
+  padding: 1vh 0vw;
 
   overflow: auto;
 }
@@ -450,6 +453,13 @@ section .tag{
 
   border-color: #ff6961;
   border-radius: 10px;
+}
+
+section #recipe-image{
+  width: 20vw;
+  height: 20vh;
+
+  object-fit: contain;
 }
 
 div .float-right{

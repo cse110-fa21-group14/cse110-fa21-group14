@@ -3,12 +3,10 @@ import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll}
 import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
 import {makeRecipeOTD} from '/Recipe Code/assets/recipeOTD.js'; 
 window.addEventListener('DOMContentLoaded', init);
-const tags = document.getElementById('tag-name-input');
+const tags = document.getElementById('tags-inputted');
 const name = document.getElementById('input-recipe-name');
-const ingName = document.getElementById('name-input');
-const ingAmount = document.getElementById('amount-input');
-const ingUnitInput = document.getElementById('unit-input');
-const steps = document.getElementById('step-input-box');
+const ingredients = document.getElementById('ingredients-inputted');
+const steps = document.getElementById('instructions-input-list');
 const recipeList = document.getElementById('recipe-list');
 const recList = document.getElementById('recommended-list');
 const servings = document.getElementById('serving-number');
@@ -21,6 +19,7 @@ async function init() {
         if (this.files && this.files[0]) {
             var FR = new FileReader();
             FR.onload = function (e) {
+                document.getElementById('file-preview').setAttribute('src', e.target.result);
                 console.log(e.target.result);
                 var imgBase64 = e.target.result
                 imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "")).then(function (data) {
@@ -66,19 +65,17 @@ async function init() {
                     }
                     // populate recipe name
                     let recipeName = document.getElementById('recipe-name');
-
                     recipeName.innerHTML = recipe.name;
                     // populate tracker
-                    // let trackerCount = document.getElementById('tracker-count');
-                    // trackerCount.innerHTML = get('count'); // backend needs to include this in the recipe object
+                    let trackerCount = document.getElementById('tracker-count');
+                    trackerCount.innerHTML = recipe.makeCount;
                     let lastMade = document.getElementById('tracker-date');
-                    lastMade.innerHTML = recipe.name;
+                    lastMade.innerHTML = recipe.made;
                     // populate image
                     let recipeImage = document.getElementById('recipe-image');
                     recipeImage.setAttribute('src', recipe.img);
                     //populate serving
                     let serving = document.getElementById('serving-value');
-                    serving.innerHTML = '';
                     serving.innerHTML = recipe.serving;
                     // populate ingredients
                     // needs to change default value of the slider to the number of servings
@@ -93,13 +90,12 @@ async function init() {
                     // populate instructions
                     let instructionList = document.getElementById('instructions');
                     instructionList.innerHTML = '';
-                    let instList = recipe.steps; // backend needs to fix steps for recipe object
-                    // for(let i = 0; i < instList.length; i++) {
-                    //     
-                    // }
-                    let newInst = document.createElement('li');
-                    newInst.innerHTML = instList;
-                    instructionList.appendChild(newInst);
+                    let instList = recipe.steps;
+                    for(let i = 0; i < instList.length; i++) {
+                        let newInst = document.createElement('li');
+                        newInst.innerHTML = instList[i];
+                        instructionList.appendChild(newInst);
+                    }
                 });
                 recipeList.appendChild(newCard);
             }
@@ -119,15 +115,27 @@ async function init() {
                 img: imgURL,
                 ingredients: {
                     proportion: 1,
-                    ingredients: [
-                        { ingName: ingName.value, amount: ingAmount.value, unit: ingUnitInput.value }
-                    ],
+                    ingredients: [],
                 },
-                steps: steps.value,
+                steps: [],
                 serving: servings.value,
-                tags: [tags.value],
+                tags: [],
                 made: new Date(date),
                 makeCount: 0
+            }
+            for(let i = 0; i < ingredients.children.length; i++) {
+                newRecipe.ingredients['ingredients'].push({
+                    ingName: ingredients.children[i].children[0].value,
+                    amount: ingredients.children[i].children[1].value,
+                    unit: ingredients.children[i].children[2].value,
+                });
+            }
+            for(let i = 0; i < steps.children.length; i++) {
+                newRecipe.steps.push(steps.children[i].firstChild.value);
+            }
+            for(let i = 0; i < tags.children.length; i++) {
+                console.log(tags.children[i].firstChild);
+                newRecipe.tags.push(tags.children[i].firstChild.value);
             }
             save(newRecipe);
             window.location.href = 'user.html';
@@ -178,6 +186,141 @@ if (justMadeBtn){
     })
 }
 
+/**
+ * This function creates a tag-input element for the create/edit page.
+ *
+ * @returns {void}
+ */
+export function createTagInput() {
+    // creating elements for tag input
+    let inputContainer = document.createElement('div');
+    let tagName = document.createElement('input');
+    let removeButton = document.createElement('img');
+
+    // defining the elements
+    tagName.setAttribute('type', 'text');
+    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('alt', 'Remove');
+
+    // adding classes for styling and identification
+    inputContainer.classList.add('tag-input', 'line-spacing');
+    tagName.classList.add('input-elements');
+    removeButton.classList.add('edit-icons','input-spacing');
+
+    // setting placeholder inputs
+    tagName.setAttribute('placeholder', 'Enter Tag');
+
+    // add removability function on button
+    removeButton.addEventListener('click', (event) => {
+        tags.removeChild(inputContainer);
+    });
+
+    // add new tag input element onto the page
+    inputContainer.appendChild(tagName);
+    inputContainer.appendChild(removeButton);
+    tags.appendChild(inputContainer);
+}
+
+/**
+ * This function creates a ingredient-input element for the create/edit page.
+ *
+ * @returns {void}
+ */
+export function createIngredientInput() {
+    // creating elements for ingredient input
+    let inputContainer = document.createElement('div');
+    let ingredientName = document.createElement('input');
+    let ingredientAmount = document.createElement('input');
+    let ingredientUnit = document.createElement('input');
+    let removeButton = document.createElement('img');
+
+    // defining the elements
+    ingredientName.setAttribute('type', 'text');
+    ingredientAmount.setAttribute('type', 'text');
+    ingredientUnit.setAttribute('type', 'text');
+    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('alt', 'Remove');
+
+    // adding classes for styling and identification
+    inputContainer.classList.add('ingredient-input', 'line-spacing');
+    ingredientName.classList.add('name-input','input-elements','input-spacing');
+    ingredientAmount.classList.add('amount-input','input-elements','input-spacing');
+    ingredientUnit.classList.add('unit-input','input-elements','input-spacing');
+    removeButton.classList.add('edit-icons','input-spacing');
+
+    // setting placeholder inputs
+    ingredientName.setAttribute('placeholder', 'Ingredient Name');
+    ingredientAmount.setAttribute('placeholder', 'Amount');
+    ingredientUnit.setAttribute('placeholder', 'Unit');
+
+    // add removability function on button
+    removeButton.addEventListener('click', (event) => {
+        ingredients.removeChild(inputContainer);
+    });
+
+    // add new ingredient input element onto the page
+    inputContainer.appendChild(ingredientName);
+    inputContainer.appendChild(ingredientAmount);
+    inputContainer.appendChild(ingredientUnit);
+    inputContainer.appendChild(removeButton);
+    ingredients.appendChild(inputContainer);
+}
+
+/**
+ * This function creates a instruction-input element for the create/edit page.
+ *
+ * @returns {void}
+ */
+export function createInstructionInput() {
+    // creating elements for instruction input
+    let inputContainer = document.createElement('li');
+    let stepInput = document.createElement('textarea');
+    let removeButton = document.createElement('img');
+
+    // defining the elements
+    stepInput.setAttribute('rows', '2');
+    stepInput.setAttribute('cols', '50');
+    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('alt', 'Remove');
+
+    // adding classes for styling and identification
+    stepInput.classList.add('instruction-input');
+    removeButton.classList.add('remove-step', 'input-spacing');
+
+    // setting placeholder inputs
+    stepInput.setAttribute('placeholder', 'Enter instruction step here.');
+
+    // add removability function on button
+    removeButton.addEventListener('click', (event) => {
+        steps.removeChild(inputContainer);
+    });
+
+    // add new instruction element onto the page
+    inputContainer.appendChild(stepInput);
+    inputContainer.appendChild(removeButton);
+    steps.appendChild(inputContainer);
+}
+
+const addTag = document.getElementById('add-tag');
+if (addTag){
+    addTag.addEventListener('click', (event) => {
+        createTagInput();
+    });
+}
+
+const addIngredient = document.getElementById('add-ingredient');
+if (addIngredient) {
+    addIngredient.addEventListener('click', (event) => {
+        createIngredientInput();
+    });
+}
+
+const addInstruction = document.getElementById('add-instruction-step');
+if (addInstruction) {
+    addInstruction.addEventListener('click', (event) => {
+        createInstructionInput();
+    });
+}
 
 /*
 var query = document.querySelector('#search-bar');
