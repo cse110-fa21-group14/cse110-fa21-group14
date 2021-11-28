@@ -1,4 +1,3 @@
-
 import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
 import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
 import {makeRecipeOTD} from '/Recipe Code/assets/recipeOTD.js'; 
@@ -10,6 +9,12 @@ const steps = document.getElementById('instructions-input-list');
 const recipeList = document.getElementById('recipe-list');
 const recList = document.getElementById('recommended-list');
 const servings = document.getElementById('serving-number');
+const sorting = document.getElementById('sort-by');
+const sort_close = document.getElementById('sort-filter-close');
+
+if (!localStorage.getItem('sorting')) {
+    localStorage.setItem('sorting', JSON.stringify('alphabetical'))
+}
 var currId;
 
 var imgURL;
@@ -34,7 +39,10 @@ async function init() {
     });
 
     function makeList() {
-        let recipes = getAll();
+        recipeList.innerHTML = '';
+        let recipes = search();
+        let sortingMethod = localStorage.getItem('sorting');
+        recipes = sortAll(recipes, sortingMethod);
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
@@ -150,14 +158,27 @@ async function init() {
         });
     }
 
-    
+    sort_close.addEventListener('click', (event) => {
+        localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
+        location.reload();
+    });
 
-    //functions called every time page is created
     makeList();
     makeRecList();
 
     if(document.getElementById('home-recipe-card')){
         makeRecipeOTD();
+    }
+    var query = document.querySelector('#search-bar');
+    query.addEventListener('keyup', makeList);
+
+    function search() {
+        query = document.querySelector('#search-bar');
+        var toDisplay = getAll().filter(function (item) {
+            return query.value == item.name.substring(0, query.value.length)
+        });
+        console.log(toDisplay)
+        return toDisplay
     }
     
 };
