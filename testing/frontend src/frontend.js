@@ -35,7 +35,11 @@ async function init() {
     });
 
     function makeList() {
-        let recipes = getAll();
+        recipeList.innerHTML = '';
+        let recipes = search();
+        let sortingMethod = localStorage.getItem('sorting');
+        localStorage.setItem('sorting', 'alphabetical');
+        recipes = sortAll(recipes, sortingMethod);
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
