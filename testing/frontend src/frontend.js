@@ -142,8 +142,6 @@ async function init() {
         });
     }
 
-    
-
     //functions called every time page is created
     makeList();
     makeRecList();
