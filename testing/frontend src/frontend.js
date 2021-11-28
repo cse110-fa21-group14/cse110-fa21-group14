@@ -1,4 +1,3 @@
-
 import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
 import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
 import {makeRecipeOTD} from '/Recipe Code/assets/recipeOTD.js'; 
@@ -12,6 +11,11 @@ const steps = document.getElementById('step-input-box');
 const recipeList = document.getElementById('recipe-list');
 const recList = document.getElementById('recommended-list');
 const servings = document.getElementById('serving-number');
+const sort_close = document.getElementById('sort-filter-close');
+
+if (!localStorage.getItem('sorting')) {
+    localStorage.setItem('sorting', JSON.stringify('alphabetical'))
+}
 var currId;
 
 var imgURL;
@@ -38,7 +42,6 @@ async function init() {
         recipeList.innerHTML = '';
         let recipes = search();
         let sortingMethod = localStorage.getItem('sorting');
-        localStorage.setItem('sorting', 'alphabetical');
         recipes = sortAll(recipes, sortingMethod);
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
