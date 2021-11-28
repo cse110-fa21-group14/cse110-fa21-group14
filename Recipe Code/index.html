@@ -10,6 +10,18 @@
         <link rel="stylesheet" href="style.css">
         <script src="../testing/frontend src/frontend.js" type="module"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function recommendedPopUp() {
+                    document.getElementById("popups").classList.add("show");
+                    var test_popup = document.getElementById("recommended-recipe-popup");
+                    test_popup.classList.add("show");
+                }
+                function pClose() {
+                    var test_popup = document.getElementById("recommended-recipe-popup");
+                    test_popup.classList.remove("show");
+                    document.getElementById("popups").classList.remove("show");
+                }
+        </script>
     </head>
     <body>
         <header>
@@ -21,18 +33,6 @@
             </section>
         </header>
         <main>
-            <script>
-                function recommendedPopUp() {
-                        document.getElementById("popups").classList.add("show");
-                        var test_popup = document.getElementById("recommended-recipe-popup");
-                        test_popup.classList.add("show");
-                    }
-                    function pClose() {
-                        var test_popup = document.getElementById("recommended-recipe-popup");
-                        test_popup.classList.remove("show");
-                        document.getElementById("popups").classList.remove("show");
-                    }
-            </script>
             <section id="featured-recipe">
                 <h2 id="recipe-otd-title">Recipe of the Day</h2>
                 <article id="home-recipe-card" onclick="recommendedPopUp()">
@@ -44,8 +44,10 @@
                     </div>
                 </article>
             </section>
-            <a href="recommended.html"><button id="home-recommended-button" class="float-left home-button">Recommended</button></a>
-            <a href="user.html"><button id="home-recipes-button" class="float-right home-button">My Recipes</button></a>
+            <section id="nav-buttons">
+                <a href="recommended.html"><button id="home-recommended-button" class="float-left home-button">Recommended</button></a>
+                <a href="user.html"><button id="home-recipes-button" class="float-right home-button">My Recipes</button></a>
+            </section>
         </main>
         <div id="popups">
             <section id='grocery-list-popup' class="popup">

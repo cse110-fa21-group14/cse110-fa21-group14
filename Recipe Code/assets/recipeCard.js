@@ -10,10 +10,11 @@ class RecipeCard extends HTMLElement {
         const styles = `
             article{
                 display: inline-block;
-                margin-left: 53px;
-                margin-bottom: 10px;
+                margin: 1vh 1vw;
                 width: 20vw;
                 height: 45vh;
+                overflow: auto;
+
                 border: 2px solid gray;
                 border-radius: 5px;
             }
@@ -24,7 +25,6 @@ class RecipeCard extends HTMLElement {
                 object-fit: fill;
                 height: 26vh;
                 width: 100%;
-                
             }
             .recipe-text{
                 margin: 10px;

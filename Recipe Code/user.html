@@ -12,96 +12,65 @@
         <script src="../testing/frontend src/frontend.js" type="module"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="assets/recipeCard.js" type="module"></script>
+        <script>
+            function popOpen(){
+                document.getElementById("popups").classList.add("show");
+                document.getElementById('grocery-list-popup').classList.add('show');
+            }
+            function popClose(){
+                document.getElementById('grocery-list-popup').classList.remove('show');
+                document.getElementById("popups").classList.remove("show");
+            }
+            function recipePopUp() {
+            document.getElementById("popups").classList.add("show");
+            document.getElementById("recipe-popup").classList.add("show");
+            }
+            function testClose() {
+                document.getElementById("recipe-popup").classList.remove("show");
+                document.getElementById("popups").classList.remove("show");
+            }
+            function sf() {
+                document.getElementById("popups").classList.add("show");
+                var test_popup = document.getElementById("sort-filter-popup");
+                test_popup.classList.add("show");
+            }
+            function sfClose() {
+                var test_popup = document.getElementById("sort-filter-popup");
+                test_popup.classList.remove("show");
+                document.getElementById("popups").classList.remove("show");
+            }
+            function deleteConfirm() {
+                var test_popup = document.getElementById("delete-confirmation");
+                test_popup.classList.add("show");
+            }
+            function deleteClose() {
+                var test_popup = document.getElementById("delete-confirmation");
+                test_popup.classList.remove("show");
+            }
+            function deleteYes() {
+                deleteClose();
+                testClose();
+            }
+        </script>
     </head>
     <body>
         <header>
             <section id="main-bar">
-                <a href="index.html">
-                    <img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo">
-                    <h1 id="site-name">App Name</h1>
-                </a>
-                
+                <a href="index.html"><img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo"><h1 id="site-name">App Name</h1></a>
                 <a href="recommended.html"><button id="recommended-recipes" class="float-right">Recommended Recipes</button></a>
                 <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
-                
-                <script>
-                    function popOpen(){
-                        document.getElementById("popups").classList.add("show");
-                        document.getElementById('grocery-list-popup').classList.add('show');
-                    }
-                    function popClose(){
-                        document.getElementById('grocery-list-popup').classList.remove('show');
-                        document.getElementById("popups").classList.remove("show");
-                    }
-                    function recipePopUp() {
-                    document.getElementById("popups").classList.add("show");
-                    document.getElementById("recipe-popup").classList.add("show");
-                    }
-                    function testClose() {
-                        document.getElementById("recipe-popup").classList.remove("show");
-                        document.getElementById("popups").classList.remove("show");
-                    }
-                    function sf() {
-                        document.getElementById("popups").classList.add("show");
-                        var test_popup = document.getElementById("sort-filter-popup");
-                        test_popup.classList.add("show");
-                    }
-                    function sfClose() {
-                        var test_popup = document.getElementById("sort-filter-popup");
-                        test_popup.classList.remove("show");
-                        document.getElementById("popups").classList.remove("show");
-                    }
-                    function deleteConfirm() {
-                        var test_popup = document.getElementById("delete-confirmation");
-                        test_popup.classList.add("show");
-                    }
-                    function deleteClose() {
-                        var test_popup = document.getElementById("delete-confirmation");
-                        test_popup.classList.remove("show");
-                    }
-                    function deleteYes() {
-                        deleteClose();
-                        testClose();
-                    }
-                    
-                    
-                </script>
             </section>
         </header>
         <main>
             <section id="recipe-page-info">
+                <article id="action-box" class="move-lower float-right">
+                    <input type="text" id="search-bar" placeholder="Search">
+                    <button id="sort-button" onclick="sf()">Sort</button>
+                    <a href="create-edit.html"><button id="add-button">Add</button></a>
+                </article>
                 <h1 id="page-title">My Recipes</h1>
-                <a href="create-edit.html"><button id="add-button" class="float-right">Add</button></a>
-                <button id="sort-button" class="float-right" onclick="sf()">Sort</button>
-                <input type="text" id="search-bar" class="float-right" placeholder="Search">
             </section>
-            
-            <section id="recipe-list" class="list">
-                <article id="recipe-card-test" onclick="recipePopUp()">
-                    <img src="images/cookies.jpg" alt="Recipe image">
-                    <div id="recipe-text">
-                        <p class="recipe-title">Grandma's Cookies</p>
-                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
-                        <p class="cook-time">20 min</p>
-                    </div>
-                </article>
-                <article id="recipe-card-test" onclick="recipePopUp()">
-                    <img src="images/cookies.jpg" alt="Recipe image">
-                    <div id="recipe-text">
-                        <p class="recipe-title">Grandma's Cookies</p>
-                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
-                        <p class="cook-time">20 min</p>
-                    </div>
-                </article>
-                <article id="recipe-card-test" onclick="recipePopUp()">
-                    <img src="images/cookies.jpg" alt="Recipe image">
-                    <div id="recipe-text">
-                        <p class="recipe-title">Grandma's Cookies</p>
-                        <p class="ingredients">Baking Soda, Butter, Flour, Sugar, Chocolate Chip</p>
-                        <p class="cook-time">20 min</p>
-                    </div>
-                </article>
-            </section>
+            <section id="recipe-list" class="list"></section>
             <a href="index.html"><button id="back-button"><span>&#8592</span> Back</button></a>
         </main>
         

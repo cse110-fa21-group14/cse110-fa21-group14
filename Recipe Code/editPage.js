@@ -21,14 +21,14 @@ async function init() {
         createInstructionInput();
         editInstructions.children[i].firstChild.innerHTML = editRecipeObject.steps[i];
     }
-    console.log(editRecipeObject.steps);
+    //console.log(editRecipeObject.steps);
 
     let editTags = document.getElementById("tags-inputted");
     for(let i = 0; i < editRecipeObject.tags.length; i++) {
         createTagInput();
         editTags.children[i].firstChild.setAttribute("value",editRecipeObject.tags[i]);
     }
-    console.log(editRecipeObject.tags);
+    //console.log(editRecipeObject.tags);
 
     let editIngredients = document.getElementById("ingredients-inputted");
     for(let i = 0; i < editRecipeObject.ingredients['ingredients'].length; i++) {
@@ -37,7 +37,7 @@ async function init() {
         editIngredients.children[i].children[1].setAttribute("value", editRecipeObject.ingredients["ingredients"][i].amount);
         editIngredients.children[i].children[2].setAttribute("value", editRecipeObject.ingredients["ingredients"][i].unit);
     }
-    console.log(editRecipeObject.ingredients["ingredients"][0].amount);
+    //console.log(editRecipeObject.ingredients["ingredients"][0].amount);
 
     let editImage = document.getElementById("file-preview").setAttribute('src', editRecipeObject.img);
     console.log(editRecipeObject.img);

@@ -98,6 +98,10 @@ main #recipe-otd-title{
   font-size: 4.5vh;
 }
 
+main #nav-buttons{
+  margin-top: 5vh;
+}
+
 /* Main (Recipes page) */
 
 main #recipe-create {
@@ -105,7 +109,7 @@ main #recipe-create {
 }
 
 main{
-  margin: 5vh 13vw 5vh;
+  padding: 5vh 13vw 2vh;
 }
 
 main #sort-button{
@@ -118,7 +122,6 @@ main button {
   color: white;
   height: 50px;
   width: 100px;
-  margin-top: 60px;
   font-size: 20px;
   border-radius: 5px;
 }
@@ -217,67 +220,37 @@ main .create-edit-button{
   margin: 1px;
 }
 
-main .float-right{
-  float: right;
+main #page-title{
+  font-size: 8vmin;
 }
 
-main #page-title{
-  font-size: 90px;
-  float: left;
+main .move-lower{
+  position: relative;
+  top: 10px;
 }
+
 main #search-bar{
-  margin-top: 60px;
   margin-right: 20px;
-  height: 35px;
+  height: 5vh;
   padding: 5px;
   font-size: 20px;
 }
-main #recipe-page-info{
-  display: inline-flexbox;
-  position: relative;
-  bottom: 20px;
-}
 
 main #back-button{
-  position: fixed;
-  bottom: 20px;
+  position: absolute;
+  bottom: 2vh;
+  left: 1vw;
 }
 
 /* Test Recipe Card */
 main .list{
-  margin: auto;
-}
-main .list #recipe-card-test{
-  display: inline-block;
-  margin-left: 50px;
-  width: 20vw;
-  height: 45vh;
-}
-
-main article img{
-  object-fit: contain;
-  height: 26vh;
+  margin: 2vh 0vw 0vh;
+  padding: 2vh 2vw 0vh;
+  height: 64vh;
   
-}
-main #recipe-card-test{
-  border: 2px solid gray;
-  border-radius: 5px;
-}
-
-main #recipe-text{
-  margin: 10px;
-  
-}
-
-main .recipe-title{
-  font-size: 30px;
-  font-weight: 600;
-}
-
-main .cook-time{
-  float: right;
-  color: #ff6961;
-  padding-top: 0.5vh;
+  border: thick double;
+  border-color: #ff6961;
+  border-radius: 10px;
 }
 
 /* Popups */
@@ -288,7 +261,7 @@ main .cook-time{
   top: 0vh; left: 0vw;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(256,256,256,0.2);
+  background-color: rgb(256,256,256,0.8);
 }
 
 #popups.show{
@@ -307,16 +280,16 @@ main .cook-time{
 
 #popups #grocery-list-popup{
   width: 40vw;
-  height: 90vh;
+  height: 86vh;
   overflow: auto;
   background-color: White;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
   border-radius: 1.5%;
-  padding: 20px;
+  padding: 2vh 2vw;
 }
 
 #popups .recipe-pages{
