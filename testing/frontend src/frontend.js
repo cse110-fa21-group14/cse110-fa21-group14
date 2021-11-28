@@ -146,12 +146,27 @@ async function init() {
         });
     }
 
-    //functions called every time page is created
+    sort_close.addEventListener('click', (event) => {
+        localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
+        location.reload();
+    });
+
     makeList();
     makeRecList();
 
     if(document.getElementById('home-recipe-card')){
         makeRecipeOTD();
+    }
+    var query = document.querySelector('#search-bar');
+    query.addEventListener('keyup', makeList);
+
+    function search() {
+        query = document.querySelector('#search-bar');
+        var toDisplay = getAll().filter(function (item) {
+            return query.value == item.name.substring(0, query.value.length)
+        });
+        console.log(toDisplay)
+        return toDisplay
     }
     
 };
