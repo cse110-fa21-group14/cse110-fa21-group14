@@ -136,17 +136,17 @@ function checkedOff(){
 export function sortAll(recipes, method) {
     console.log(method)
     switch (method) {
-        // least made
-        // case 'least-made':
-        //     return recipes.sort(function compareFn(firstEl, secondEl){
-        //         return firstEl.made - secondEl.made;
-        //     });
-        // // most made
-        // case 'most-made':
-        //     return recipes.sort(function compareFn(firstEl, secondEl){
-        //         return secondEl.made - firstEl.made;
-        //     });
-        // alphabetical
+        //least made
+        case 'least-made':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                return firstEl.makeCount - secondEl.makeCount;
+            });
+        // most made
+        case 'most-made':
+            return recipes.sort(function compareFn(firstEl, secondEl){
+                return secondEl.makeCount - firstEl.makeCount;
+            });
+        //alphabetical
         case 'alphabetical':
             return recipes.sort(function compareFn(firstEl, secondEl) {
                 let nameA = firstEl.name;
