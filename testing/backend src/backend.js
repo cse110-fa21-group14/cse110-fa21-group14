@@ -85,3 +85,9 @@ export function saveToLocalStorage(data) {
 export function deleteRecipe(id) {
     saveToLocalStorage(getAll().filter(recipe => id != recipe.id))
 }
+
+function sum2(a, b) {
+    return a + b;
+  }
+
+module.exports = {sum2, saveToLocalStorage, deleteRecipe, save, imgToURL, getAll, get}
