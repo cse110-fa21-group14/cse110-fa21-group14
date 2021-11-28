@@ -11,6 +11,7 @@ const steps = document.getElementById('step-input-box');
 const recipeList = document.getElementById('recipe-list');
 const recList = document.getElementById('recommended-list');
 const servings = document.getElementById('serving-number');
+const sorting = document.getElementById('sort-by');
 const sort_close = document.getElementById('sort-filter-close');
 
 if (!localStorage.getItem('sorting')) {
