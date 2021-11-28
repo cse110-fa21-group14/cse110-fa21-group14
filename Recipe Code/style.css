@@ -65,6 +65,38 @@ main .home-button{
   height: 50px;
   width: 200px;
 }
+main #home-recipe-card{
+  width: 73.5vw;
+  height: 50vh;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+main #home-recipe-card:hover{
+  cursor: pointer;
+}
+main #recipe-otd-title{
+  margin-bottom: 20px;
+}
+#home-recipe-card img{
+  object-fit: cover;
+  height: 30vh;
+  width: 100%;
+}
+#home-recipe-text{
+  margin: 10px;
+}
+
+#home-recipe-title{
+  font-size: 4.5vh;
+  font-weight: 600;
+}
+
+#home-cook-time{
+  float: right;
+  color: #ff6961;
+  padding-top: 0.5vh;
+  font-size: 4.5vh;
+}
 
 /* Main (Recipes page) */
 
@@ -218,12 +250,11 @@ main #back-button{
 main .list{
   margin: auto;
 }
-main .list article{
+main .list #recipe-card-test{
   display: inline-block;
   margin-left: 50px;
   width: 20vw;
   height: 45vh;
-  
 }
 
 main article img{

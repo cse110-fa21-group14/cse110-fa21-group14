@@ -11,6 +11,7 @@ class RecipeCard extends HTMLElement {
             article{
                 display: inline-block;
                 margin-left: 53px;
+                margin-bottom: 10px;
                 width: 20vw;
                 height: 45vh;
                 border: 2px solid gray;
@@ -20,15 +21,16 @@ class RecipeCard extends HTMLElement {
                 cursor: pointer;
             }
             article img{
-                object-fit: contain;
+                object-fit: fill;
                 height: 26vh;
                 width: 100%;
+                
             }
             .recipe-text{
                 margin: 10px;
             }
             .recipe-title{
-                font-size: 30px;
+                font-size: 3vh;
                 font-weight: 600;
             }
         `;
@@ -41,7 +43,7 @@ class RecipeCard extends HTMLElement {
         var recipeTitle = document.createElement('p');
 
         //adding popup to card
-        card.setAttribute('onclick', 'recipePopUp()');
+        //card.setAttribute('onclick', 'recipePopUp()');
         img.setAttribute('src', data.img);
         img.setAttribute('alt', 'Recipe Image');
         card.appendChild(img);

@@ -1,0 +1,50 @@
+## with help from Ashritha
+name: JSDoc
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Make JSDoc branch
+              run: git switch -c jsdoc
+
+            - name: Build
+              uses: andstor/jsdoc-action@v1
+              with:
+                  source_dir: ./
+                  recurse: true
+                  output_dir: ./jsdoc
+
+            - name: Commit
+              run: |
+                  git config --local user.email "github-action@users.noreply.github.com"
+                  git config --local user.name "GitHub Action"
+                  git add --all
+                  git commit -m "JSdoc info" -a
+            - name: Push
+              uses: ad-m/github-push-action@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  branch: 'jsdoc'
+
+            - name: Merge jsdoc branch
+              uses: everlytic/branch-merge@1.1.0
+              with:
+                  github_token: ${{ github.token }}
+                  source_ref: 'jsdoc'
+                  target_branch: 'main'
+                  commit_message_template: 'Merged {source_ref} into {target_branch}'
+
+            - name: Delete jsdoc branch
+              run: git push origin --delete jsdoc
