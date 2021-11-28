@@ -1,7 +1,12 @@
 name: Jest Unit Testing
-on: 
-  push
-  pull_request
+on:
+    push:
+        branches:
+            - main
+            - testing
+    pull_request:
+        branches:
+            - main
 jobs:
   build:
     runs-on: ubuntu-latest
