@@ -39,7 +39,8 @@ async function init() {
     });
 
     function makeList() {
-        recipeList.innerHTML = '';
+        if(recipeList){
+            recipeList.innerHTML = '';
         let recipes = search();
         let sortingMethod = localStorage.getItem('sorting');
         recipes = sortAll(recipes, sortingMethod);
@@ -108,6 +109,8 @@ async function init() {
                 recipeList.appendChild(newCard);
             }
         }
+        }
+        
 
     }
 
@@ -157,14 +160,19 @@ async function init() {
             location.reload();
         });
     }
-
-    sort_close.addEventListener('click', (event) => {
-        localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
-        location.reload();
-    });
-
+    if(sort_close){
+        sort_close.addEventListener('click', (event) => {
+            localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
+            location.reload();
+        });
+    }
+    
+    
     makeList();
+    
     makeRecList();
+    
+    
 
     if(document.getElementById('home-recipe-card')){
         makeRecipeOTD();
