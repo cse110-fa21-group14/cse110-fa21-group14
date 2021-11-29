@@ -1,3 +1,10 @@
+/**
+ * This function will get a random recipe from recommended recipes and display this
+ * recipe as a custom recipe card on the home screen
+ * 
+ * @param {Object} data the recommended recipes object stored as a JSON
+ * @returns {void} 
+ */
 function randomRecipe(data){
     //populate OTD card at home
     
@@ -54,7 +61,12 @@ function randomRecipe(data){
     
 }
 
-// Once page loads, render recommended recipe cards.
+/**
+ * This function fetches the recommended recipes stored in a JSON and returns it. It also runs
+ * runs randomRecipe
+ * 
+ * @returns {Object} JSON object that holds recommended recipes
+ */
 export function makeRecipeOTD() {
     console.log("loaded");
     fetch("assets/recommended.json")

@@ -19,8 +19,12 @@ if (!localStorage.getItem('sorting')) {
 var currId;
 
 var imgURL;
+/**
+ * This function will run a series of other functions and code once the window has loaded
+ * 
+ * @returns {void}
+ */
 async function init() {
-
     $("#input-file").change(function () {
         if (this.files && this.files[0]) {
             var FR = new FileReader();
@@ -39,6 +43,12 @@ async function init() {
         }
     });
 
+    /**
+     * This function will create a recipe card for each recipe in local storage and attach the appropriate
+     * information for it's popup.
+     * 
+     * @returns {void}
+     */
     function makeList() {
         if(recipeList){
             recipeList.innerHTML = '';
@@ -168,6 +178,11 @@ async function init() {
         });
     }
     
+    /**
+     * This functions makes the tags array that populates the options in sort by tags
+     *
+     * @returns {void}
+     */
     function makeTags(){
         let tagsList = document.getElementById('tags');
         if(tagsList){
@@ -194,6 +209,11 @@ async function init() {
     }
 
     //DOES NOT WORK 
+    /**
+     * This function updates the grocery list
+     * 
+     * @returns {void}
+     */
     function makeGroceryList(){
         let groceryListItems = document.getElementById('grocery-list-items');
         if(groceryListItems){
