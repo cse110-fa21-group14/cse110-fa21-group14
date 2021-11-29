@@ -218,6 +218,7 @@ async function init() {
         let groceryListItems = document.getElementById('grocery-list-items');
         if(groceryListItems){
             let currIngs = groceryList();
+            console.log(currIngs);
             for(let i = 0; i < currIngs.length; i++){
                 let newItem = document.createElement('div');
                 newItem.classList.add('grocery-list-item');
@@ -286,6 +287,24 @@ if (addGrocery){
     addGrocery.addEventListener('click', (event) => {
         let currRecipe = get(currId);
         addToGroceryList(currRecipe);
+        //for discussion demo
+        // let groceryListItems = document.getElementById('grocery-list-items');
+        // if(groceryListItems){
+        //     let currIngs = currRecipe.ingredients.ingredients;
+        //     for(let i = 0; i < currIngs.length; i++){
+        //         let newItem = document.createElement('div');
+        //         newItem.classList.add('grocery-list-item');
+
+        //         let newCheckBox = document.createElement('input');
+        //         newCheckBox.setAttribute('type', 'checkbox');
+        //         let newLabel = document.createElement('label');
+        //         newLabel.innerHTML = currIngs[i]['ingName'];
+
+        //         newItem.appendChild(newCheckBox);
+        //         newItem.appendChild(newLabel);
+        //         groceryListItems.appendChild(newItem);
+        //     }
+        // }  
     })
 }
 

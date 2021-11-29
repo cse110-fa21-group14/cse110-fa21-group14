@@ -91,30 +91,37 @@ export function deleteRecipe(id) {
     saveToLocalStorage(getAll().filter(recipe => id != recipe.id));
 }
 
-var grocery = [];
 //adds the ingredients of a recipe to the grocery list
 export function addToGroceryList(recipe){
-    for (var ing in recipe.ingredients.ingredients){
-        grocery.push({name: ing.ingName, done: false});
+    if (!localStorage.getItem('grocery')) {
+        localStorage.setItem('grocery', JSON.stringify([]));
+    }
+    var groceryData = JSON.parse(localStorage.getItem('grocery'));
+    for (var ing of recipe.ingredients['ingredients']) {
+        groceryData.push({name: ing.ingName, done: false});
+        localStorage.setItem('grocery', JSON.stringify(groceryData));
+        console.log (localStorage.getItem('grocery'));
     }
 }
-/* for frontend.js: 
+
+/* for frontend.js:
     to check: <checkbox>.addAttriute("checked")
     to uncheck: <checkbox>.removeAttribute("checked")
 */
 
 //returns grocery list as [{name: string, done: boolean}]
 export function groceryList (){
-    if (checkedOff){
-        grocery = [];
-    }
-    return grocery.filter(recipe => !recipe.done)
+    // if (checkedOff){
+    //     localStorage.setItem('grocery', JSON.stringify([]));
+    // }
+    return JSON.parse(localStorage.getItem('grocery'))
 }
 //helper function to see if the entire grocery list is checked off
 function checkedOff(){
     var flag = true;
-    for(ing in grocery){
-        if(!ing.done){
+    var groceryData = JSON.parse(localStorage.getItem('grocery'));
+    for (var ing of groceryData) {
+        if (!ing.done) {
             flag = false;
         }
     }
