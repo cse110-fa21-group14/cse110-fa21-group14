@@ -167,10 +167,31 @@ async function init() {
         });
     }
     
+    function makeTags(){
+        let tags = new Set();
+        let recipes = getAll();
+        for(let i = 0; i < recipes.length; i++){
+            let currTags = recipes[i].tags;
+            for(let j = 0; j < currTags.length; j++){
+                tags.add(`${currTags[j]}`);
+            }
+        }
+        
+        console.log(tags);
+        let tagsList = document.getElementById('tags');
+        tags.forEach (function(value) {
+            let newTag = document.createElement('button');
+            newTag.classList.add('line-spacing');
+            newTag.classList.add('tag');
+            newTag.innerHTML = value;
+            tagsList.appendChild(newTag);
+        });
+    }
     
     makeList();
     makeRecList();
-    
+    makeTags();
+
     if(document.getElementById('home-recipe-card')){
         makeRecipeOTD();
     }
