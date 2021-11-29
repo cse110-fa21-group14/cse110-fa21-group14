@@ -169,11 +169,8 @@ async function init() {
     
     
     makeList();
-    
     makeRecList();
     
-    
-
     if(document.getElementById('home-recipe-card')){
         makeRecipeOTD();
     }

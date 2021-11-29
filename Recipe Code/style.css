@@ -66,8 +66,8 @@ main .home-button{
   width: 200px;
 }
 main #home-recipe-card{
-  width: 73.5vw;
-  height: 50vh;
+  width: 72.5vw;
+  height: 70vh;
   border: 2px solid gray;
   border-radius: 5px;
 }
@@ -78,8 +78,8 @@ main #recipe-otd-title{
   margin-bottom: 20px;
 }
 #home-recipe-card img{
-  object-fit: cover;
-  height: 30vh;
+  object-fit: fill;
+  height: 50vh;
   width: 100%;
 }
 #home-recipe-text{
