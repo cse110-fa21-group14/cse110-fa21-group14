@@ -236,7 +236,7 @@ async function init() {
     }
 
     makeList();
-    makeRecList();
+    
     makeTags();
     makeGroceryList();
 
@@ -244,16 +244,18 @@ async function init() {
         makeRecipeOTD();
     }
     var query = document.querySelector('#search-bar');
+   
     query.addEventListener('keyup', makeList);
-
     function search() {
         query = document.querySelector('#search-bar');
         var toDisplay = getAll().filter(function (item) {
             return query.value == item.name.substring(0, query.value.length)
         });
-        console.log(toDisplay)
-        return toDisplay
+        console.log(toDisplay);
+        return toDisplay;
     }
+    
+    
     
 };
 
