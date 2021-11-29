@@ -1,4 +1,4 @@
-import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll} from '../backend src/backend.js';
+import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList} from '../backend src/backend.js';
 import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
 import {makeRecipeOTD} from '/Recipe Code/assets/recipeOTD.js'; 
 window.addEventListener('DOMContentLoaded', init);
@@ -11,6 +11,7 @@ const recList = document.getElementById('recommended-list');
 const servings = document.getElementById('serving-number');
 const sorting = document.getElementById('sort-by');
 const sort_close = document.getElementById('sort-filter-close');
+
 
 if (!localStorage.getItem('sorting')) {
     localStorage.setItem('sorting', JSON.stringify('alphabetical'))
@@ -191,10 +192,32 @@ async function init() {
         }
        
     }
-    
+
+    //DOES NOT WORK 
+    function makeGroceryList(){
+        let groceryListItems = document.getElementById('grocery-list-items');
+        if(groceryListItems){
+            let currIngs = groceryList();
+            for(let i = 0; i < currIngs.length; i++){
+                let newItem = document.createElement('div');
+                newItem.classList.add('grocery-list-item');
+
+                let newCheckBox = document.createElement('input');
+                newCheckBox.setAttribute('type', 'checkbox');
+                let newLabel = document.createElement('label');
+                newLabel.innerHTML = currIngs[i]['name'];
+
+                newItem.appendChild(newCheckBox);
+                newItem.appendChild(newLabel);
+                groceryListItems.appendChild(newItem);
+            }
+        }  
+    }
+
     makeList();
     makeRecList();
     makeTags();
+    makeGroceryList();
 
     if(document.getElementById('home-recipe-card')){
         makeRecipeOTD();
@@ -236,6 +259,17 @@ if (justMadeBtn){
     
     })
 }
+
+//DOES NOT WORK; PROBABLY NEED TO ADD IN LOCAL STORAGE
+let addGrocery = document.getElementById('add-grocery');
+if (addGrocery){
+    addGrocery.addEventListener('click', (event) => {
+        let currRecipe = get(currId);
+        addToGroceryList(currRecipe);
+    })
+}
+
+
 
 /**
  * This function creates a tag-input element for the create/edit page.

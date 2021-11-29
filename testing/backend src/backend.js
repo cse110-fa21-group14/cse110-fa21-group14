@@ -91,11 +91,11 @@ export function deleteRecipe(id) {
     saveToLocalStorage(getAll().filter(recipe => id != recipe.id));
 }
 
-var grocery = []
+var grocery = [];
 //adds the ingredients of a recipe to the grocery list
 export function addToGroceryList(recipe){
     for (var ing in recipe.ingredients.ingredients){
-        grocery.push({name: ingName, done: false});
+        grocery.push({name: ing.ingName, done: false});
     }
 }
 /* for frontend.js: 
