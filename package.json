@@ -1,23 +1,11 @@
 {
-  "name": "cse110-fa21-group14",
+  "name": "recipe-code",
   "version": "1.0.0",
-  "description": "[Our Team Page](admin/team.md)",
-  "main": "index.js",
+  "description": "",
+  "main": "editPage.js",
   "scripts": {
-    "doc": "jsdoc -c jsdoc.json"
+    "build": "cp -rf Recipe\ Code/* dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cse110-fa21-group14/cse110-fa21-group14.git"
-  },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cse110-fa21-group14/cse110-fa21-group14/issues"
-  },
-  "homepage": "https://github.com/cse110-fa21-group14/cse110-fa21-group14#readme",
-  "devDependencies": {
-    "jsdoc": "^3.6.7"
-  }
+  "license": "ISC"
 }
