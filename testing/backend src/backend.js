@@ -14,6 +14,7 @@
         tags: [string],                                         convert input -> [] in frontend.js (see tagsToArray:41)
         made: Date
         makeCount: int                                              capture and store Date when save button is clicked
+        created: Date of creation
     }
 */
 
@@ -79,7 +80,7 @@ export function save(recipe) {
     var data = JSON.parse(localStorage.getItem('recipeData'))
     data.push(recipe)
     saveToLocalStorage(data)
-    imgURL = ''
+    let imgURL = ''
     console.log(localStorage.getItem('recipeData'))
 }
 export function saveToLocalStorage(data) {
@@ -170,8 +171,8 @@ export function sortAll(recipes, method) {
         // date of creation
         case 'newest':
             return recipes.sort(function compareFn(firstEl, secondEl) {
-                let createdA = firstEl.made;
-                let createdB = secondEl.made;
+                let createdA = firstEl.created;
+                let createdB = secondEl.created;
                 if (createdA > createdB) {
                     return -1;
                 }
@@ -183,8 +184,8 @@ export function sortAll(recipes, method) {
 
         case 'oldest':
             return recipes.sort(function compareFn(firstEl, secondEl) {
-                let createdA = firstEl.made;
-                let createdB = secondEl.made;
+                let createdA = firstEl.created;
+                let createdB = secondEl.created;
                 if (createdA < createdB) {
                     return -1;
                 }

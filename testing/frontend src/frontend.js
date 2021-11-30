@@ -143,6 +143,7 @@ async function init() {
                 serving: servings.value,
                 tags: [],
                 made: new Date(date),
+                created: new Date(date),
                 makeCount: 0
             }
             for(let i = 0; i < ingredients.children.length; i++) {
@@ -270,14 +271,19 @@ if (editButton) {
 
 
 let justMadeBtn = document.getElementById("track");
+let trackerCount = document.getElementById("tracker-count");
+let trackerDate = document.getElementById("tracker-date");
 if (justMadeBtn){
     justMadeBtn.addEventListener("click", e => {
         let currRecipe = get(currId);
         
         currRecipe.makeCount = currRecipe.makeCount + 1;
+        currRecipe.made = new Date(Date.now());
+        trackerCount.innerHTML = currRecipe.makeCount;
+        trackerDate.innerHTML = currRecipe.made;
         deleteRecipe(currId);
         save(currRecipe);
-    
+        
     })
 }
 
