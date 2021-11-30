@@ -198,3 +198,35 @@ export function sortAll(recipes, method) {
             console.log('sort not working');
     }
 }
+
+function filter(recipe,tagList){
+    if(recipe.tags == undefined){
+        return false;
+    }
+    for(const t in tagList){
+        for(const rt in recipe.tags){
+            if(tagList[t] == recipe.tags[rt]){
+                if(t == tagList.length - 1){
+                    return true;
+                }
+            }
+            else if(rt == recipe.tags.length - 1){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+export function filterRecipes(recipes,tagList){
+    if(tagList.length == 0){
+        return recipes;
+    }
+    let res = [];
+    for(const r in recipes){
+        if(filter(recipes[r],tagList)){
+            res.push(recipes[r]);
+        }
+    }
+    return res;
+}
