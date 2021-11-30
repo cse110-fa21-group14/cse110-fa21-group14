@@ -1,6 +1,6 @@
 import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList} from '../backend src/backend.js';
-import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
-import {makeRecipeOTD} from '/Recipe Code/assets/recipeOTD.js'; 
+import {makeRecList} from '/RecipeCode/assets/recommended.js'; 
+import {makeRecipeOTD} from '/RecipeCode/assets/recipeOTD.js'; 
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tags-inputted');
 const name = document.getElementById('input-recipe-name');
@@ -54,7 +54,7 @@ async function init() {
             recipeList.innerHTML = '';
         let recipes = search();
         let sortingMethod = localStorage.getItem('sorting');
-        recipes = sortAll(recipes, sortingMethod);
+        //recipes = sortAll(recipes, sortingMethod);
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
@@ -325,7 +325,7 @@ export function createTagInput() {
 
     // defining the elements
     tagName.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('src', '../../RecipeCode/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -364,7 +364,7 @@ export function createIngredientInput() {
     ingredientName.setAttribute('type', 'text');
     ingredientAmount.setAttribute('type', 'text');
     ingredientUnit.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('src', '../../RecipeCode/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -406,7 +406,7 @@ export function createInstructionInput() {
     // defining the elements
     stepInput.setAttribute('rows', '2');
     stepInput.setAttribute('cols', '50');
-    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('src', '../../RecipeCode/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -453,11 +453,11 @@ var query = document.querySelector('#search-bar');
 query.addEventListener('keyup', search);
 var toDisplay = []; */
 
-function search() {
-    const data = JSON.parse(localStorage.getItem('recipeData'))
-    var toRisplay = data.filter(function (item) {
-        return query.value == item.name.substring(0, query.value.length)
-    })
-    return(toDisplay)
-}
+// function search() {
+//     const data = JSON.parse(localStorage.getItem('recipeData'));
+//     var toDisplay = data.filter(function (item) {
+//         return query.value == item.name.substring(0, query.value.length);
+//     });
+//     return(toDisplay);
+// }
 
