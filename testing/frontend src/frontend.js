@@ -1,4 +1,4 @@
-import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList} from '../backend src/backend.js';
+import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList, filterRecipes} from '../backend src/backend.js';
 import {makeRecList} from '/Recipe Code/assets/recommended.js'; 
 import {makeRecipeOTD} from '/Recipe Code/assets/recipeOTD.js'; 
 window.addEventListener('DOMContentLoaded', init);
@@ -14,10 +14,15 @@ const sort_close = document.getElementById('sort-filter-close');
 
 
 if (!localStorage.getItem('sorting')) {
-    localStorage.setItem('sorting', JSON.stringify('alphabetical'))
+    localStorage.setItem('sorting', 'alphabetical');
 }
-var currId;
+if (!localStorage.getItem('tags')) {
+    localStorage.setItem('tags', JSON.stringify({}));
+}
 
+
+var currId;
+var tagsToSearch = new Set();
 var imgURL;
 /**
  * This function will run a series of other functions and code once the window has loaded
@@ -54,7 +59,10 @@ async function init() {
             recipeList.innerHTML = '';
         let recipes = search();
         let sortingMethod = localStorage.getItem('sorting');
+        let filterTags = Object.keys(JSON.parse(localStorage.getItem('tags')));
+        recipes = filterRecipes(recipes,filterTags);
         recipes = sortAll(recipes, sortingMethod);
+        localStorage.setItem('tags', JSON.stringify({}));
         if (recipes && recipeList) {
             for (const [key, value] of Object.entries(recipes)) {
                 let newCard = document.createElement('recipe-card');
@@ -143,6 +151,7 @@ async function init() {
                 serving: servings.value,
                 tags: [],
                 made: new Date(date),
+                created: new Date(date),
                 makeCount: 0
             }
             for(let i = 0; i < ingredients.children.length; i++) {
@@ -201,11 +210,18 @@ async function init() {
                 let newTag = document.createElement('button');
                 newTag.classList.add('line-spacing');
                 newTag.classList.add('tag');
+                newTag.onclick = function(){savetag(value)};
                 newTag.innerHTML = value;
                 tagsList.appendChild(newTag);
             });
         }
        
+    }
+
+    function savetag(value) {
+        let temp = JSON.parse(localStorage.getItem('tags'));
+        temp[value] = '1';
+        localStorage.setItem('tags', JSON.stringify(temp));     
     }
 
     //DOES NOT WORK 
@@ -272,14 +288,19 @@ if (editButton) {
 
 
 let justMadeBtn = document.getElementById("track");
+let trackerCount = document.getElementById("tracker-count");
+let trackerDate = document.getElementById("tracker-date");
 if (justMadeBtn){
     justMadeBtn.addEventListener("click", e => {
         let currRecipe = get(currId);
         
         currRecipe.makeCount = currRecipe.makeCount + 1;
+        currRecipe.made = new Date(Date.now());
+        trackerCount.innerHTML = currRecipe.makeCount;
+        trackerDate.innerHTML = currRecipe.made;
         deleteRecipe(currId);
         save(currRecipe);
-    
+        
     })
 }
 
