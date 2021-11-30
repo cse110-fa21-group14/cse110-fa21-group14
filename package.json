@@ -4,7 +4,7 @@
   "description": "",
   "main": "editPage.js",
   "scripts": {
-    "build": "cp -rf Recipe\ Code/* dist"
+    "build": "cp -rf RecipeCode/* dist"
   },
   "author": "",
   "license": "ISC"
