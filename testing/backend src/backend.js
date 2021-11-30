@@ -204,15 +204,11 @@ function filter(recipe,tagList){
         return false;
     }
     for(const t in tagList){
-        for(const rt in recipe.tags){
-            if(tagList[t] == recipe.tags[rt]){
-                if(t == tagList.length - 1){
-                    return true;
-                }
-            }
-            else if(rt == recipe.tags.length - 1){
-                return false;
-            }
+        if(recipe.tags.some(x => x == tagList[t])){
+            continue;
+        }
+        else{
+            return false;
         }
     }
     return true;
