@@ -160,3 +160,9 @@ justMadeBtn.addEventListener("click", e => {
     save(currRecipe);
 
 })
+
+function sum2(a, b) {
+    return a + b;
+  }
+
+module.exports = {init, makeList, sum2}
