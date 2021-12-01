@@ -54,7 +54,7 @@
 ![Sort Recipes](/cse110-fa21-group14/admin/meetings/images/Sort%20Recipes%20S2.png)
 
 #### CICD pipeline
-![Diagram CICD](/cse110-fa21-group14/admin/ci)
+![Diagram CICD](/cse110-fa21-group14/admin/cipipeline/phase2.PNG)
 
 ###     For Next Time
         - N/A
