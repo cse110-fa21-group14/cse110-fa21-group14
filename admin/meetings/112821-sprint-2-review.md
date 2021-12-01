@@ -1,5 +1,5 @@
 # Team Name: Team 14 (Heart Bakers)
-## Meeting Type: team meeting
+## Meeting Type: Sprint Review Meeting
 ## Meeting Subject: Sprint review
 ## Location: zoom
 ## Starting Time: 4:00pm
@@ -57,7 +57,7 @@
 ![Diagram CICD](/admin/cipipeline/phase2.PNG)
 
 ###     For Next Time
-        - N/A
+        - Retro
 ## Decisions Made:
         - N/A
 ## Ending Time: 4:30pm
