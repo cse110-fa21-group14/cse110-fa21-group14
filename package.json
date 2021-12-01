@@ -25,6 +25,6 @@
   "jest": {
     "collectCoverage": true,
     "coverageReporters": ["lcov"],
-    "transformIgnorePatterns": "/node_modules"
+    "transformIgnorePatterns": ["/node_modules"]
   }
 }
