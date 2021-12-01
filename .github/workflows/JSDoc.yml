@@ -25,6 +25,7 @@ jobs:
                   source_dir: ./
                   recurse: true
                   output_dir: ./jsdoc
+                  config_file: jsdoc.json
 
             - name: Commit
               run: |
