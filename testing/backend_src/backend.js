@@ -90,4 +90,4 @@ function sum2(a, b) {
     return a + b;
   }
 
-module.exports = {sum2, saveToLocalStorage, deleteRecipe, save, imgToURL, getAll, get}
+//module.exports = {sum2, saveToLocalStorage, deleteRecipe, save, imgToURL, getAll, get}

@@ -23,8 +23,7 @@
     "jsdoc": "^3.6.7"
   },
   "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
-    ]
+    "collectCoverage": true,
+    "coverageReporters": ["lcov"]
   }
 }
