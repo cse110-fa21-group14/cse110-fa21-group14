@@ -46,15 +46,15 @@
         - Harsheta
           - worked on integrating back end features with the front end layout, Helped create the skeleton for the recipes, Scale Conversion
 #### Website:
-![Home Page](/cse110-fa21-group14/admin/meetings/images/Home%20Page%20S2.png)
-![My Recipes](/cse110-fa21-group14/admin/meetings/images/My%20Recipes%20S2.png)
-![Recommended Recipes](/cse110-fa21-group14/admin/meetings/images/Recommended%20Recipes%20S2.png)
-![Grocery List](/cse110-fa21-group14/admin/meetings/images/Grocery%20List%20S2.png)
-![Create Edit](/cse110-fa21-group14/admin/meetings/images/Create:Add%20Recipe%20S2.png)
-![Sort Recipes](/cse110-fa21-group14/admin/meetings/images/Sort%20Recipes%20S2.png)
+![Home Page](/admin/meetings/images/Home%20Page%20S2.png)
+![My Recipes](/admin/meetings/images/My%20Recipes%20S2.png)
+![Recommended Recipes](/admin/meetings/images/Recommended%20Recipes%20S2.png)
+![Grocery List](/admin/meetings/images/Grocery%20List%20S2.png)
+![Create Edit](/admin/meetings/images/Create:Add%20Recipe%20S2.png)
+![Sort Recipes](/admin/meetings/images/Sort%20Recipes%20S2.png)
 
 #### CICD pipeline
-![Diagram CICD](/cse110-fa21-group14/admin/cipipeline/phase2.PNG)
+![Diagram CICD](/admin/cipipeline/phase2.PNG)
 
 ###     For Next Time
         - N/A
