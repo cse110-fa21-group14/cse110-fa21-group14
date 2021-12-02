@@ -23,7 +23,7 @@
         - N/A
 ###     Business for Today
 [retrium retro for activity](https://app.retrium.com/team-room/0eb84891-120d-47f4-8b57-e8f91a1790bb?utm_campaign=team-room-invite&utm_content=link-invite&utm_invitedby=rrn%3Auser%3Afdc25f67-3e6f-4f65-adfb-e20fd88d791a&utm_medium=own-referral&utm_source=retrium)
-Please go to the History tab in the retrium above to see our retro. 
+Please go to the History tab in the retrium to see our retro. 
 
         - Retrospective Major Takeaways Notes:
         - Mad:
