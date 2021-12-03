@@ -54,6 +54,11 @@ Please go to the History tab in the retrium to see our retro.
           - Kyle will plan meetings by Friday
           - Makayla will work on cleaning up the app in order to continue progress.
           - In general, we have to do more unit testing, finish our documentation, wrap up our code base along with features, bugs, etc, and anything related to pipeline.
+
+![Retrium Image1](/admin/meetings/images/Retrium%20Image1.png)
+![Retrium Image2](/admin/meetings/images/Retrium%20Image2.png)
+![Retrium Image3](/admin/meetings/images/Retrium%20Image3.png)
+![Retrium Image4](/admin/meetings/images/Retrium%20Image4.png)
 ###     For Next Time
         - N/A
 ## Decisions Made:
