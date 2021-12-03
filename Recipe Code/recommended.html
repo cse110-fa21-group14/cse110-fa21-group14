@@ -21,17 +21,8 @@
                 </a>
                 
                 <a href="user.html"><button id="my-recipes" class="float-right">My Recipes</button></a>
-                <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
                 
                 <script>
-                    function popOpen(){
-                        document.getElementById("popups").classList.add("show");
-                        document.getElementById('grocery-list-popup').classList.add('show');
-                    }
-                    function popClose(){
-                        document.getElementById('grocery-list-popup').classList.remove('show');
-                        document.getElementById("popups").classList.remove("show");
-                    }
                     function recommendedPopUp() {
                         document.getElementById("popups").classList.add("show");
                         var test_popup = document.getElementById("recommended-recipe-popup");
@@ -47,23 +38,13 @@
         </header>
         <main>
             <section id="recipe-page-info">
-                <input type="text" id="search-bar" class="move-lower float-right" placeholder="Search">
+                <input type="text" id="recommended-search-bar" class="move-lower float-right search-bar" placeholder="Search">
                 <h1 id="page-title">Recommended</h1>
             </section>
             <section id="recommended-list" class="list"></section>
             <a href="index.html"><button id="back-button"><span>&#8592</span> Back</button></a>
         </main>
         <div id="popups">
-            <section id='grocery-list-popup' class="popup">
-                <button id="grocery-list-close" class="float-right close-button" onclick="popClose()"> X </button>
-                <h2 id="grocery-list-header">Grocery List</h2>
-                <div class="grocery-list-item">
-                    <input type="checkbox" id="grocery-list-item-1" name="item-1-name"><label for="grocery-list-item-1"> Item 1 Name</label>
-                </div>
-                <div class="grocery-list-item">
-                    <input type="checkbox" id="grocery-list-item-2" name="item-2-name"><label for="grocery-list-item-2"> Item 2 Name</label>
-                </div>
-            </section>
             <section id="recommended-recipe-popup" class="popup recipe-pages">
                 <button id="recommended-recipe-close" class="float-right line-spacing close-button" onclick="pClose()">X</button>
                 <h2 id="recipe-name" class="line-spacing">Recipe Name</h2>

@@ -46,12 +46,52 @@ async function init() {
     let editServings = document.getElementById("serving-number").value = editRecipeObject.serving;
 }
 
-let saveButtonEditPage = document.getElementById("save-recipe");
-saveButtonEditPage.addEventListener("click", e => {
-    //Todo save functionality
-    localStorage.removeItem("editId");
-    window.location.href = 'user.html';
-})
+// saveButtonEditPage.addEventListener("click", e => {
+//     //Todo save functionality
+//     if (localStorage.getItem("editId") == null) {
+//         return;
+//     }
+//     let addName = document.getElementById("input-recipe-name").setAttribute("value", editRecipeObject.name);
+//     let addImg = document.getElementById("file-preview");
+//     let addServings = document.getElementById("serving-number").value;
+//     let recipeObjToAdd =
+//     {
+//         id: pageId,
+//         name: addName,
+//         img: addImg,
+//         ingredients: {
+//             proportion: 1,
+//             ingredients: [],
+//         },
+//         steps: [],
+//         serving: addServings,
+//         tags: [],
+//         made: editRecipeObject.made,
+//         makeCount: editRecipeObject.makeCount
+//     }
+//     let addIngredients = document.getElementById("ingredients-inputted");
+//     // Loop through ingredients on page and add to object
+//     for (let i = 0; i < addIngredients.children.length; i++) {
+//         recipeObjToAdd.ingredients['ingredients'].push({
+//             ingName: addIngredients.children[i].children[0].value,
+//             amount: addIngredients.children[i].children[1].value,
+//             unit: ingredients.children[i].children[2].value,
+//         });
+//     }
+//     let addInstructions = document.getElementById("instructions-input-list");
+//     for (let i = 0; i < addInstructions.children.length; i++) {
+//         recipeObjToAdd.steps.push(addInstructions.children[i].firstChild.value);
+//     }
+//     let addTags = document.getElementById("tags-inputted");
+//     for (let i = 0; i < addTags.children.length; i++) {
+//         recipeObjToAdd.tags.push(addTags.children[i].firstChild.value);
+//     }
+//     save(recipeObjToAdd);
+//     console.log(recipeObjToAdd);
+//     localStorage.removeItem("editId");
+//     window.location.href = 'user.html';
+// });
+
 
 let cancelbuttonEditPage = document.getElementById("cancel-recipe");
 cancelbuttonEditPage.addEventListener("click", e => {

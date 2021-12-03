@@ -11,7 +11,7 @@ const recList = document.getElementById('recommended-list');
 const servings = document.getElementById('serving-number');
 const sorting = document.getElementById('sort-by');
 const sort_close = document.getElementById('sort-filter-close');
-
+const query = document.querySelector('#search-bar');
 
 if (!localStorage.getItem('sorting')) {
     localStorage.setItem('sorting', 'alphabetical');
@@ -98,7 +98,12 @@ async function init() {
                         let trackerCount = document.getElementById('tracker-count');
                         trackerCount.innerHTML = recipe.makeCount;
                         let lastMade = document.getElementById('tracker-date');
-                        lastMade.innerHTML = recipe.made;
+                        if(recipe.made) {
+                            lastMade.innerHTML = recipe.made;
+                        }
+                        else {
+                            lastMade.innerHTML = 'never';
+                        }
                         // populate image
                         let recipeImage = document.getElementById('recipe-image');
                         recipeImage.setAttribute('src', recipe.img);
@@ -133,8 +138,14 @@ async function init() {
 
     }
 
-
-    const saveButton = document.getElementById('save-recipe');
+    // let saveButton;
+    // if(localStorage.getItem('editId') == null){
+    //      saveButton = document.getElementById('save-recipe');
+    // }
+    // else{
+    //     saveButton = null;
+    // }
+    let saveButton = document.getElementById('save-recipe');
     let newRecipe;
     if (saveButton) {
         saveButton.addEventListener('click', (event) => {
@@ -150,7 +161,7 @@ async function init() {
                 steps: [],
                 serving: servings.value,
                 tags: [],
-                made: new Date(date),
+                made: null,
                 created: new Date(date),
                 makeCount: 0
             }
@@ -167,6 +178,14 @@ async function init() {
             for (let i = 0; i < tags.children.length; i++) {
                 console.log(tags.children[i].firstChild);
                 newRecipe.tags.push(tags.children[i].firstChild.value);
+            }
+            let editId = localStorage.getItem("editId");
+            if(editId) {
+                newRecipe.id = editId;
+                newRecipe.made = get(editId).made;
+                newRecipe.makeCount = get(editId).makeCount;
+                deleteRecipe(editId);
+                localStorage.removeItem("editId");
             }
             save(newRecipe);
             window.location.href = 'user.html';
@@ -274,30 +293,29 @@ async function init() {
     if (document.getElementById('home-recipe-card')) {
         makeRecipeOTD();
     }
-    var query = document.querySelector('#search-bar');
-
-    query.addEventListener('keyup', makeList);
+    if(query)
+    {
+        query.addEventListener('keyup', makeList);
+    }
     function search() {
-        query = document.querySelector('#search-bar');
-        var toDisplay = getAll().filter(function (item) {
-            return query.value == item.name.substring(0, query.value.length)
-        });
+        let toDisplay;
+        if(getAll()) {
+            toDisplay = getAll().filter(function (item) {
+                return query.value == item.name.substring(0, query.value.length)
+            });
+        }
         console.log(toDisplay);
         return toDisplay;
     }
-
-
-
 };
-
 
 const editButton = document.getElementById('edit-recipe');
 
 if (editButton) {
     console.log(editButton);
     editButton.addEventListener('click', (event) => {
-        window.location.href = 'create-edit.html';
         localStorage.setItem("editId", currId);
+        window.location.href = 'create-edit.html';
     });
 }
 
@@ -484,17 +502,3 @@ if (addInstruction) {
         createInstructionInput();
     });
 }
-
-/*
-var query = document.querySelector('#search-bar');
-query.addEventListener('keyup', search);
-var toDisplay = []; */
-
-function search() {
-    const data = JSON.parse(localStorage.getItem('recipeData'))
-    var toRisplay = data.filter(function (item) {
-        return query.value == item.name.substring(0, query.value.length)
-    })
-    return (toDisplay)
-}
-

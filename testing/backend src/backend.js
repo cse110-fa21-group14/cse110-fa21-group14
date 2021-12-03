@@ -112,9 +112,9 @@ export function addToGroceryList(recipe){
 
 //returns grocery list as [{name: string, done: boolean}]
 export function groceryList (){
-    // if (checkedOff){
-    //     localStorage.setItem('grocery', JSON.stringify([]));
-    // }
+     if (checkedOff()){
+        localStorage.setItem('grocery', JSON.stringify([]));
+     }
     return JSON.parse(localStorage.getItem('grocery'))
 }
 //helper function to see if the entire grocery list is checked off

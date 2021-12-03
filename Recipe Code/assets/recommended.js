@@ -1,6 +1,6 @@
 import {save} from '../../testing/backend src/backend.js';
 window.addEventListener('DOMContentLoaded', init);
-const search_bar = document.getElementById('search-bar');
+const search_bar = document.getElementById('recommended-search-bar');
 // Function to traverse recommended JSon object and
 // create recommended recipe cards.
 export function makeRecList(data) {
