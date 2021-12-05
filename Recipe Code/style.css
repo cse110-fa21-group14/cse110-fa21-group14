@@ -66,10 +66,10 @@ main .home-button{
   width: 200px;
 }
 main #home-recipe-card{
-  width: 72.5vw;
-  height: 70vh;
+  width: 73.5vw;
   border: 2px solid gray;
   border-radius: 5px;
+  
 }
 main #home-recipe-card:hover{
   cursor: pointer;
@@ -78,12 +78,13 @@ main #recipe-otd-title{
   margin-bottom: 20px;
 }
 #home-recipe-card img{
-  object-fit: fill;
-  height: 50vh;
+  object-fit: none;
+  height: 40vh;
   width: 100%;
 }
 #home-recipe-text{
   margin: 10px;
+  text-align: center;
 }
 
 #home-recipe-title{
@@ -221,7 +222,8 @@ main .create-edit-button{
 }
 
 main #page-title{
-  font-size: 8vmin;
+  font-size: 8vh;
+  margin-right: 1vw;
 }
 
 main .move-lower{
@@ -467,4 +469,8 @@ section .sort{
 
 section #tags{
   margin: 10px;
+}
+
+#tags .selected{
+  background-color: #b05c5c;
 }

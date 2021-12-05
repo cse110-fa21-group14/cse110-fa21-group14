@@ -39,10 +39,6 @@
                 test_popup.classList.remove("show");
                 document.getElementById("popups").classList.remove("show");
             }
-            function deleteConfirm() {
-                var test_popup = document.getElementById("delete-confirmation");
-                test_popup.classList.add("show");
-            }
             function deleteClose() {
                 var test_popup = document.getElementById("delete-confirmation");
                 test_popup.classList.remove("show");
@@ -56,7 +52,7 @@
     <body>
         <header>
             <section id="main-bar">
-                <a href="index.html"><img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo"><h1 id="site-name">App Name</h1></a>
+                <a href="index.html"><img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo"><h1 id="site-name">Recipe Chamber</h1></a>
                 <a href="recommended.html"><button id="recommended-recipes" class="float-right">Recommended Recipes</button></a>
                 <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
             </section>
@@ -84,7 +80,7 @@
             <button type="button" id="recipe-close" class="float-right line-spacing close-button"
                 onclick="testClose()">X</button>
             <button type="button" id="edit-recipe" class="float-right recipe-button">Edit Recipe</button>
-            <button type="button" id="delete-recipe" class="float-right recipe-button" onclick="deleteConfirm()">Delete Recipe</button>
+            <button type="button" id="delete-recipe" class="float-right recipe-button">Delete Recipe</button>
             <h3 id="tags-header" class="float-right line-spacing">Tags</h3>
             <div id="recipe-tags" class="float-right"></div>
             <h2 id="recipe-name" class="line-spacing">Recipe Name</h2>
@@ -92,7 +88,8 @@
                 was on <span id="tracker-date">MM/DD/YYYY</span>.</p>
             <img id="recipe-image" class="line-spacing" alt="Image of Dish"> <br>
             <h3 id="ingredients-header" class="line-spacing">Ingredients</h3>
-            <span>1 <input type="range" min="1" max="10" step="1"> 10 | Number of servings: <span id="serving-value"></span></span>
+            <span> <input id="slider1" type="range" min="0" max="4" step="1"> <span id='changenum'>original</span> 
+            | Number of servings: <span id="serving-value"></span></span>
             <ul id="ingredients" class="line-spacing"></ul>
             <button id="add-grocery" class="line-spacing recipe-button">Add to Grocery List</button>
             <h3 id="instructions-header" class="line-spacing">Instructions</h3>
@@ -113,9 +110,7 @@
             </div>
             <hr>
             <h2 id="filter-tags" class="line-spacing">Filter By Tags:</h2>
-            <div id="tags">
-                
-            </div>
+            <div id="tags"></div>
         </section>
     </div>
     <section id="delete-confirmation">

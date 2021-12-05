@@ -12,11 +12,17 @@ class RecipeCard extends HTMLElement {
                 display: inline-block;
                 margin: 1vh 1vw;
                 width: 20vw;
-                height: 45vh;
+                height: 40vh;
                 overflow: auto;
-
+                
+                box-shadow: 20vw red;
                 border: 2px solid gray;
                 border-radius: 5px;
+                box-shadow: 7px 7px 4px #e3e3e3, 
+                -7px -7px 4px #ababab;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             article:hover{
                 cursor: pointer;
@@ -27,6 +33,7 @@ class RecipeCard extends HTMLElement {
                 width: 100%;
             }
             .recipe-text{
+                text-align: center;
                 margin: 10px;
             }
             .recipe-title{
@@ -52,6 +59,8 @@ class RecipeCard extends HTMLElement {
         recipeText.classList.add('recipe-text');
         recipeTitle.classList.add('recipe-title');
         recipeTitle.innerHTML = data.name;
+
+        //attaching 3 
 
         recipeText.appendChild(recipeTitle);
         card.appendChild(recipeText);

@@ -34,12 +34,12 @@ async function init() {
         if (this.files && this.files[0]) {
             var FR = new FileReader();
             FR.onload = function (e) {
-                document.getElementById('file-preview').setAttribute('src', e.target.result);
                 console.log(e.target.result);
                 var imgBase64 = e.target.result
                 imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "")).then(function (data) {
                     imgURL = data;
                     console.log(imgURL)
+                    document.getElementById('file-preview').setAttribute('src', imgURL);
                 }).catch(function (err) {
                     console.log(err)
                 })
@@ -153,7 +153,7 @@ async function init() {
             newRecipe = {
                 id: Math.floor(100000 + Math.random() * 900000),
                 name: name.value,
-                img: imgURL,
+                img: document.getElementById("file-preview").getAttribute("src"),
                 ingredients: {
                     proportion: 1,
                     ingredients: [],
@@ -189,6 +189,14 @@ async function init() {
             }
             save(newRecipe);
             window.location.href = 'user.html';
+        });
+    }
+
+    const deleteRecipeButton = document.getElementById("delete-recipe");
+    if (deleteRecipeButton) {
+        deleteRecipeButton.addEventListener('click', () => {
+            document.getElementById("delete-recipe-name").innerHTML = get(currId).name;
+            document.getElementById("delete-confirmation").classList.add("show");
         });
     }
 
@@ -229,7 +237,15 @@ async function init() {
                 let newTag = document.createElement('button');
                 newTag.classList.add('line-spacing');
                 newTag.classList.add('tag');
-                newTag.onclick = function () { savetag(value) };
+                newTag.addEventListener('click', () => {
+                    let added = newTag.classList.toggle('selected');
+                    if (added) {
+                        saveTag(value, true);
+                    }
+                    else {
+                        saveTag(value, false);
+                    }
+                });
                 newTag.innerHTML = value;
                 tagsList.appendChild(newTag);
             });
@@ -237,13 +253,18 @@ async function init() {
 
     }
 
-    function savetag(value) {
+    function saveTag(value, toFilter) {
         let temp = JSON.parse(localStorage.getItem('tags'));
-        temp[value] = '1';
+        if (toFilter) {
+            temp[value] = '1';
+        }
+        else {
+            delete temp[value];
+        }
         localStorage.setItem('tags', JSON.stringify(temp));
     }
 
-    //DOES NOT WORK 
+    
     /**
      * This function updates the grocery list
      * 
@@ -337,31 +358,13 @@ if (justMadeBtn) {
     })
 }
 
-//DOES NOT WORK; PROBABLY NEED TO ADD IN LOCAL STORAGE
+
 let addGrocery = document.getElementById('add-grocery');
 if (addGrocery) {
     addGrocery.addEventListener('click', (event) => {
         let currRecipe = get(currId);
         console.log(currId)
         addToGroceryList(currRecipe);
-        //for discussion demo
-        // let groceryListItems = document.getElementById('grocery-list-items');
-        // if(groceryListItems){
-        //     let currIngs = currRecipe.ingredients.ingredients;
-        //     for(let i = 0; i < currIngs.length; i++){
-        //         let newItem = document.createElement('div');
-        //         newItem.classList.add('grocery-list-item');
-
-        //         let newCheckBox = document.createElement('input');
-        //         newCheckBox.setAttribute('type', 'checkbox');
-        //         let newLabel = document.createElement('label');
-        //         newLabel.innerHTML = currIngs[i]['ingName'];
-
-        //         newItem.appendChild(newCheckBox);
-        //         newItem.appendChild(newLabel);
-        //         groceryListItems.appendChild(newItem);
-        //     }
-        // }  
     })
 }
 
@@ -500,5 +503,46 @@ const addInstruction = document.getElementById('add-instruction-step');
 if (addInstruction) {
     addInstruction.addEventListener('click', (event) => {
         createInstructionInput();
+    });
+}
+
+
+
+let values = ['fourth (1/4)', 'half (1/2)', 'original', 'double (2x)', 'quadruple (4x)'];
+const slider = document.getElementById('slider1');
+const num = document.getElementById('changenum');
+if (slider){
+    $(slider).on('input', e => {
+        let currRecipe = get(currId);
+        let currIngreds = currRecipe.ingredients['ingredients'];
+        let currServing = currRecipe.serving;
+
+        $(num).text(values[e.target.value])
+        let ingredList = document.getElementById('ingredients');
+        let ingreds = ingredList.children;
+
+        let serving = document.getElementById('serving-value');
+        for(let i = 0; i < ingreds.length; i++){
+            let ingredStr = ingreds[i].innerHTML;
+            let words = ingredStr.split(' ');
+            if (e.target.value == 0){
+                words[0] = currIngreds[i]['amount'] * 1/4;
+                serving.innerHTML = currServing * 1/4;
+            }else if(e.target.value == 1){
+                words[0] = currIngreds[i]['amount'] * 1/2;
+                serving.innerHTML = currServing * 1/2;
+            }else if(e.target.value == 3){
+                words[0] = currIngreds[i]['amount'] * 2;
+                serving.innerHTML = currServing * 2;
+            }else if(e.target.value == 4){
+                words[0] = currIngreds[i]['amount'] * 4;
+                serving.innerHTML = currServing * 4;
+            }else{
+                words[0] = currIngreds[i]['amount'];
+                serving.innerHTML = currServing;
+            }
+            ingredStr = words.join(' ');
+            ingreds[i].innerHTML = ingredStr;
+        }
     });
 }

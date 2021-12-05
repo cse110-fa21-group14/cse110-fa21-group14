@@ -7,13 +7,16 @@ async function init() {
     pageId = localStorage.getItem("editId");
     console.log(pageId);
     let editRecipeObject = get(pageId);
-    console.log(editRecipeObject);
+    if (editRecipeObject){
+        console.log(editRecipeObject);
 
     
     //let editRecipeObject = get(editRecipeID);
 
-
+    
     let editName = document.getElementById("input-recipe-name").setAttribute("value", editRecipeObject.name);
+    
+    
     
     //editInstructions needs to be updated when add instructions functionality has been added.
     let editInstructions = document.getElementById("instructions-input-list");
@@ -44,6 +47,8 @@ async function init() {
     //TODO preload the image
 
     let editServings = document.getElementById("serving-number").value = editRecipeObject.serving;
+    }
+    
 }
 
 // saveButtonEditPage.addEventListener("click", e => {
