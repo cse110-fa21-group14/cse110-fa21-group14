@@ -1,4 +1,4 @@
-import {save} from '../../testing/backend src/backend.js';
+import {save} from '../testing/backend src/backend.js';
 window.addEventListener('DOMContentLoaded', init);
 const search_bar = document.getElementById('recommended-search-bar');
 const search_button = document.getElementById('search-button');
@@ -81,7 +81,7 @@ export function makeRecList(data) {
 if(search_bar){
     search_bar.addEventListener('keyup', function() {
         // console.log(search_bar.value);
-        fetch("assets/recommended.json")
+        fetch("./assets/recommended.json")
         .then(response => {
         return response.json();
         })
@@ -164,7 +164,7 @@ async function getRecipeInfo(recipe_name) {
 // Once page loads, render recommended recipe cards.
 function init() {
     console.log("loaded");
-    fetch("assets/recommended.json")
+    fetch("./assets/recommended.json")
     .then(response => {
     return response.json();
     })

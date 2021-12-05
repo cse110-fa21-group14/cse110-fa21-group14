@@ -1,4 +1,4 @@
-import {save} from '../../testing/backend src/backend.js';
+import {save} from '../testing/backend src/backend.js';
 /**
  * This function will get a random recipe from recommended recipes and display this
  * recipe as a custom recipe card on the home screen
@@ -102,7 +102,7 @@ function randomRecipe(data){
  */
 export function makeRecipeOTD() {
     console.log("loaded");
-    fetch("assets/recommended.json")
+    fetch("./assets/recommended.json")
     .then(response => {
     return response.json();
     })

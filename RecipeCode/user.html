@@ -9,9 +9,9 @@
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
         </style>
         <link rel="stylesheet" href="style.css">
-        <script src="../testing/frontend src/frontend.js" type="module"></script>
+        <script src="./testing/frontend src/frontend.js" type="module"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="assets/recipeCard.js" type="module"></script>
+        <script src="./assets/recipeCard.js" type="module"></script>
         <script>
             function popOpen(){
                 document.getElementById("popups").classList.add("show");
@@ -52,8 +52,8 @@
     <body>
         <header>
             <section id="main-bar">
-                <a href="index.html"><img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo"><h1 id="site-name">Recipe Chamber</h1></a>
-                <a href="recommended.html"><button id="recommended-recipes" class="float-right">Recommended Recipes</button></a>
+                <a href="./index.html"><img id="grouplogo" src="./grouplogo.PNG" alt="Group Logo"><h1 id="site-name">Recipe Chamber</h1></a>
+                <a href="./recommended.html"><button id="recommended-recipes" class="float-right">Recommended Recipes</button></a>
                 <button id="grocery-list-button" class="float-right" onclick="popOpen()">Grocery list</button>
             </section>
         </header>
@@ -63,12 +63,12 @@
                     <input type="text" id="search-bar" class="search-bar" placeholder="Search">
                     <button id="sort-button" class="margin-right" onclick="sf()">Sort</button>
                     <button id="clear-sort" class="margin-right">Reset</button>
-                    <a href="create-edit.html"><button id="add-button">Add</button></a>
+                    <a href="./create-edit.html"><button id="add-button">Add</button></a>
                 </article>
                 <h1 id="page-title">My Recipes</h1>
             </section>
             <section id="recipe-list" class="list"></section>
-            <a href="index.html"><button id="back-button"><span>&#8592</span> Back</button></a>
+            <a href="./index.html"><button id="back-button"><span>&#8592</span> Back</button></a>
         </main>
         
     <div id="popups">
