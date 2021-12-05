@@ -113,8 +113,8 @@ main{
   padding: 5vh 13vw 2vh;
 }
 
-main #sort-button{
-  margin-right: 20px;
+main .margin-right{
+  margin-right: 10px;
 }
 main button {
   padding: 5px;
@@ -222,7 +222,7 @@ main .create-edit-button{
 }
 
 main #page-title{
-  font-size: 8vh;
+  font-size: 7vh;
   margin-right: 1vw;
 }
 
