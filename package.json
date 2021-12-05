@@ -4,6 +4,7 @@
   "description": "[Our Team Page](admin/team.md)",
   "main": "index.js",
   "scripts": {
+    "build": "",
     "doc": "jsdoc -c jsdoc.json"
   },
   "repository": {
