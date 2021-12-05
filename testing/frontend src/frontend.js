@@ -383,7 +383,7 @@ export function createTagInput() {
 
     // defining the elements
     tagName.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -422,7 +422,7 @@ export function createIngredientInput() {
     ingredientName.setAttribute('type', 'text');
     ingredientAmount.setAttribute('type', 'text');
     ingredientUnit.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -464,7 +464,7 @@ export function createInstructionInput() {
     // defining the elements
     stepInput.setAttribute('rows', '2');
     stepInput.setAttribute('cols', '50');
-    removeButton.setAttribute('src', '../../Recipe Code/remove.png');
+    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification

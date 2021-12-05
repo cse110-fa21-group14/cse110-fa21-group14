@@ -51,7 +51,12 @@ class RecipeCard extends HTMLElement {
 
         //adding popup to card
         //card.setAttribute('onclick', 'recipePopUp()');
-        img.setAttribute('src', data.img);
+        if(data.img) {
+            img.setAttribute('src', data.img);
+        }
+        else {
+            img.setAttribute('src', './images/recipeImgFiller.png');
+        }
         img.setAttribute('alt', 'Recipe Image');
         card.appendChild(img);
 
