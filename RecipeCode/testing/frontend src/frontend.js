@@ -322,7 +322,7 @@ async function init() {
         let toDisplay;
         if(getAll()) {
             toDisplay = getAll().filter(function (item) {
-                return query.value == item.name.substring(0, query.value.length)
+                return item.name.toLowerCase().includes(query.value.toLowerCase());
             });
         }
         console.log(toDisplay);
