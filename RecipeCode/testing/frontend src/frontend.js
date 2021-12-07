@@ -138,6 +138,53 @@ async function init() {
 
     }
 
+
+    // (12/6/2021) ADDED NEW SUBSTRING SEARCH FUNCTION.
+    // Needs to 
+    if(query){
+        query.addEventListener('keyup', function() {
+            // console.log(search_bar.value);
+
+            if (query.value.length == 0) {
+                makeList();
+                return;
+            }
+
+            fetch("./assets/recommended.json")
+            .then(response => {
+            return response.json();
+            })
+            .then(data => {
+                const queryString = query.value;
+                let rec_list = document.getElementById('recipe-list');
+                //console.log(data);
+                while(rec_list.firstChild) {
+                    rec_list.removeChild(rec_list.firstChild);
+                }
+                if (!localStorage.getItem('recipeData')) {
+                    localStorage.setItem('recipeData', JSON.stringify([]))
+                }
+                var recipe_data = JSON.parse(localStorage.getItem('recipeData'));
+                console.log(recipe_data);
+                const filtered_recipes = recipe_data.filter((e) => {
+                    return e.name.toLowerCase().includes(queryString.toLowerCase());
+                });
+                console.log(filtered_recipes);
+                populateRecipePage(filtered_recipes);
+            });
+        });
+    }
+
+    function populateRecipePage(filtered_recipes){
+        // TODO: Needs to populate recipe page with "filtered recipes" via local storage.
+        // recipes are already filtered, just need to access local storage, clear the
+        // "recipe-list" of ALL of the recipes and only populate with the searched recipes.
+        // If search box is empty, will simply show entire list of user recipes.
+
+        
+    }
+    // end populate rec page.
+
     // let saveButton;
     // if(localStorage.getItem('editId') == null){
     //      saveButton = document.getElementById('save-recipe');
