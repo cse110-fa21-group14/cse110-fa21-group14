@@ -93,15 +93,25 @@ export function deleteRecipe(id) {
 }
 
 //adds the ingredients of a recipe to the grocery list
-export function addToGroceryList(recipe){
+export function addToGroceryList(recipe) {
     if (!localStorage.getItem('grocery')) {
         localStorage.setItem('grocery', JSON.stringify([]));
     }
     var groceryData = JSON.parse(localStorage.getItem('grocery'));
     for (var ing of recipe.ingredients['ingredients']) {
-        groceryData.push({name: ing.ingName, done: false});
-        localStorage.setItem('grocery', JSON.stringify(groceryData));
-        console.log (localStorage.getItem('grocery'));
+        let exist = false;
+        for (var curr of groceryData) {
+            if (ing.ingName.toLowerCase() == curr.name.toLowerCase()) {
+                exist = true
+                console.log(exist)
+                break;
+            }
+        }
+        if (!exist) {
+            groceryData.push({ name: ing.ingName, done: false });
+            localStorage.setItem('grocery', JSON.stringify(groceryData));
+            console.log(localStorage.getItem('grocery'));
+        }
     }
 }
 

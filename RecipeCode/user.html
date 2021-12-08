@@ -20,6 +20,8 @@
             function popClose(){
                 document.getElementById('grocery-list-popup').classList.remove('show');
                 document.getElementById("popups").classList.remove("show");
+                //added so grocery list could immediately update
+                location.reload();
             }
             function recipePopUp() {
             document.getElementById("popups").classList.add("show");
@@ -28,6 +30,8 @@
             function testClose() {
                 document.getElementById("recipe-popup").classList.remove("show");
                 document.getElementById("popups").classList.remove("show");
+                //added so grocery list could immediately update
+                location.reload();
             }
             function sf() {
                 document.getElementById("popups").classList.add("show");

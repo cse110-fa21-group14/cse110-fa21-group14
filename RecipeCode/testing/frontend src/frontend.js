@@ -137,14 +137,6 @@ async function init() {
 
 
     }
-
-    // let saveButton;
-    // if(localStorage.getItem('editId') == null){
-    //      saveButton = document.getElementById('save-recipe');
-    // }
-    // else{
-    //     saveButton = null;
-    // }
     let saveButton = document.getElementById('save-recipe');
     let newRecipe;
     if (saveButton) {
@@ -294,8 +286,15 @@ async function init() {
     }
 
     makeList();
-    makeGroceryList();
     makeTags();
+    makeGroceryList();
+
+    // let groceryListButton = document.getElementById('grocery-list-button');
+    // if (groceryListButton){
+    //     groceryListButton.addEventListener('click', (event) =>{
+    //         makeGroceryList();
+    //     });
+    // }
 
     $("input:checkbox").click(function () {
         change($(this).next("label").html())

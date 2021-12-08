@@ -42,8 +42,8 @@ function randomRecipe(data){
         const recipeIng = document.getElementById('ingredients');
         const recipeSteps = document.getElementById('instructions');
 
-        console.log(recipeName);
-        recipeName.innerHtml = recipe.name;
+        
+        recipeName.innerHTML = recipe.name;
         recipeImg.setAttribute('src', recipe.img);
         for (let i = 0; i < ingList.length; i++) {
             let newIng = document.createElement('li');
