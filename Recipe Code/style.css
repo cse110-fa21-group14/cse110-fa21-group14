@@ -65,43 +65,6 @@ main .home-button{
   height: 50px;
   width: 200px;
 }
-main #home-recipe-card{
-  width: 73.5vw;
-  border: 2px solid gray;
-  border-radius: 5px;
-  
-}
-main #home-recipe-card:hover{
-  cursor: pointer;
-}
-main #recipe-otd-title{
-  margin-bottom: 20px;
-}
-#home-recipe-card img{
-  object-fit: none;
-  height: 40vh;
-  width: 100%;
-}
-#home-recipe-text{
-  margin: 10px;
-  text-align: center;
-}
-
-#home-recipe-title{
-  font-size: 4.5vh;
-  font-weight: 600;
-}
-
-#home-cook-time{
-  float: right;
-  color: #ff6961;
-  padding-top: 0.5vh;
-  font-size: 4.5vh;
-}
-
-main #nav-buttons{
-  margin-top: 5vh;
-}
 
 /* Main (Recipes page) */
 
@@ -110,11 +73,11 @@ main #recipe-create {
 }
 
 main{
-  padding: 5vh 13vw 2vh;
+  margin: 5vh 13vw 5vh;
 }
 
-main .margin-right{
-  margin-right: 10px;
+main #sort-button{
+  margin-right: 20px;
 }
 main button {
   padding: 5px;
@@ -123,6 +86,7 @@ main button {
   color: white;
   height: 50px;
   width: 100px;
+  margin-top: 60px;
   font-size: 20px;
   border-radius: 5px;
 }
@@ -146,7 +110,16 @@ main #input-recipe-name {
   border-color: #ffe4e4;
 }
 
-main #file-preview{
+main #insert-image{
+  width: 20vw;
+  height: 20vh;
+
+  border: solid;
+  border-color: #c4c4c4;
+  overflow: hidden;
+}
+
+#insert-image img{
   width: 20vw;
   height: 20vh;
 
@@ -163,11 +136,7 @@ main .add-element{
   color: #ff6961;
 }
 
-main .add-element:hover{
-  text-decoration: underline;
-}
-
-main .tag-input {
+main #tag-input {
   width: 16vw;
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -176,7 +145,7 @@ main .tag-input {
   border-radius: 10px;
 }
 
-main .ingredient-input {
+main #ingredient-input {
   width: 48vw;
   display: grid;
   grid-template-columns: 3fr 3fr 3fr 1fr;
@@ -195,9 +164,7 @@ main .input-elements{
   border-radius: 10px;
 }
 
-/* Instruction Input */
-
-main .instruction-input {
+main #step-input-box {
   padding-left: 5px;
 
   background-color: #ffe4e4;
@@ -205,7 +172,7 @@ main .instruction-input {
   border-color: #ffe4e4;
 }
 
-main .remove-step{
+main #remove-step{
   width: 39px;
   height: 39px;
   background-color: #ffe4e4;
@@ -221,38 +188,68 @@ main .create-edit-button{
   margin: 1px;
 }
 
+main .float-right{
+  float: right;
+}
+
 main #page-title{
-  font-size: 7vh;
-  margin-right: 1vw;
+  font-size: 90px;
+  float: left;
 }
-
-main .move-lower{
-  position: relative;
-  top: 10px;
-}
-
-main .search-bar{
+main #search-bar{
+  margin-top: 60px;
   margin-right: 20px;
-  height: 5vh;
+  height: 35px;
   padding: 5px;
   font-size: 20px;
 }
+main #recipe-page-info{
+  display: inline-flexbox;
+  position: relative;
+  bottom: 20px;
+}
 
 main #back-button{
-  position: absolute;
-  bottom: 2vh;
-  left: 1vw;
+  position: fixed;
+  bottom: 20px;
 }
 
 /* Test Recipe Card */
-main .list{
-  margin: 2vh 0vw 0vh;
-  padding: 2vh 2vw 0vh;
-  height: 64vh;
+main #recipe-list{
+  margin: auto;
+}
+main #recipe-list article{
+  display: inline-block;
+  margin-left: 50px;
+  width: 20vw;
+  height: 45vh;
   
-  border: thick double;
-  border-color: #ff6961;
-  border-radius: 10px;
+}
+
+main article img{
+  object-fit: contain;
+  height: 26vh;
+  
+}
+main #recipe-card-test{
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+main #recipe-text{
+  margin: 10px;
+  
+}
+
+main .recipe-title{
+  font-size: 30px;
+  font-weight: 600;
+}
+
+main .cook-time{
+  float: right;
+  color: #ff6961;
+  padding-top: 0.5vh;
 }
 
 /* Popups */
@@ -263,7 +260,7 @@ main .list{
   top: 0vh; left: 0vw;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(256,256,256,0.8);
+  background-color: rgb(256,256,256,0.2);
 }
 
 #popups.show{
@@ -282,16 +279,16 @@ main .list{
 
 #popups #grocery-list-popup{
   width: 40vw;
-  height: 86vh;
+  height: 90vh;
   overflow: auto;
   background-color: White;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
   border-radius: 1.5%;
-  padding: 2vh 2vw;
+  padding: 20px;
 }
 
 #popups .recipe-pages{
@@ -403,19 +400,13 @@ section .delete-button{
   margin: 0vh 4vw;
 }
 
-section #tags-header{
+section #recipe-tags{
   position: absolute;
   top: 22vh;
   left: 68vw;
-}
-
-section #recipe-tags{
-  position: absolute;
-  top: 28vh;
-  left: 68vw;
   width: 20vw;
   height: 58vh;
-  padding: 1vh 0vw;
+  padding: 1vh 1vw 1vh;
 
   overflow: auto;
 }
@@ -428,13 +419,6 @@ section .tag{
 
   border-color: #ff6961;
   border-radius: 10px;
-}
-
-section #recipe-image{
-  width: 20vw;
-  height: 20vh;
-
-  object-fit: contain;
 }
 
 div .float-right{
@@ -469,8 +453,4 @@ section .sort{
 
 section #tags{
   margin: 10px;
-}
-
-#tags .selected{
-  background-color: #b05c5c;
 }
