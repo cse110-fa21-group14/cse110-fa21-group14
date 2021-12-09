@@ -28,6 +28,7 @@ header .float-right {
   float: right;
   margin-right: 2vw;
 }
+
 header #site-name {
   color: white;
   font-size: 4.5vmin;
@@ -79,18 +80,22 @@ main #home-recipe-card {
   border-radius: 1vmin;
   box-shadow: 7px 7px 4px #e3e3e3, -7px -7px 4px #ababab;
 }
+
 main #home-recipe-card:hover {
   cursor: pointer;
 }
+
 main #recipe-otd-title {
   margin-bottom: 2vh;
   font-size: 4.5vmin;
 }
+
 #home-recipe-card img {
   object-fit: none;
   height: 40vh;
   width: 100%;
 }
+
 #home-recipe-text {
   margin: 1vmin;
   text-align: center;
@@ -136,6 +141,7 @@ main button {
   border-radius: 1vmin;
   overflow: hidden;
 }
+
 main button:hover {
   cursor: pointer;
   background-color: white;
@@ -178,21 +184,21 @@ main .add-element:hover {
 }
 
 main .tag-input {
-  width: 16vw;
+  width: 15vw;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 9vw 3vw;
 
   background-color: #ff6961;
   border-radius: 10px;
 }
 
 main .ingredient-input {
-  width: 48vw;
+  width: 42vw;
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr 1fr;
+  grid-template-columns: 12vw 12vw 12vw 4vw;
 
   background-color: #ffe4e4;
-  border-radius: 10px;
+  border-radius: 2vmin;
 }
 
 main .input-spacing {
@@ -286,6 +292,8 @@ main .list {
   position: absolute;
   padding: 2vh 2vw 2vh;
 
+  font-size: 2.5vmin;
+
   border-radius: 1vw;
 
   overflow: auto;
@@ -361,18 +369,18 @@ main .list {
 /* Recipe Page */
 
 section .close-button {
-  font-size: bigger;
-  width: 30px;
-  height: 30px;
+  width: 5vmin;
+  height: 5vmin;
   background-color: #ff6961;
   color: white;
 
   border-color: #ff6961;
-  border-radius: 15px;
+  border-radius: 2.5vmin;
+  overflow: hidden;
 }
 
 .line-spacing {
-  margin: 10px 0px;
+  margin: 1.5vh 0vw;
 }
 
 section #grocery-list-header {
@@ -397,11 +405,12 @@ padding-bottom: 10px;
 } */
 
 section .recipe-button {
-  padding: 7px 10px;
+  padding: 1vh 1.5vw;
   background-color: #ffe4e4;
+  font-size: 2vmin;
 
   border-color: #ffe4e4;
-  border-radius: 10px;
+  border-radius: 1vmin;
 }
 
 section #edit-recipe {
@@ -468,7 +477,6 @@ li {
 }
 
 section #tracker {
-  font-size: smaller;
   color: red;
 }
 
@@ -477,15 +485,15 @@ section #ingredients-header {
 }
 
 section #sort-by {
-  margin: 15px;
+  margin: 2vmin;
 }
 
 section .sort {
-  margin-right: 10px;
+  margin-right: 1vw;
 }
 
 section #tags {
-  margin: 10px;
+  margin: 1vmin;
 }
 
 #tags .selected {
