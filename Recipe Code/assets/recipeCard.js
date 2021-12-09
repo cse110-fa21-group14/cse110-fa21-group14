@@ -24,6 +24,11 @@ class RecipeCard extends HTMLElement {
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+            @media (orientation: portrait){
+                article{
+                    width: 30vw;
+                }
+            }
             article:hover{
                 cursor: pointer;
             }
@@ -37,7 +42,7 @@ class RecipeCard extends HTMLElement {
                 margin: 10px;
             }
             .recipe-title{
-                font-size: 3vh;
+                font-size: 3vmin;
                 font-weight: 600;
             }
         `;
