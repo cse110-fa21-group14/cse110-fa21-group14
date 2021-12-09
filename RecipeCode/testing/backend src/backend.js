@@ -140,16 +140,12 @@ function checkedOff(){
 }
 
 /*
- * sort all the recipes according to a given order 
- *
- * method:
- * 'least-made': least made (not working)
- * 'most-made': most made (not working)
- * 'alphabetical': alphabetical
- * 'newest': newest date of creation
- * 'oldest': oldest date of creation
+ * This function accept a array and a method to sort the array  
+ * and returns a sorted array according to the given order
  * 
- * @return: a sorted list of all recipe according to the designateed method
+ * @param {Array} recipes An array of recipe objects
+ * @param {string} method The method used to sort the Array
+ * @returns {Array} a sorted list of all recipe according to the designateed method
  */
 export function sortAll(recipes, method) {
     console.log(method)
@@ -209,6 +205,14 @@ export function sortAll(recipes, method) {
     }
 }
 
+/*
+ * This function accept a recipe object and a list of tags  
+ * and returns whether all the tags are contained in the tag attribute of the object
+ * 
+ * @param {Object} recipe An recipe object
+ * @param {Array} tagList Array of tags to search for
+ * @returns {boolean} whether the recipe object contains all the tags
+ */
 function filter(recipe,tagList){
     if(recipe.tags == undefined){
         return false;
@@ -224,6 +228,14 @@ function filter(recipe,tagList){
     return true;
 }
 
+/*
+ * This function accept an Array of recipe object and a list of tags  
+ * and returns an array containing all the recipes that contains all given tags
+ * 
+ * @param {Array} recipes An Array of recipe objects
+ * @param {Array} tagList Array of tags to search for
+ * @returns {Array} An Array of recipe objects
+ */
 export function filterRecipes(recipes,tagList){
     if(tagList.length == 0){
         return recipes;
