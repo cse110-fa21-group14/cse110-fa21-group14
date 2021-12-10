@@ -307,7 +307,7 @@ async function imgToURL(imgBase64) {
                 resolve(result.data.link);
             },
             error: function (err) {
-                reject(err)
+//                 reject(err)
             }
         });
     });
