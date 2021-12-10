@@ -6,7 +6,7 @@
   "scripts": {
     "build": "",
     "doc": "jsdoc -c jsdoc.json",
-    "test": "jest --env=puppeteer"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "jest": {
     "collectCoverage": true,
+    "preset": "jest-puppeteer",
     "coverageReporters": ["lcov"],
     "transformIgnorePatterns": ["/node_modules"]
   }
