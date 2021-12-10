@@ -233,7 +233,7 @@ import {
   save,
   addToGroceryList,
   imgToURL
-} from 'backend.js'
+} from 'RecipeChamber/scripts/backend.js'
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
