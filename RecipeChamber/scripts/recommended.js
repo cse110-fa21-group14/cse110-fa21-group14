@@ -7,7 +7,7 @@ const search_bar = document.getElementById('recommended-search-bar');
 const search_button = document.getElementById('search-button');
 
 // Spoonacular API Key
-const API_KEY = "684bb3f58f5441e298a4431dfa0575e6";
+const API_KEY = "66cd50fe0f114b0595c7b41742364a89";
 
 
 /**
