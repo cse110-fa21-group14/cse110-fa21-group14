@@ -1,4 +1,32 @@
-import {save} from './backend.js';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: RecipeChamber/scripts/recommended.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: RecipeChamber/scripts/recommended.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {save} from './backend.js';
 window.addEventListener('DOMContentLoaded', init);
 // Document method which refers to search text box.
 const search_bar = document.getElementById('recommended-search-bar');
@@ -17,7 +45,7 @@ const API_KEY = "684bb3f58f5441e298a4431dfa0575e6";
  */
 export function makeRecList(data) {
     let recs = data;
-    for (let i = 0; i < recs.length; i++) {
+    for (let i = 0; i &lt; recs.length; i++) {
         let newCard = document.createElement('recipe-card');
         newCard.setAttribute('onclick', 'recommendedPopUp()');
         //console.log(newCard.querySelector('recipe-text'));
@@ -38,7 +66,7 @@ export function makeRecList(data) {
                 let ingredientList = document.getElementById('ingredients');
                 ingredientList.innerHTML = '';
                 let itemList = response.ingredients;
-                for (let i = 0; i < itemList.length; i++) {
+                for (let i = 0; i &lt; itemList.length; i++) {
                     let newIng = document.createElement('li');
                     newIng.innerHTML = `${itemList[i].amount.us.value} ${itemList[i].amount.us.unit} of ${itemList[i].name}`;
                     ingredientList.appendChild(newIng);
@@ -55,7 +83,7 @@ export function makeRecList(data) {
                 instructionList.innerHTML = '';
                 let itemList = response[0].steps; // backend needs to fix steps for recipe object
                 
-                for(let i = 0; i < itemList.length; i++) {
+                for(let i = 0; i &lt; itemList.length; i++) {
                     let newInst = document.createElement('li');
                     newInst.innerHTML = `${itemList[i].step}`;
                     instructionList.appendChild(newInst);
@@ -82,14 +110,14 @@ export function makeRecList(data) {
                         created: new Date(date),
                         makeCount: 0
                     }
-                    for (let i = 0; i < ingList.length; i++) {
+                    for (let i = 0; i &lt; ingList.length; i++) {
                         newRecipe.ingredients['ingredients'].push({
                             ingName: ingList[i]['name'],
                             amount: ingList[i]['amount'],
                             unit: ingList[i]['unit'],
                         });
                     }
-                    for (let i = 0; i < instList.length; i++) {
+                    for (let i = 0; i &lt; instList.length; i++) {
                         newRecipe.steps.push(instList[i]);
                     }
                     try {
@@ -147,7 +175,7 @@ if(search_bar){
  * id, title, image
  */
 async function getRecipeData(recipe_name) {
-    const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${recipe_name}&number=5`).then((response1) => {return response1});
+    const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&amp;query=${recipe_name}&amp;number=5`).then((response1) => {return response1});
     return response.json();
 }
 
@@ -214,7 +242,7 @@ async function getRecipeInfo(recipe_name) {
     // List of search results to be populated.
     let SEARCH_OBJ = {"search": []};
     // Iterate and parse information.
-    for (let i = 0; i < recipes.length; i++) {
+    for (let i = 0; i &lt; recipes.length; i++) {
        SEARCH_OBJ.search.push({"id": recipes[i].id, "name": recipes[i].title, "img": recipes[i].image, "ingList": [], instList: []});
     }
     return SEARCH_OBJ;
@@ -233,3 +261,26 @@ function init() {
     });
 }
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createIngredientInput">createIngredientInput</a></li><li><a href="global.html#createInstructionInput">createInstructionInput</a></li><li><a href="global.html#createTagInput">createTagInput</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getRecipeData">getRecipeData</a></li><li><a href="global.html#getRecipeInfo">getRecipeInfo</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#makeRecipeOTD">makeRecipeOTD</a></li><li><a href="global.html#makeRecList">makeRecList</a></li><li><a href="global.html#randomRecipe">randomRecipe</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#word">word</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 08:15:24 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

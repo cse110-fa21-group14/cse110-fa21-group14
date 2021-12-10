@@ -34,18 +34,6 @@ export function getAll() {
     return (JSON.parse(localStorage.getItem('recipeData')));
 }
 
-//prepare image link for export when uploaded 
-// $("#input-file").change(function () {
-//     if (this.files && this.files[0]) {
-//         var FR = new FileReader();
-//         FR.onload = function (e) {
-//             console.log(e.target.result);
-//             var imgBase64 = e.target.result
-//             imgToURL(imgBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""));
-//         };
-//         FR.readAsDataURL(this.files[0]);
-//     }
-// });
 export async function imgToURL(imgBase64) {
     return new Promise(function (resolve, reject) {
         $.ajax({
@@ -131,11 +119,14 @@ export function groceryList (){
 function checkedOff(){
     var flag = true;
     var groceryData = JSON.parse(localStorage.getItem('grocery'));
-    for (var ing of groceryData) {
-        if (!ing.done) {
-            flag = false;
+    if(groceryData) {
+        for (var ing of groceryData) {
+            if (!ing.done) {
+                flag = false;
+            }
         }
     }
+    
     return flag;
 }
 
