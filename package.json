@@ -31,8 +31,6 @@
   "jest": {
     "collectCoverage": true,
     "coverageReporters": ["lcov"],
-    "transformIgnorePatterns": ["/node_modules"],
-    "preset": "jest-puppeteer",
-    "verbose": true
+    "transformIgnorePatterns": ["/node_modules"]
   }
 }
