@@ -1,3 +1,4 @@
+
 import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList, filterRecipes } from '../backend src/backend.js';
 import { makeRecList } from '/Recipe Code/assets/recommended.js';
 import { makeRecipeOTD } from '/Recipe Code/assets/recipeOTD.js';
@@ -207,6 +208,7 @@ async function init() {
             location.reload();
         });
     }
+
     if (sort_close) {
         sort_close.addEventListener('click', (event) => {
             localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
@@ -329,6 +331,7 @@ async function init() {
         return toDisplay;
     }
 };
+
 
 const editButton = document.getElementById('edit-recipe');
 
@@ -546,3 +549,10 @@ if (slider){
         }
     });
 }
+
+function sum2(a, b) {
+    return a + b;
+  }
+
+module.exports = {init, makeList, sum2}
+

@@ -46,6 +46,7 @@ export function getAll() {
 //         FR.readAsDataURL(this.files[0]);
 //     }
 // });
+
 export async function imgToURL(imgBase64) {
     return new Promise(function (resolve, reject) {
         $.ajax({
@@ -66,7 +67,6 @@ export async function imgToURL(imgBase64) {
             }
         });
     });
-
 }
 
 //store the recipe object in localstorage
@@ -226,3 +226,10 @@ export function filterRecipes(recipes,tagList){
     }
     return res;
 }
+
+function sum2(a, b) {
+    return a + b;
+  }
+
+//module.exports = {sum2, saveToLocalStorage, deleteRecipe, save, imgToURL, getAll, get}
+

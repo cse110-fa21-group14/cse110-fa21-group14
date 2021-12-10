@@ -96,7 +96,6 @@ function lookup() {
 }
 query.addEventListener('keyup', lookup);
 
-
 const clearfunc = () => {
     localStorage.clear()
     location.reload();
