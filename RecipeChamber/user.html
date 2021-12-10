@@ -86,18 +86,22 @@
             <button type="button" id="delete-recipe" class="float-right recipe-button">Delete Recipe</button>
             <h3 id="tags-header" class="float-right line-spacing">Tags</h3>
             <div id="recipe-tags" class="float-right"></div>
-            <h2 id="recipe-name" class="line-spacing">Recipe Name</h2>
-            <p id="tracker" class="line-spacing">You have made this <span id="tracker-count">X</span> times, most recent
-                was on <span id="tracker-date">MM/DD/YYYY</span>.</p>
-            <img id="recipe-image" class="line-spacing" alt="Image of Dish"> <br>
-            <h3 id="ingredients-header" class="line-spacing">Ingredients</h3>
-            <span> <input id="slider1" type="range" min="0" max="4" step="1"> <span id='changenum'>original</span> 
-            | Number of servings: <span id="serving-value"></span></span>
-            <ul id="ingredients" class="line-spacing"></ul>
-            <button id="add-grocery" class="line-spacing recipe-button">Add to Grocery List</button>
-            <h3 id="instructions-header" class="line-spacing">Instructions</h3>
-            <ol id="instructions" class="line-spacing"></ol>
-            <button id="track" class="line-spacing recipe-button">Just Made</button>
+            <div id="recipe-details">
+                <h2 id="recipe-name" class="line-spacing">Recipe Name</h2>
+                <p id="tracker" class="line-spacing">You have made this <span id="tracker-count">X</span> times, most recent
+                    was on <span id="tracker-date">MM/DD/YYYY</span>.</p>
+                <img id="recipe-image" class="line-spacing" alt="Image of Dish"> <br>
+                <h3 id="ingredients-header" class="line-spacing">Ingredients</h3>
+                <div id="scaling">
+                    <input id="slider1" type="range" min="0" max="4" step="1"> <span id='changenum'>original</span> 
+                    | Number of servings: <span id="serving-value"></span>
+                </div>
+                <ul id="ingredients" class="line-spacing"></ul>
+                <button id="add-grocery" class="line-spacing recipe-button">Add to Grocery List</button>
+                <h3 id="instructions-header" class="line-spacing">Instructions</h3>
+                <ol id="instructions" class="line-spacing"></ol>
+                <button id="track" class="line-spacing recipe-button">Just Made</button>
+            </div>
         </section>
         <section id="sort-filter-popup" class="popup">
             <button id="sort-filter-close" class="float-right line-spacing close-button" onclick="sfClose()">X</button>
