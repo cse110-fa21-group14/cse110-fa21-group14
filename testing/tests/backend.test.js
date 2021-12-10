@@ -224,3 +224,222 @@ test('sortAll test 1', () =>{
 test('sortAll test 2', () =>{
   expect(sortAll(sortAlltestArray2,'newest')).toStrictEqual(sortAlltarget2);
 })
+
+import { 
+  get,
+  getAll,
+  deleteRecipe,
+  saveToLocalStorage,
+  save,
+  addToGroceryList,
+  imgToURL
+} from 'backend.js'
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
+global.$ = $
+jest.useFakeTimers()
+const mockedRecipies = [
+  {
+    id: 1,                                                
+    name: 'Recipie1',                                           
+    img: 'https://placehold.it/200/300',                                            
+    ingredients: {                                          
+      proportion: 2,
+      ingredients: [
+        {
+          ingName: 'ingredient1',
+          amount: 100,
+          unit: '10'
+        }
+      ],
+    },
+    steps: 2,                                     
+    serving: 2,                                           
+    tags: ['tag1', 'tag2'],                                         
+    made: `${new Date()}`,
+    makeCount: 2,                     
+    created: `${new Date()}`
+  },
+  {
+    id: 2,                                                
+    name: 'Recipie2',                                           
+    img: 'https://placehold.it/200/300',                                            
+    ingredients: {                                          
+      proportion: 2,
+      ingredients: [
+        {
+          ingName: 'ingredient2',
+          amount: 200,
+          unit: '20'
+        }
+      ],
+    },
+    steps: 2,                                     
+    serving: 2,                                           
+    tags: ['tag1', 'tag2'],                                         
+    made: `${new Date()}`,
+    makeCount: 2,                     
+    created: `${new Date()}`
+  }
+]
+/** mock local storage */
+const fakeLocalStorage = (function() {
+  let store = {
+    'recipeData': JSON.stringify(mockedRecipies)
+  };
+  return {
+    getItem: function(key) {
+      return store[key] || null;
+    },
+    setItem: function(key, value) {
+      store[key] = value.toString();
+    },
+    removeItem: function(key) {
+      delete store[key];
+    },
+    clear: function() {
+      store = {};
+    },
+    ...store
+  };
+})();
+Object.defineProperty(global, 'localStorage', {
+  value: fakeLocalStorage
+});
+// const fakeAjax = (resolve, reject) => ({
+//   url: 'https://api.imgur.com/3/image',
+//   headers: {
+//     Authorization: 'Client-ID ABC'
+//   },
+//   type: 'POST',
+//   data: {
+//     image: imgBase64,
+//     type: 'base64'
+//   },
+//   success: function (result) {
+//     resolve(result.data.link);
+//   },
+//   error: function (err) {
+//     reject(err)
+//   }
+// })
+// /** mock ajax */
+// const $ = {}
+// $.ajax = jest.fn().mockImplementation(() => {
+//   return new Promise(fakeAjax);
+// });
+describe('backend', () => {
+  it('should returns recipe object given recipe name or id', () => {
+    const data = mockedRecipies[0]
+    const result = get(data.name)
+    expect(result).toBeTruthy()
+    expect(result.name).toEqual(data.name)
+  })
+  it('should return JSON of all recipe objects', () => {
+    const data = getAll()
+    expect(data).toEqual(mockedRecipies)
+    expect(data).toHaveLength(mockedRecipies.length)
+  })
+  it('should delete recipe given id in localstorage', () => {
+    const data = mockedRecipies[0]
+    deleteRecipe(data.id)
+    const updatedData = JSON.parse(
+      fakeLocalStorage.getItem('recipeData')
+    )
+    expect(updatedData).toHaveLength(mockedRecipies.length - 1)
+  })
+  it('should save the data to local storage', () => {
+    fakeLocalStorage.clear()
+    const clearedData = JSON.parse(
+      fakeLocalStorage.getItem('recipeData')
+    )
+    expect(clearedData).toEqual(null)
+    saveToLocalStorage(mockedRecipies)
+    const updatedData = JSON.parse(
+      fakeLocalStorage.getItem('recipeData')
+    )
+    expect(updatedData).toHaveLength(mockedRecipies.length)
+  })
+  it('should add the data to local storage', () => {
+    const newItem = JSON.parse(
+      JSON.stringify({}, {
+        id: 3,
+        ...mockedRecipies[0]
+      })
+    )
+    save(newItem)
+    const updatedData = JSON.parse(
+      fakeLocalStorage.getItem('recipeData')
+    )
+    expect(updatedData).toHaveLength(mockedRecipies.length + 1)
+  })
+  it('should add the ingredients of a recipe to the grocery list', () => {
+    const data = {
+      ...mockedRecipies[0]
+    }
+    addToGroceryList(data)
+    const updatedData = JSON.parse(
+      fakeLocalStorage.getItem('grocery')
+    )
+    expect(updatedData).toHaveLength(1)
+  })
+  it('should get data from ajax call (resolved)', () => {
+    let options
+    const ajaxSpy = jest.spyOn($, 'ajax')
+      .mockImplementation((obj) => {
+        options = obj
+      });
+    const base64Image = 'abc'
+    const response = imgToURL(base64Image)
+    expect(response).toBeInstanceOf(Promise)
+    const mockedResult = {
+      data: {
+        link: 'abc'
+      }
+    }
+    options.success(mockedResult)
+    expect(response).resolves.toBeDefined()
+    expect(ajaxSpy).toHaveBeenCalledWith({
+      url: 'https://api.imgur.com/3/image',
+      headers: {
+        Authorization: 'Client-ID 883b97261443d3c'
+      },
+      type: 'POST',
+      data: {
+        image: base64Image,
+        type: 'base64'
+      },
+      success: expect.any(Function),
+      error: expect.any(Function)
+    })
+  })
+  it('should get data from ajax call (rejected)', () => {
+    let options
+    const ajaxSpy = jest.spyOn($, 'ajax')
+      .mockImplementation((obj) => {
+        options = obj
+      });
+    const base64Image = 'abc'
+    const response = imgToURL(base64Image)
+    expect(response).toBeInstanceOf(Promise)
+    const mockedError = {
+      status: 404
+    }
+    options.error(mockedError)
+    expect(response).resolves.not.toBeDefined()
+    expect(ajaxSpy).toHaveBeenCalledWith({
+      url: 'https://api.imgur.com/3/image',
+      headers: {
+        Authorization: 'Client-ID 883b97261443d3c'
+      },
+      type: 'POST',
+      data: {
+        image: base64Image,
+        type: 'base64'
+      },
+      success: expect.any(Function),
+      error: expect.any(Function)
+    })
+  })
+})
