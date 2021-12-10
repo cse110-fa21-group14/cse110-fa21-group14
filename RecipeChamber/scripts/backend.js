@@ -18,7 +18,12 @@
     }
 */
 
-//returns recipe object given recipe name or id
+/*
+ * This function returns recipe object given recipe name or id
+ * 
+ * @param {string} name or id of recipe to retreive
+ * @returns {Object}  recipe object
+ */
 export function get(key) {
     const data = JSON.parse(localStorage.getItem('recipeData'))
     var result = data.filter(function (item) {
@@ -28,12 +33,22 @@ export function get(key) {
     return result;
 }
 
-//returns JSON of all recipe objects
+/*
+ * This function returns array of all recipe objects
+ * 
+ * @returns {Array} An array of recipe objects
+ */
 export function getAll() {
     //console.log(JSON.parse(localStorage.getItem('recipeData')));
     return (JSON.parse(localStorage.getItem('recipeData')));
 }
 
+/*
+ * This function accepts converts an image (base64) to a (imgur) url link.
+ * 
+ * @param {string} image in base64 format
+ * @returns {string} imgur image url
+ */
 export async function imgToURL(imgBase64) {
     return new Promise(function (resolve, reject) {
         $.ajax({
@@ -57,13 +72,17 @@ export async function imgToURL(imgBase64) {
 
 }
 
-//store the recipe object in localstorage
+/*
+ * This function stores/updates the recipe object in localstorage
+ * 
+ * @param {Object} an array object
+ */
 export function save(recipe) {
     if (!localStorage.getItem('recipeData')) {
         localStorage.setItem('recipeData', JSON.stringify([]))
     }
     if (get(recipe.id)) {
-        deleteRecipe(id)
+        deleteRecipe(recipe.id)
     }
     var data = JSON.parse(localStorage.getItem('recipeData'))
     data.push(recipe)
@@ -71,16 +90,31 @@ export function save(recipe) {
     let imgURL = ''
     console.log(localStorage.getItem('recipeData'))
 }
+
+/*
+ * A helper function to stringify and save/update recipes 
+ * data into local storage
+ * 
+ * @param {Array} Array of recipes object
+ */
 export function saveToLocalStorage(data) {
     localStorage.setItem('recipeData', JSON.stringify(data))
 }
 
-//delete recipe given id in localstorage
+/*
+ * This function deletes a recipe given its id from localstorage
+ * 
+ * @param {string} id of the recipe
+ */
 export function deleteRecipe(id) {
     saveToLocalStorage(getAll().filter(recipe => id != recipe.id));
 }
 
-//adds the ingredients of a recipe to the grocery list
+/*
+ * This function adds unique ingredients of a recipe to the grocery list
+ * 
+ * @param {Object} A recipe object
+ */
 export function addToGroceryList(recipe) {
     if (!localStorage.getItem('grocery')) {
         localStorage.setItem('grocery', JSON.stringify([]));
@@ -103,19 +137,24 @@ export function addToGroceryList(recipe) {
     }
 }
 
-/* for frontend.js:
-    to check: <checkbox>.addAttriute("checked")
-    to uncheck: <checkbox>.removeAttribute("checked")
-*/
-
-//returns grocery list as [{name: string, done: boolean}]
+/*
+ * This function returns grocery list array from local storage when called
+ * 
+ * @returns {Array} return grocery list structure [{name: string, done: boolean}]
+ */
+//returns grocery list as 
 export function groceryList (){
      if (checkedOff()){
         localStorage.setItem('grocery', JSON.stringify([]));
      }
     return JSON.parse(localStorage.getItem('grocery'))
 }
-//helper function to see if the entire grocery list is checked off
+
+/*
+ * helper function to see if the entire grocery list is checked off
+ * 
+ * @returns {boolean} whether or not the grocery list is checked off
+ */
 function checkedOff(){
     var flag = true;
     var groceryData = JSON.parse(localStorage.getItem('grocery'));
