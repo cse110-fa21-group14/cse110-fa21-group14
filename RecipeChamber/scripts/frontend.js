@@ -313,6 +313,7 @@ async function init() {
     $("input:checkbox").click(function () {
         change($(this).next("label").html())
     });
+    /* This function updates the grocery list once it is all checked */
     function change(name) {
         let currIngs = groceryList();
         for (var ing of currIngs) {
@@ -331,6 +332,7 @@ async function init() {
     {
         query.addEventListener('keyup', makeList);
     }
+    /* This fucntion searches the recipe cards by name and returns a lsit with that string */
     function search() {
         let toDisplay;
         if(getAll()) {
@@ -519,8 +521,7 @@ if (addInstruction) {
     });
 }
 
-
-
+/* This is the code that makes scale conversion work on the create/edit page*/
 let values = ['quarter (1/4)', 'half (1/2)', 'original', 'double (2x)', 'quadruple (4x)'];
 const slider = document.getElementById('slider1');
 const num = document.getElementById('changenum');
