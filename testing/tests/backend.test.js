@@ -1,4 +1,4 @@
-const API_KEY = "684bb3f58f5441e298a4431dfa0575e6";
+const API_KEY = "81fd56bfaac84f9c985e6c7474c02d60";
 //sample test
 test('adds 1 + 2 to equal 3', () => {
     expect(1 + 2).toBe(3);
@@ -93,7 +93,6 @@ function sortAll(recipes, method) {
   }
 }
 
-const fetch = require("node-fetch");
 /**
  * 
  * @param {string} recipe_name
