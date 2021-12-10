@@ -240,7 +240,7 @@ test('sortAll test 2', () =>{
  * @param {string} name or id of recipe to retreive
  * @returns {Object}  recipe object
  */
-export function get(key) {
+function get(key) {
     const data = JSON.parse(localStorage.getItem('recipeData'))
     var result = data.filter(function (item) {
         return (key == item.name || key == item.id)
