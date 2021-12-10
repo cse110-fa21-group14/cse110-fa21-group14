@@ -1,7 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: RecipeChamber/testing/frontend src/frontend.js</title>
 
-import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList, filterRecipes } from '../backend src/backend.js';
-import { makeRecList } from '/Recipe Code/assets/recommended.js';
-import { makeRecipeOTD } from '/Recipe Code/assets/recipeOTD.js';
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: RecipeChamber/testing/frontend src/frontend.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList, filterRecipes } from '../backend src/backend.js';
+import { makeRecList } from '../../assets/recommended.js';
+import { makeRecipeOTD } from '../../assets/recipeOTD.js';
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tags-inputted');
 const name = document.getElementById('input-recipe-name');
@@ -32,7 +59,7 @@ var imgURL;
  */
 async function init() {
     $("#input-file").change(function () {
-        if (this.files && this.files[0]) {
+        if (this.files &amp;&amp; this.files[0]) {
             var FR = new FileReader();
             FR.onload = function (e) {
                 console.log(e.target.result);
@@ -64,7 +91,7 @@ async function init() {
             recipes = filterRecipes(recipes, filterTags);
             recipes = sortAll(recipes, sortingMethod);
             localStorage.setItem('tags', JSON.stringify({}));
-            if (recipes && recipeList) {
+            if (recipes &amp;&amp; recipeList) {
                 for (const [key, value] of Object.entries(recipes)) {
                     let newCard = document.createElement('recipe-card');
                     newCard.setAttribute('onclick', 'recipePopUp()');
@@ -85,7 +112,7 @@ async function init() {
                             tagsSection.appendChild(noTags);
                         }
                         else {
-                            for (let i = 0; i < tagsList.length; i++) {
+                            for (let i = 0; i &lt; tagsList.length; i++) {
                                 let newTag = document.createElement('p');
                                 newTag.classList.add('tag');
                                 newTag.innerHTML = ` ${tagsList[i]} `;
@@ -116,7 +143,7 @@ async function init() {
                         let ingredientList = document.getElementById('ingredients');
                         ingredientList.innerHTML = '';
                         let ingList = recipe.ingredients['ingredients'];
-                        for (let i = 0; i < ingList.length; i++) {
+                        for (let i = 0; i &lt; ingList.length; i++) {
                             let newIng = document.createElement('li');
                             newIng.innerHTML = `${ingList[i]['amount']} ${ingList[i]['unit']} of ${ingList[i]['ingName']}`;
                             ingredientList.appendChild(newIng);
@@ -125,7 +152,7 @@ async function init() {
                         let instructionList = document.getElementById('instructions');
                         instructionList.innerHTML = '';
                         let instList = recipe.steps;
-                        for (let i = 0; i < instList.length; i++) {
+                        for (let i = 0; i &lt; instList.length; i++) {
                             let newInst = document.createElement('li');
                             newInst.innerHTML = instList[i];
                             instructionList.appendChild(newInst);
@@ -138,14 +165,6 @@ async function init() {
 
 
     }
-
-    // let saveButton;
-    // if(localStorage.getItem('editId') == null){
-    //      saveButton = document.getElementById('save-recipe');
-    // }
-    // else{
-    //     saveButton = null;
-    // }
     let saveButton = document.getElementById('save-recipe');
     let newRecipe;
     if (saveButton) {
@@ -166,17 +185,17 @@ async function init() {
                 created: new Date(date),
                 makeCount: 0
             }
-            for (let i = 0; i < ingredients.children.length; i++) {
+            for (let i = 0; i &lt; ingredients.children.length; i++) {
                 newRecipe.ingredients['ingredients'].push({
                     ingName: ingredients.children[i].children[0].value,
                     amount: ingredients.children[i].children[1].value,
                     unit: ingredients.children[i].children[2].value,
                 });
             }
-            for (let i = 0; i < steps.children.length; i++) {
+            for (let i = 0; i &lt; steps.children.length; i++) {
                 newRecipe.steps.push(steps.children[i].firstChild.value);
             }
-            for (let i = 0; i < tags.children.length; i++) {
+            for (let i = 0; i &lt; tags.children.length; i++) {
                 console.log(tags.children[i].firstChild);
                 newRecipe.tags.push(tags.children[i].firstChild.value);
             }
@@ -208,7 +227,6 @@ async function init() {
             location.reload();
         });
     }
-
     if (sort_close) {
         sort_close.addEventListener('click', (event) => {
             localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
@@ -226,9 +244,9 @@ async function init() {
         if (tagsList) {
             let tags = new Set();
             let recipes = getAll();
-            for (let i = 0; i < recipes.length; i++) {
+            for (let i = 0; i &lt; recipes.length; i++) {
                 let currTags = recipes[i].tags;
-                for (let j = 0; j < currTags.length; j++) {
+                for (let j = 0; j &lt; currTags.length; j++) {
                     tags.add(`${currTags[j]}`);
                 }
             }
@@ -277,7 +295,7 @@ async function init() {
         if (groceryListItems) {
             let currIngs = groceryList();
             console.log(currIngs);
-            for (let i = 0; i < currIngs.length; i++) {
+            for (let i = 0; i &lt; currIngs.length; i++) {
                 let newItem = document.createElement('div');
                 newItem.classList.add('grocery-list-item');
 
@@ -296,8 +314,15 @@ async function init() {
     }
 
     makeList();
-    makeGroceryList();
     makeTags();
+    makeGroceryList();
+
+    // let groceryListButton = document.getElementById('grocery-list-button');
+    // if (groceryListButton){
+    //     groceryListButton.addEventListener('click', (event) =>{
+    //         makeGroceryList();
+    //     });
+    // }
 
     $("input:checkbox").click(function () {
         change($(this).next("label").html())
@@ -324,14 +349,13 @@ async function init() {
         let toDisplay;
         if(getAll()) {
             toDisplay = getAll().filter(function (item) {
-                return query.value == item.name.substring(0, query.value.length)
+                return item.name.toLowerCase().includes(query.value.toLowerCase());
             });
         }
         console.log(toDisplay);
         return toDisplay;
     }
 };
-
 
 const editButton = document.getElementById('edit-recipe');
 
@@ -386,7 +410,7 @@ export function createTagInput() {
 
     // defining the elements
     tagName.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
+    removeButton.setAttribute('src', './remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -425,7 +449,7 @@ export function createIngredientInput() {
     ingredientName.setAttribute('type', 'text');
     ingredientAmount.setAttribute('type', 'text');
     ingredientUnit.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
+    removeButton.setAttribute('src', './remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -467,7 +491,7 @@ export function createInstructionInput() {
     // defining the elements
     stepInput.setAttribute('rows', '2');
     stepInput.setAttribute('cols', '50');
-    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
+    removeButton.setAttribute('src', './remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -525,7 +549,7 @@ if (slider){
         let ingreds = ingredList.children;
 
         let serving = document.getElementById('serving-value');
-        for(let i = 0; i < ingreds.length; i++){
+        for(let i = 0; i &lt; ingreds.length; i++){
             let ingredStr = ingreds[i].innerHTML;
             let words = ingredStr.split(' ');
             if (e.target.value == 0){
@@ -548,11 +572,26 @@ if (slider){
             ingreds[i].innerHTML = ingredStr;
         }
     });
-}
+}</code></pre>
+        </article>
+    </section>
 
-function sum2(a, b) {
-    return a + b;
-  }
 
-module.exports = {init, makeList, sum2}
 
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createIngredientInput">createIngredientInput</a></li><li><a href="global.html#createInstructionInput">createInstructionInput</a></li><li><a href="global.html#createPerson">createPerson</a></li><li><a href="global.html#createTagInput">createTagInput</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#makeRecipeOTD">makeRecipeOTD</a></li><li><a href="global.html#randomRecipe">randomRecipe</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#word">word</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 03:02:29 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
