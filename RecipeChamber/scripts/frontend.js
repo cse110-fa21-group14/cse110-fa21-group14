@@ -291,12 +291,16 @@ async function init() {
                 let newLabel = document.createElement('label');
                 newLabel.innerHTML = currIngs[i]['name'];
                 newLabel.setAttribute('for', 'grocery-list-items-' + currIngs[i]['name'])
-                newItem.appendChild(newCheckBox);
-                newItem.appendChild(newLabel);
+                // if ingredient is already checked, text should already be crossed off
+                if (newCheckBox.checked) {
+                    newLabel.classList.add('checked');
+                }
                 // allows text to be crossed out if checked
                 newCheckBox.addEventListener('change', () => {
                     newLabel.classList.toggle('checked');
                 });
+                newItem.appendChild(newCheckBox);
+                newItem.appendChild(newLabel);
                 groceryListItems.appendChild(newItem);
             }
         }
