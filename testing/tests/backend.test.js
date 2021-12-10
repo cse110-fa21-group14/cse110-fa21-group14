@@ -240,321 +240,321 @@ test('sortAll test 2', () =>{
  * @param {string} name or id of recipe to retreive
  * @returns {Object}  recipe object
  */
-function get(key) {
-    const data = JSON.parse(localStorage.getItem('recipeData'))
-    var result = data.filter(function (item) {
-        return (key == item.name || key == item.id)
-    })[0];
-    //console.log(result);
-    return result;
-}
+// function get(key) {
+//     const data = JSON.parse(localStorage.getItem('recipeData'))
+//     var result = data.filter(function (item) {
+//         return (key == item.name || key == item.id)
+//     })[0];
+//     //console.log(result);
+//     return result;
+// }
 
-/*
- * This function returns array of all recipe objects
- * 
- * @returns {Array} An array of recipe objects
- */
-function getAll() {
-    //console.log(JSON.parse(localStorage.getItem('recipeData')));
-    return (JSON.parse(localStorage.getItem('recipeData')));
-}
-/*
- * This function adds unique ingredients of a recipe to the grocery list
- * 
- * @param {Object} A recipe object
- */
-function addToGroceryList(recipe) {
-    if (!localStorage.getItem('grocery')) {
-        localStorage.setItem('grocery', JSON.stringify([]));
-    }
-    var groceryData = JSON.parse(localStorage.getItem('grocery'));
-    for (var ing of recipe.ingredients['ingredients']) {
-        let exist = false;
-        for (var curr of groceryData) {
-            if (ing.ingName.toLowerCase() == curr.name.toLowerCase()) {
-                exist = true
-                console.log(exist)
-                break;
-            }
-        }
-        if (!exist) {
-            groceryData.push({ name: ing.ingName, done: false });
-            localStorage.setItem('grocery', JSON.stringify(groceryData));
-            console.log(localStorage.getItem('grocery'));
-        }
-    }
-}
-/*
- * This function accepts converts an image (base64) to a (imgur) url link.
- * 
- * @param {string} image in base64 format
- * @returns {string} imgur image url
- */
-async function imgToURL(imgBase64) {
-    return new Promise(function (resolve, reject) {
-        $.ajax({
-            url: 'https://api.imgur.com/3/image',
-            headers: {
-                Authorization: 'Client-ID 883b97261443d3c'
-            },
-            type: 'POST',
-            data: {
-                image: imgBase64,
-                type: 'base64'
-            },
-            success: function (result) {
-                resolve(result.data.link);
-            },
-            error: function (err) {
-                reject(err)
-            }
-        });
-    });
+// /*
+//  * This function returns array of all recipe objects
+//  * 
+//  * @returns {Array} An array of recipe objects
+//  */
+// function getAll() {
+//     //console.log(JSON.parse(localStorage.getItem('recipeData')));
+//     return (JSON.parse(localStorage.getItem('recipeData')));
+// }
+// /*
+//  * This function adds unique ingredients of a recipe to the grocery list
+//  * 
+//  * @param {Object} A recipe object
+//  */
+// function addToGroceryList(recipe) {
+//     if (!localStorage.getItem('grocery')) {
+//         localStorage.setItem('grocery', JSON.stringify([]));
+//     }
+//     var groceryData = JSON.parse(localStorage.getItem('grocery'));
+//     for (var ing of recipe.ingredients['ingredients']) {
+//         let exist = false;
+//         for (var curr of groceryData) {
+//             if (ing.ingName.toLowerCase() == curr.name.toLowerCase()) {
+//                 exist = true
+//                 console.log(exist)
+//                 break;
+//             }
+//         }
+//         if (!exist) {
+//             groceryData.push({ name: ing.ingName, done: false });
+//             localStorage.setItem('grocery', JSON.stringify(groceryData));
+//             console.log(localStorage.getItem('grocery'));
+//         }
+//     }
+// }
+// /*
+//  * This function accepts converts an image (base64) to a (imgur) url link.
+//  * 
+//  * @param {string} image in base64 format
+//  * @returns {string} imgur image url
+//  */
+// async function imgToURL(imgBase64) {
+//     return new Promise(function (resolve, reject) {
+//         $.ajax({
+//             url: 'https://api.imgur.com/3/image',
+//             headers: {
+//                 Authorization: 'Client-ID 883b97261443d3c'
+//             },
+//             type: 'POST',
+//             data: {
+//                 image: imgBase64,
+//                 type: 'base64'
+//             },
+//             success: function (result) {
+//                 resolve(result.data.link);
+//             },
+//             error: function (err) {
+//                 reject(err)
+//             }
+//         });
+//     });
 
-}
+// }
 
-/*
- * This function stores/updates the recipe object in localstorage
- * 
- * @param {Object} an array object
- */
-function save(recipe) {
-    if (!localStorage.getItem('recipeData')) {
-        localStorage.setItem('recipeData', JSON.stringify([]))
-    }
-    if (get(recipe.id)) {
-        deleteRecipe(recipe.id)
-    }
-    var data = JSON.parse(localStorage.getItem('recipeData'))
-    data.push(recipe)
-    saveToLocalStorage(data)
-    let imgURL = ''
-    console.log(localStorage.getItem('recipeData'))
-}
+// /*
+//  * This function stores/updates the recipe object in localstorage
+//  * 
+//  * @param {Object} an array object
+//  */
+// function save(recipe) {
+//     if (!localStorage.getItem('recipeData')) {
+//         localStorage.setItem('recipeData', JSON.stringify([]))
+//     }
+//     if (get(recipe.id)) {
+//         deleteRecipe(recipe.id)
+//     }
+//     var data = JSON.parse(localStorage.getItem('recipeData'))
+//     data.push(recipe)
+//     saveToLocalStorage(data)
+//     let imgURL = ''
+//     console.log(localStorage.getItem('recipeData'))
+// }
 
-/*
- * A helper function to stringify and save/update recipes 
- * data into local storage
- * 
- * @param {Array} Array of recipes object
- */
-function saveToLocalStorage(data) {
-    localStorage.setItem('recipeData', JSON.stringify(data))
-}
-/*
- * This function deletes a recipe given its id from localstorage
- * 
- * @param {string} id of the recipe
- */
-function deleteRecipe(id) {
-    saveToLocalStorage(getAll().filter(recipe => id != recipe.id));
-}
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
-global.$ = $
-jest.useFakeTimers()
-const mockedRecipies = [
-  {
-    id: 1,                                                
-    name: 'Recipie1',                                           
-    img: 'https://placehold.it/200/300',                                            
-    ingredients: {                                          
-      proportion: 2,
-      ingredients: [
-        {
-          ingName: 'ingredient1',
-          amount: 100,
-          unit: '10'
-        }
-      ],
-    },
-    steps: 2,                                     
-    serving: 2,                                           
-    tags: ['tag1', 'tag2'],                                         
-    made: `${new Date()}`,
-    makeCount: 2,                     
-    created: `${new Date()}`
-  },
-  {
-    id: 2,                                                
-    name: 'Recipie2',                                           
-    img: 'https://placehold.it/200/300',                                            
-    ingredients: {                                          
-      proportion: 2,
-      ingredients: [
-        {
-          ingName: 'ingredient2',
-          amount: 200,
-          unit: '20'
-        }
-      ],
-    },
-    steps: 2,                                     
-    serving: 2,                                           
-    tags: ['tag1', 'tag2'],                                         
-    made: `${new Date()}`,
-    makeCount: 2,                     
-    created: `${new Date()}`
-  }
-]
-/** mock local storage */
-const fakeLocalStorage = (function() {
-  let store = {
-    'recipeData': JSON.stringify(mockedRecipies)
-  };
-  return {
-    getItem: function(key) {
-      return store[key] || null;
-    },
-    setItem: function(key, value) {
-      store[key] = value.toString();
-    },
-    removeItem: function(key) {
-      delete store[key];
-    },
-    clear: function() {
-      store = {};
-    },
-    ...store
-  };
-})();
-Object.defineProperty(global, 'localStorage', {
-  value: fakeLocalStorage
-});
-// const fakeAjax = (resolve, reject) => ({
-//   url: 'https://api.imgur.com/3/image',
-//   headers: {
-//     Authorization: 'Client-ID ABC'
+// /*
+//  * A helper function to stringify and save/update recipes 
+//  * data into local storage
+//  * 
+//  * @param {Array} Array of recipes object
+//  */
+// function saveToLocalStorage(data) {
+//     localStorage.setItem('recipeData', JSON.stringify(data))
+// }
+// /*
+//  * This function deletes a recipe given its id from localstorage
+//  * 
+//  * @param {string} id of the recipe
+//  */
+// function deleteRecipe(id) {
+//     saveToLocalStorage(getAll().filter(recipe => id != recipe.id));
+// }
+// const { JSDOM } = require( "jsdom" );
+// const { window } = new JSDOM( "" );
+// const $ = require( "jquery" )( window );
+// global.$ = $
+// jest.useFakeTimers()
+// const mockedRecipies = [
+//   {
+//     id: 1,                                                
+//     name: 'Recipie1',                                           
+//     img: 'https://placehold.it/200/300',                                            
+//     ingredients: {                                          
+//       proportion: 2,
+//       ingredients: [
+//         {
+//           ingName: 'ingredient1',
+//           amount: 100,
+//           unit: '10'
+//         }
+//       ],
+//     },
+//     steps: 2,                                     
+//     serving: 2,                                           
+//     tags: ['tag1', 'tag2'],                                         
+//     made: `${new Date()}`,
+//     makeCount: 2,                     
+//     created: `${new Date()}`
 //   },
-//   type: 'POST',
-//   data: {
-//     image: imgBase64,
-//     type: 'base64'
-//   },
-//   success: function (result) {
-//     resolve(result.data.link);
-//   },
-//   error: function (err) {
-//     reject(err)
+//   {
+//     id: 2,                                                
+//     name: 'Recipie2',                                           
+//     img: 'https://placehold.it/200/300',                                            
+//     ingredients: {                                          
+//       proportion: 2,
+//       ingredients: [
+//         {
+//           ingName: 'ingredient2',
+//           amount: 200,
+//           unit: '20'
+//         }
+//       ],
+//     },
+//     steps: 2,                                     
+//     serving: 2,                                           
+//     tags: ['tag1', 'tag2'],                                         
+//     made: `${new Date()}`,
+//     makeCount: 2,                     
+//     created: `${new Date()}`
 //   }
-// })
-// /** mock ajax */
-// const $ = {}
-// $.ajax = jest.fn().mockImplementation(() => {
-//   return new Promise(fakeAjax);
+// ]
+// /** mock local storage */
+// const fakeLocalStorage = (function() {
+//   let store = {
+//     'recipeData': JSON.stringify(mockedRecipies)
+//   };
+//   return {
+//     getItem: function(key) {
+//       return store[key] || null;
+//     },
+//     setItem: function(key, value) {
+//       store[key] = value.toString();
+//     },
+//     removeItem: function(key) {
+//       delete store[key];
+//     },
+//     clear: function() {
+//       store = {};
+//     },
+//     ...store
+//   };
+// })();
+// Object.defineProperty(global, 'localStorage', {
+//   value: fakeLocalStorage
 // });
-describe('backend', () => {
-  it('should returns recipe object given recipe name or id', () => {
-    const data = mockedRecipies[0]
-    const result = get(data.name)
-    expect(result).toBeTruthy()
-    expect(result.name).toEqual(data.name)
-  })
-  it('should return JSON of all recipe objects', () => {
-    const data = getAll()
-    expect(data).toEqual(mockedRecipies)
-    expect(data).toHaveLength(mockedRecipies.length)
-  })
-  it('should delete recipe given id in localstorage', () => {
-    const data = mockedRecipies[0]
-    deleteRecipe(data.id)
-    const updatedData = JSON.parse(
-      fakeLocalStorage.getItem('recipeData')
-    )
-    expect(updatedData).toHaveLength(mockedRecipies.length - 1)
-  })
-  it('should save the data to local storage', () => {
-    fakeLocalStorage.clear()
-    const clearedData = JSON.parse(
-      fakeLocalStorage.getItem('recipeData')
-    )
-    expect(clearedData).toEqual(null)
-    saveToLocalStorage(mockedRecipies)
-    const updatedData = JSON.parse(
-      fakeLocalStorage.getItem('recipeData')
-    )
-    expect(updatedData).toHaveLength(mockedRecipies.length)
-  })
-  it('should add the data to local storage', () => {
-    const newItem = JSON.parse(
-      JSON.stringify({}, {
-        id: 3,
-        ...mockedRecipies[0]
-      })
-    )
-    save(newItem)
-    const updatedData = JSON.parse(
-      fakeLocalStorage.getItem('recipeData')
-    )
-    expect(updatedData).toHaveLength(mockedRecipies.length + 1)
-  })
-  it('should add the ingredients of a recipe to the grocery list', () => {
-    const data = {
-      ...mockedRecipies[0]
-    }
-    addToGroceryList(data)
-    const updatedData = JSON.parse(
-      fakeLocalStorage.getItem('grocery')
-    )
-    expect(updatedData).toHaveLength(1)
-  })
-  it('should get data from ajax call (resolved)', () => {
-    let options
-    const ajaxSpy = jest.spyOn($, 'ajax')
-      .mockImplementation((obj) => {
-        options = obj
-      });
-    const base64Image = 'abc'
-    const response = imgToURL(base64Image)
-    expect(response).toBeInstanceOf(Promise)
-    const mockedResult = {
-      data: {
-        link: 'abc'
-      }
-    }
-    options.success(mockedResult)
-    expect(response).resolves.toBeDefined()
-    expect(ajaxSpy).toHaveBeenCalledWith({
-      url: 'https://api.imgur.com/3/image',
-      headers: {
-        Authorization: 'Client-ID 883b97261443d3c'
-      },
-      type: 'POST',
-      data: {
-        image: base64Image,
-        type: 'base64'
-      },
-      success: expect.any(Function),
-      error: expect.any(Function)
-    })
-  })
-  it('should get data from ajax call (rejected)', () => {
-    let options
-    const ajaxSpy = jest.spyOn($, 'ajax')
-      .mockImplementation((obj) => {
-        options = obj
-      });
-    const base64Image = 'abc'
-    const response = imgToURL(base64Image)
-    expect(response).toBeInstanceOf(Promise)
-    const mockedError = {
-      status: 404
-    }
-    options.error(mockedError)
-    expect(response).resolves.not.toBeDefined()
-    expect(ajaxSpy).toHaveBeenCalledWith({
-      url: 'https://api.imgur.com/3/image',
-      headers: {
-        Authorization: 'Client-ID 883b97261443d3c'
-      },
-      type: 'POST',
-      data: {
-        image: base64Image,
-        type: 'base64'
-      },
-      success: expect.any(Function),
-      error: expect.any(Function)
-    })
-  })
-})
+// // const fakeAjax = (resolve, reject) => ({
+// //   url: 'https://api.imgur.com/3/image',
+// //   headers: {
+// //     Authorization: 'Client-ID ABC'
+// //   },
+// //   type: 'POST',
+// //   data: {
+// //     image: imgBase64,
+// //     type: 'base64'
+// //   },
+// //   success: function (result) {
+// //     resolve(result.data.link);
+// //   },
+// //   error: function (err) {
+// //     reject(err)
+// //   }
+// // })
+// // /** mock ajax */
+// // const $ = {}
+// // $.ajax = jest.fn().mockImplementation(() => {
+// //   return new Promise(fakeAjax);
+// // });
+// describe('backend', () => {
+//   it('should returns recipe object given recipe name or id', () => {
+//     const data = mockedRecipies[0]
+//     const result = get(data.name)
+//     expect(result).toBeTruthy()
+//     expect(result.name).toEqual(data.name)
+//   })
+//   it('should return JSON of all recipe objects', () => {
+//     const data = getAll()
+//     expect(data).toEqual(mockedRecipies)
+//     expect(data).toHaveLength(mockedRecipies.length)
+//   })
+//   it('should delete recipe given id in localstorage', () => {
+//     const data = mockedRecipies[0]
+//     deleteRecipe(data.id)
+//     const updatedData = JSON.parse(
+//       fakeLocalStorage.getItem('recipeData')
+//     )
+//     expect(updatedData).toHaveLength(mockedRecipies.length - 1)
+//   })
+//   it('should save the data to local storage', () => {
+//     fakeLocalStorage.clear()
+//     const clearedData = JSON.parse(
+//       fakeLocalStorage.getItem('recipeData')
+//     )
+//     expect(clearedData).toEqual(null)
+//     saveToLocalStorage(mockedRecipies)
+//     const updatedData = JSON.parse(
+//       fakeLocalStorage.getItem('recipeData')
+//     )
+//     expect(updatedData).toHaveLength(mockedRecipies.length)
+//   })
+//   it('should add the data to local storage', () => {
+//     const newItem = JSON.parse(
+//       JSON.stringify({}, {
+//         id: 3,
+//         ...mockedRecipies[0]
+//       })
+//     )
+//     save(newItem)
+//     const updatedData = JSON.parse(
+//       fakeLocalStorage.getItem('recipeData')
+//     )
+//     expect(updatedData).toHaveLength(mockedRecipies.length + 1)
+//   })
+//   it('should add the ingredients of a recipe to the grocery list', () => {
+//     const data = {
+//       ...mockedRecipies[0]
+//     }
+//     addToGroceryList(data)
+//     const updatedData = JSON.parse(
+//       fakeLocalStorage.getItem('grocery')
+//     )
+//     expect(updatedData).toHaveLength(1)
+//   })
+//   it('should get data from ajax call (resolved)', () => {
+//     let options
+//     const ajaxSpy = jest.spyOn($, 'ajax')
+//       .mockImplementation((obj) => {
+//         options = obj
+//       });
+//     const base64Image = 'abc'
+//     const response = imgToURL(base64Image)
+//     expect(response).toBeInstanceOf(Promise)
+//     const mockedResult = {
+//       data: {
+//         link: 'abc'
+//       }
+//     }
+//     options.success(mockedResult)
+//     expect(response).resolves.toBeDefined()
+//     expect(ajaxSpy).toHaveBeenCalledWith({
+//       url: 'https://api.imgur.com/3/image',
+//       headers: {
+//         Authorization: 'Client-ID 883b97261443d3c'
+//       },
+//       type: 'POST',
+//       data: {
+//         image: base64Image,
+//         type: 'base64'
+//       },
+//       success: expect.any(Function),
+//       error: expect.any(Function)
+//     })
+//   })
+//   it('should get data from ajax call (rejected)', () => {
+//     let options
+//     const ajaxSpy = jest.spyOn($, 'ajax')
+//       .mockImplementation((obj) => {
+//         options = obj
+//       });
+//     const base64Image = 'abc'
+//     const response = imgToURL(base64Image)
+//     expect(response).toBeInstanceOf(Promise)
+//     const mockedError = {
+//       status: 404
+//     }
+//     options.error(mockedError)
+//     expect(response).resolves.not.toBeDefined()
+//     expect(ajaxSpy).toHaveBeenCalledWith({
+//       url: 'https://api.imgur.com/3/image',
+//       headers: {
+//         Authorization: 'Client-ID 883b97261443d3c'
+//       },
+//       type: 'POST',
+//       data: {
+//         image: base64Image,
+//         type: 'base64'
+//       },
+//       success: expect.any(Function),
+//       error: expect.any(Function)
+//     })
+//   })
+// })
