@@ -1,10 +1,20 @@
 import {save} from './backend.js';
 window.addEventListener('DOMContentLoaded', init);
+// Document method which refers to search text box.
 const search_bar = document.getElementById('recommended-search-bar');
+
+// Document method which refers to search button.
 const search_button = document.getElementById('search-button');
+
+// Spoonacular API Key
 const API_KEY = "684bb3f58f5441e298a4431dfa0575e6";
-// Function to traverse recommended JSon object and
-// create recommended recipe cards.
+
+
+/**
+ * @param {Object} data
+ * Populates the recommended page with recipe cards.
+ * Creates event listeners pinned to each recipe card.
+ */
 export function makeRecList(data) {
     let recs = data;
     for (let i = 0; i < recs.length; i++) {
@@ -47,7 +57,7 @@ export function makeRecList(data) {
                 
                 for(let i = 0; i < itemList.length; i++) {
                     let newInst = document.createElement('li');
-                    newInst.innerHTML = `Step ${itemList[i].number}: ${itemList[i].step}`;
+                    newInst.innerHTML = `${itemList[i].step}`;
                     instructionList.appendChild(newInst);
                     instList.push(itemList[i].step);
                 }
@@ -68,7 +78,7 @@ export function makeRecList(data) {
                         steps: [],
                         serving: 1,
                         tags: [],
-                        made: new Date(date),
+                        made: null,
                         created: new Date(date),
                         makeCount: 0
                     }
@@ -82,7 +92,12 @@ export function makeRecList(data) {
                     for (let i = 0; i < instList.length; i++) {
                         newRecipe.steps.push(instList[i]);
                     }
-                    save(newRecipe);
+                    try {
+                        save(newRecipe);
+                    }
+                    catch (err) {
+                        alert('You have already added this recipe.');
+                    }
                 });
             }
 
@@ -93,6 +108,13 @@ export function makeRecList(data) {
         }
     }
 }
+
+/**
+ * @param {string} search_bar.value
+ * Event Listener:
+ * When user types into search bar, automatically does a substring
+ * search through static JSON file.
+ */
 if(search_bar){
     search_bar.addEventListener('keyup', function() {
         // console.log(search_bar.value);
@@ -115,24 +137,52 @@ if(search_bar){
         });
     })
 }
-// Call Spoonacular API for recipe ingredients
-// Parameters: recipe name
+
+/**
+ * 
+ * @param {string} recipe_name
+ * @returns {Object} JSON Object
+ * Call Spoonacular API for recipe basic information.
+ * Information included:
+ * id, title, image
+ */
 async function getRecipeData(recipe_name) {
     const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${recipe_name}&number=5`).then((response1) => {return response1});
     return response.json();
 }
-// Call Spoonacular API for recipe ingredients
-// Parameters: recipe ID
+
+/**
+ * 
+ * @param {string} recipe_id 
+ * @returns {Object} JSON Object
+ * Call Spoonacular API for recipe ingredients.
+ * Information included:
+ * name, amount, units
+ */
 async function getIngredients(recipe_id) {
     const response = await fetch(`https://api.spoonacular.com/recipes/${recipe_id}/ingredientWidget.json?apiKey=${API_KEY}`);
     return response.json();
 }
-// Call Spoonacular API for recipe instructions
-// Parameters: recipe ID
+
+/**
+ * 
+ * @param {string} recipe_id 
+ * @returns {Object} JSON Object
+ * Call Spoonacular API for recipe instructions
+ * Information included:
+ * step, step number
+ */
 async function getInstructions(recipe_id) {
     const response = await fetch(`https://api.spoonacular.com/recipes/${recipe_id}/analyzedInstructions?apiKey=${API_KEY}`);
     return response.json();
 }
+
+/**
+ * @param {string} search_bar.value
+ * Event Listener:
+ * When clicked takes in recipe value from search bar
+ * and populates the page.
+ */
 if(search_button){
     search_button.addEventListener('click', function() {
         let rec_list = document.getElementById('recommended-list');
@@ -148,6 +198,14 @@ if(search_button){
             })
     });
 }
+
+/**
+ * 
+ * @param {string} recipe_name 
+ * @returns {Object} JSON Object
+ * Simple function which returns recipe information.
+ * 
+ */
 async function getRecipeInfo(recipe_name) {
     // Search for 10 recipes.
     let recipe_call = await getRecipeData(recipe_name);
@@ -156,12 +214,13 @@ async function getRecipeInfo(recipe_name) {
     // List of search results to be populated.
     let SEARCH_OBJ = {"search": []};
     // Iterate and parse information.
-    if (recipes.length == 0) return;
     for (let i = 0; i < recipes.length; i++) {
        SEARCH_OBJ.search.push({"id": recipes[i].id, "name": recipes[i].title, "img": recipes[i].image, "ingList": [], instList: []});
     }
     return SEARCH_OBJ;
  }
+
+
 // Once page loads, render recommended recipe cards.
 function init() {
     console.log("loaded");

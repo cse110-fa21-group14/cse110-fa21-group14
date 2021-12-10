@@ -392,16 +392,9 @@ section .grocery-list-item {
   margin-left: 2vw;
 }
 
-/* section #grocery-list{
-padding-top: 20px;
-
-list-style-position: inside;
-list-style-type: circle;
+section .checked {
+  text-decoration: line-through;
 }
-
-section #grocery-list li{
-padding-bottom: 10px;
-} */
 
 section .recipe-button {
   padding: 1vh 1vw;
@@ -455,6 +448,10 @@ section .tag {
   border-radius: 10px;
 }
 
+section #recipe-details {
+  width: 60vw;
+}
+
 section #recipe-image {
   width: 20vw;
   height: 20vh;
@@ -481,6 +478,10 @@ section #tracker {
 
 section #ingredients-header {
   display: inline;
+}
+
+section #slider1 {
+  width: 12vw;
 }
 
 section #sort-by {

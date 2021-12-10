@@ -78,7 +78,7 @@ async function init() {
                         let tagsSection = document.getElementById('recipe-tags');
                         tagsSection.innerHTML = '';
                         let tagsList = recipe.tags;
-                        if (tagsList.length == 0) {
+                        if (tagsList.length === 0) {
                             let noTags = document.createElement('p');
                             noTags.innerHTML = 'There are no tags.';
                             tagsSection.appendChild(noTags);
@@ -244,7 +244,13 @@ async function init() {
         }
 
     }
-
+    /**
+     * This function will make a set of all unique tags used for sorting by tags
+     * 
+     * @param value {string} the name of tag
+     * @param toFilter {boolean} true if you select tag, false otherwise
+     * @returns {void}
+     */
     function saveTag(value, toFilter) {
         let temp = JSON.parse(localStorage.getItem('tags'));
         if (toFilter) {
@@ -256,6 +262,13 @@ async function init() {
         localStorage.setItem('tags', JSON.stringify(temp));
     }
 
+    const resetSort = document.getElementById('clear-sort');
+    if (resetSort) {
+        resetSort.addEventListener('click', () => {
+            localStorage.setItem('sorting', 'alphabetical');
+            location.reload();
+        });
+    }
     
     /**
      * This function updates the grocery list
@@ -280,6 +293,10 @@ async function init() {
                 newLabel.setAttribute('for', 'grocery-list-items-' + currIngs[i]['name'])
                 newItem.appendChild(newCheckBox);
                 newItem.appendChild(newLabel);
+                // allows text to be crossed out if checked
+                newCheckBox.addEventListener('change', () => {
+                    newLabel.classList.toggle('checked');
+                });
                 groceryListItems.appendChild(newItem);
             }
         }
@@ -288,13 +305,6 @@ async function init() {
     makeList();
     makeTags();
     makeGroceryList();
-
-    // let groceryListButton = document.getElementById('grocery-list-button');
-    // if (groceryListButton){
-    //     groceryListButton.addEventListener('click', (event) =>{
-    //         makeGroceryList();
-    //     });
-    // }
 
     $("input:checkbox").click(function () {
         change($(this).next("label").html())
@@ -524,16 +534,16 @@ if (slider){
         for(let i = 0; i < ingreds.length; i++){
             let ingredStr = ingreds[i].innerHTML;
             let words = ingredStr.split(' ');
-            if (e.target.value == 0){
+            if (e.target.value == '0'){
                 words[0] = currIngreds[i]['amount'] * 1/4;
                 serving.innerHTML = currServing * 1/4;
-            }else if(e.target.value == 1){
+            }else if(e.target.value == '1'){
                 words[0] = currIngreds[i]['amount'] * 1/2;
                 serving.innerHTML = currServing * 1/2;
-            }else if(e.target.value == 3){
+            }else if(e.target.value == '3'){
                 words[0] = currIngreds[i]['amount'] * 2;
                 serving.innerHTML = currServing * 2;
-            }else if(e.target.value == 4){
+            }else if(e.target.value == '4'){
                 words[0] = currIngreds[i]['amount'] * 4;
                 serving.innerHTML = currServing * 4;
             }else{
