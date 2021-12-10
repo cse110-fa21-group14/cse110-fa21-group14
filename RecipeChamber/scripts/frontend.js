@@ -1,7 +1,6 @@
-
-import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList, filterRecipes } from '../backend src/backend.js';
-import { makeRecList } from '/Recipe Code/assets/recommended.js';
-import { makeRecipeOTD } from '/Recipe Code/assets/recipeOTD.js';
+import { get, getAll, imgToURL, save, saveToLocalStorage, deleteRecipe, sortAll, groceryList, addToGroceryList, filterRecipes } from './backend.js';
+import { makeRecList } from './recommended.js';
+import { makeRecipeOTD } from './recipeOTD.js';
 window.addEventListener('DOMContentLoaded', init);
 const tags = document.getElementById('tags-inputted');
 const name = document.getElementById('input-recipe-name');
@@ -138,14 +137,6 @@ async function init() {
 
 
     }
-
-    // let saveButton;
-    // if(localStorage.getItem('editId') == null){
-    //      saveButton = document.getElementById('save-recipe');
-    // }
-    // else{
-    //     saveButton = null;
-    // }
     let saveButton = document.getElementById('save-recipe');
     let newRecipe;
     if (saveButton) {
@@ -189,7 +180,7 @@ async function init() {
                 localStorage.removeItem("editId");
             }
             save(newRecipe);
-            window.location.href = 'user.html';
+            window.location.href = './user.html';
         });
     }
 
@@ -208,7 +199,6 @@ async function init() {
             location.reload();
         });
     }
-
     if (sort_close) {
         sort_close.addEventListener('click', (event) => {
             localStorage.setItem('sorting', sorting.querySelector('input[name=sort]:checked').id);
@@ -296,8 +286,15 @@ async function init() {
     }
 
     makeList();
-    makeGroceryList();
     makeTags();
+    makeGroceryList();
+
+    // let groceryListButton = document.getElementById('grocery-list-button');
+    // if (groceryListButton){
+    //     groceryListButton.addEventListener('click', (event) =>{
+    //         makeGroceryList();
+    //     });
+    // }
 
     $("input:checkbox").click(function () {
         change($(this).next("label").html())
@@ -324,7 +321,7 @@ async function init() {
         let toDisplay;
         if(getAll()) {
             toDisplay = getAll().filter(function (item) {
-                return query.value == item.name.substring(0, query.value.length)
+                return item.name.toLowerCase().includes(query.value.toLowerCase());
             });
         }
         console.log(toDisplay);
@@ -332,14 +329,13 @@ async function init() {
     }
 };
 
-
 const editButton = document.getElementById('edit-recipe');
 
 if (editButton) {
     console.log(editButton);
     editButton.addEventListener('click', (event) => {
         localStorage.setItem("editId", currId);
-        window.location.href = 'create-edit.html';
+        window.location.href = './create-edit.html';
     });
 }
 
@@ -386,7 +382,7 @@ export function createTagInput() {
 
     // defining the elements
     tagName.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
+    removeButton.setAttribute('src', './images/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -425,7 +421,7 @@ export function createIngredientInput() {
     ingredientName.setAttribute('type', 'text');
     ingredientAmount.setAttribute('type', 'text');
     ingredientUnit.setAttribute('type', 'text');
-    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
+    removeButton.setAttribute('src', './images/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -467,7 +463,7 @@ export function createInstructionInput() {
     // defining the elements
     stepInput.setAttribute('rows', '2');
     stepInput.setAttribute('cols', '50');
-    removeButton.setAttribute('src', '../../Recipe Code/images/remove.png');
+    removeButton.setAttribute('src', './images/remove.png');
     removeButton.setAttribute('alt', 'Remove');
 
     // adding classes for styling and identification
@@ -511,7 +507,7 @@ if (addInstruction) {
 
 
 
-let values = ['fourth (1/4)', 'half (1/2)', 'original', 'double (2x)', 'quadruple (4x)'];
+let values = ['quarter (1/4)', 'half (1/2)', 'original', 'double (2x)', 'quadruple (4x)'];
 const slider = document.getElementById('slider1');
 const num = document.getElementById('changenum');
 if (slider){
@@ -549,10 +545,3 @@ if (slider){
         }
     });
 }
-
-function sum2(a, b) {
-    return a + b;
-  }
-
-module.exports = {init, makeList, sum2}
-

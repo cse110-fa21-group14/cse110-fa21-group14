@@ -1,4 +1,4 @@
-import {save} from '../../testing/backend src/backend.js';
+import {save} from './backend.js';
 /**
  * This function will get a random recipe from recommended recipes and display this
  * recipe as a custom recipe card on the home screen
@@ -42,8 +42,8 @@ function randomRecipe(data){
         const recipeIng = document.getElementById('ingredients');
         const recipeSteps = document.getElementById('instructions');
 
-        console.log(recipeName);
-        recipeName.innerHtml = recipe.name;
+        
+        recipeName.innerHTML = recipe.name;
         recipeImg.setAttribute('src', recipe.img);
         for (let i = 0; i < ingList.length; i++) {
             let newIng = document.createElement('li');
@@ -102,7 +102,7 @@ function randomRecipe(data){
  */
 export function makeRecipeOTD() {
     console.log("loaded");
-    fetch("assets/recommended.json")
+    fetch("./assets/recommended.json")
     .then(response => {
     return response.json();
     })
