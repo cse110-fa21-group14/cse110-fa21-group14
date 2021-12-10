@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 const API_KEY = "81fd56bfaac84f9c985e6c7474c02d60";
 //sample test
 test('adds 1 + 2 to equal 3', () => {
