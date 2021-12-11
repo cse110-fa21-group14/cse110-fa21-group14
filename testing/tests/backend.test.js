@@ -1,12 +1,15 @@
-const API_KEY = "81fd56bfaac84f9c985e6c7474c02d60";
 //sample test
 test('adds 1 + 2 to equal 3', () => {
     expect(1 + 2).toBe(3);
   });
-
-
-//add more tests here:
-
+/*
+ * This function accept a recipe object and a list of tags  
+ * and returns whether all the tags are contained in the tag attribute of the object
+ * 
+ * @param {Object} recipe An recipe object
+ * @param {Array} tagList Array of tags to search for
+ * @returns {boolean} whether the recipe object contains all the tags
+ */
 function filter(recipe,tagList){
   if(recipe.tags == undefined){
       return false;
@@ -21,7 +24,14 @@ function filter(recipe,tagList){
   }
   return true;
 }
-
+/*
+ * This function accept an Array of recipe object and a list of tags  
+ * and returns an array containing all the recipes that contains all given tags
+ * 
+ * @param {Array} recipes An Array of recipe objects
+ * @param {Array} tagList Array of tags to search for
+ * @returns {Array} An Array of recipe objects
+ */
 function filterRecipes(recipes,tagList){
   if(tagList.length == 0){
       return recipes;
@@ -34,7 +44,14 @@ function filterRecipes(recipes,tagList){
   }
   return res;
 }
-
+/*
+ * This function accept a array and a method to sort the array  
+ * and returns a sorted array according to the given order
+ * 
+ * @param {Array} recipes An array of recipe objects
+ * @param {string} method The method used to sort the Array
+ * @returns {Array} a sorted list of all recipe according to the designateed method
+ */
 function sortAll(recipes, method) {
   console.log(method)
   switch (method) {
@@ -61,7 +78,6 @@ function sortAll(recipes, method) {
               }
               return 0;
           });
-
       // date of creation
       case 'newest':
           return recipes.sort(function compareFn(firstEl, secondEl) {
@@ -75,7 +91,6 @@ function sortAll(recipes, method) {
               }
               return 0;
           });
-
       case 'oldest':
           return recipes.sort(function compareFn(firstEl, secondEl) {
               let createdA = firstEl.created;
@@ -92,7 +107,6 @@ function sortAll(recipes, method) {
           console.log('sort not working');
   }
 }
-
 test('filter test 1', () =>{
   expect(filter({'tags':['test']},['test'])).toBe(true);
 })
@@ -108,9 +122,7 @@ test('filter test 3', () =>{
 test('filter test 4', () =>{
   expect(filter({'tags':['test','test1']},[])).toBe(true);
 })
-
 let testArray = [{'name':1,'tags':['test']},{'name':2,'tags':['test1']},{'name':3,'tags':['test','test1']}]
-
 test('filterRecipes test 1', () =>{
   expect(filterRecipes(testArray,['test'])).toStrictEqual([{'name':1,'tags':['test']},{'name':3,'tags':['test','test1']}]);
 })
@@ -138,7 +150,6 @@ test('sortAll test 1', () =>{
 test('sortAll test 2', () =>{
   expect(sortAll(sortAlltestArray2,'newest')).toStrictEqual(sortAlltarget2);
 })
-
 /*
  * This function returns recipe object given recipe name or id
  * 
@@ -153,7 +164,6 @@ function get(key) {
     //console.log(result);
     return result;
 }
-
 /*
  * This function returns array of all recipe objects
  * 
