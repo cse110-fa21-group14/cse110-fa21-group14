@@ -7,3 +7,4 @@ This project is supposed to be a CRUD system for recipes in which we have a syst
 Our Website: https://recipechamber.netlify.app
 
 Final Public Video: https://www.youtube.com/watch?v=WzWHBnyY96M
+Final Private Video is in admin/videos
