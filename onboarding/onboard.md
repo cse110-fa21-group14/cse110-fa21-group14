@@ -11,4 +11,4 @@
   4. Make sure all the Github Actions tests pass. 
   5. We will review your pull request, and if we approve of it we will merge your changes. 
     - If it is not approved, we will provide feedback for you to make changes. 
- ## Thank you for supporting our project!
+ ## Thank you for supporting our project!!
