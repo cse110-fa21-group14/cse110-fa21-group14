@@ -1,4 +1,3 @@
-const { getRecipeData, getInstructions, getIngredients, getRecipeInfo } = require('../../RecipeChamber/scripts/recommended.js');
 const API_KEY = "81fd56bfaac84f9c985e6c7474c02d60";
 //sample test
 test('adds 1 + 2 to equal 3', () => {
@@ -139,16 +138,6 @@ test('sortAll test 1', () =>{
 test('sortAll test 2', () =>{
   expect(sortAll(sortAlltestArray2,'newest')).toStrictEqual(sortAlltarget2);
 })
-
-// import { 
-//   get,
-//   getAll,
-//   deleteRecipe,
-//   saveToLocalStorage,
-//   save,
-//   addToGroceryList,
-//   imgToURL
-// } from '../../RecipeChamber/scripts/backend.js'
 
 /*
  * This function returns recipe object given recipe name or id
@@ -338,28 +327,6 @@ const fakeLocalStorage = (function() {
 Object.defineProperty(global, 'localStorage', {
   value: fakeLocalStorage
 });
-// const fakeAjax = (resolve, reject) => ({
-//   url: 'https://api.imgur.com/3/image',
-//   headers: {
-//     Authorization: 'Client-ID ABC'
-//   },
-//   type: 'POST',
-//   data: {
-//     image: imgBase64,
-//     type: 'base64'
-//   },
-//   success: function (result) {
-//     resolve(result.data.link);
-//   },
-//   error: function (err) {
-//     reject(err)
-//   }
-// })
-// /** mock ajax */
-// const $ = {}
-// $.ajax = jest.fn().mockImplementation(() => {
-//   return new Promise(fakeAjax);
-// });
 describe('backend', () => {
   it('should returns recipe object given recipe name or id', () => {
     const data = mockedRecipies[0]
