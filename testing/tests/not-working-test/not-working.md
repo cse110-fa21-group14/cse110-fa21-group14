@@ -82,3 +82,6 @@ test('get recipe ingredients test 1', () => {
 test('get recipe ingredients test 2', () => {
     expect(getInstructions('511728')).toBeDefined();
 })
+
+
+The above code does not work with Github actions but does work locally. There was a problem with using "fetch".
