@@ -1,280 +1,278 @@
-//sample test
+// sample test
 test('adds 1 + 2 to equal 3', () => {
-    expect(1 + 2).toBe(3);
-  });
+  expect(1 + 2).toBe(3)
+})
 /*
- * This function accept a recipe object and a list of tags  
+ * This function accept a recipe object and a list of tags
  * and returns whether all the tags are contained in the tag attribute of the object
- * 
+ *
  * @param {Object} recipe An recipe object
  * @param {Array} tagList Array of tags to search for
  * @returns {boolean} whether the recipe object contains all the tags
  */
-function filter(recipe,tagList){
-  if(recipe.tags == undefined){
-      return false;
+function filter (recipe, tagList) {
+  if (recipe.tags == undefined) {
+    return false
   }
-  for(const t in tagList){
-      if(recipe.tags.some(x => x == tagList[t])){
-          continue;
-      }
-      else{
-          return false;
-      }
+  for (const t in tagList) {
+    if (recipe.tags.some(x => x == tagList[t])) {
+      continue
+    } else {
+      return false
+    }
   }
-  return true;
+  return true
 }
 /*
- * This function accept an Array of recipe object and a list of tags  
+ * This function accept an Array of recipe object and a list of tags
  * and returns an array containing all the recipes that contains all given tags
- * 
+ *
  * @param {Array} recipes An Array of recipe objects
  * @param {Array} tagList Array of tags to search for
  * @returns {Array} An Array of recipe objects
  */
-function filterRecipes(recipes,tagList){
-  if(tagList.length == 0){
-      return recipes;
+function filterRecipes (recipes, tagList) {
+  if (tagList.length == 0) {
+    return recipes
   }
-  let res = [];
-  for(const r in recipes){
-      if(filter(recipes[r],tagList)){
-          res.push(recipes[r]);
-      }
+  const res = []
+  for (const r in recipes) {
+    if (filter(recipes[r], tagList)) {
+      res.push(recipes[r])
+    }
   }
-  return res;
+  return res
 }
 /*
- * This function accept a array and a method to sort the array  
+ * This function accept a array and a method to sort the array
  * and returns a sorted array according to the given order
- * 
+ *
  * @param {Array} recipes An array of recipe objects
  * @param {string} method The method used to sort the Array
  * @returns {Array} a sorted list of all recipe according to the designateed method
  */
-function sortAll(recipes, method) {
+function sortAll (recipes, method) {
   console.log(method)
   switch (method) {
-      //least made
-      case 'least-made':
-          return recipes.sort(function compareFn(firstEl, secondEl){
-              return firstEl.makeCount - secondEl.makeCount;
-          });
+    // least made
+    case 'least-made':
+      return recipes.sort(function compareFn (firstEl, secondEl) {
+        return firstEl.makeCount - secondEl.makeCount
+      })
       // most made
-      case 'most-made':
-          return recipes.sort(function compareFn(firstEl, secondEl){
-              return secondEl.makeCount - firstEl.makeCount;
-          });
-      //alphabetical
-      case 'alphabetical':
-          return recipes.sort(function compareFn(firstEl, secondEl) {
-              let nameA = firstEl.name;
-              let nameB = secondEl.name;
-              if (nameA < nameB) {
-                  return -1;
-              }
-              if (nameA > nameB) {
-                  return 1;
-              }
-              return 0;
-          });
+    case 'most-made':
+      return recipes.sort(function compareFn (firstEl, secondEl) {
+        return secondEl.makeCount - firstEl.makeCount
+      })
+      // alphabetical
+    case 'alphabetical':
+      return recipes.sort(function compareFn (firstEl, secondEl) {
+        const nameA = firstEl.name
+        const nameB = secondEl.name
+        if (nameA < nameB) {
+          return -1
+        }
+        if (nameA > nameB) {
+          return 1
+        }
+        return 0
+      })
       // date of creation
-      case 'newest':
-          return recipes.sort(function compareFn(firstEl, secondEl) {
-              let createdA = firstEl.created;
-              let createdB = secondEl.created;
-              if (createdA > createdB) {
-                  return -1;
-              }
-              if (createdA < createdB) {
-                  return 1;
-              }
-              return 0;
-          });
-      case 'oldest':
-          return recipes.sort(function compareFn(firstEl, secondEl) {
-              let createdA = firstEl.created;
-              let createdB = secondEl.created;
-              if (createdA < createdB) {
-                  return -1;
-              }
-              if (createdA > createdB) {
-                  return 1;
-              }
-              return 0;
-          });
-      default:
-          console.log('sort not working');
+    case 'newest':
+      return recipes.sort(function compareFn (firstEl, secondEl) {
+        const createdA = firstEl.created
+        const createdB = secondEl.created
+        if (createdA > createdB) {
+          return -1
+        }
+        if (createdA < createdB) {
+          return 1
+        }
+        return 0
+      })
+    case 'oldest':
+      return recipes.sort(function compareFn (firstEl, secondEl) {
+        const createdA = firstEl.created
+        const createdB = secondEl.created
+        if (createdA < createdB) {
+          return -1
+        }
+        if (createdA > createdB) {
+          return 1
+        }
+        return 0
+      })
+    default:
+      console.log('sort not working')
   }
 }
-test('filter test 1', () =>{
-  expect(filter({'tags':['test']},['test'])).toBe(true);
+test('filter test 1', () => {
+  expect(filter({ tags: ['test'] }, ['test'])).toBe(true)
 })
 
-test('filter test 2', () =>{
-  expect(filter({'tags':['test1']},['test'])).toBe(false);
+test('filter test 2', () => {
+  expect(filter({ tags: ['test1'] }, ['test'])).toBe(false)
 })
 
-test('filter test 3', () =>{
-  expect(filter({'tags':['test','test1']},['test','test1'])).toBe(true);
+test('filter test 3', () => {
+  expect(filter({ tags: ['test', 'test1'] }, ['test', 'test1'])).toBe(true)
 })
 
-test('filter test 4', () =>{
-  expect(filter({'tags':['test','test1']},[])).toBe(true);
+test('filter test 4', () => {
+  expect(filter({ tags: ['test', 'test1'] }, [])).toBe(true)
 })
-let testArray = [{'name':1,'tags':['test']},{'name':2,'tags':['test1']},{'name':3,'tags':['test','test1']}]
-test('filterRecipes test 1', () =>{
-  expect(filterRecipes(testArray,['test'])).toStrictEqual([{'name':1,'tags':['test']},{'name':3,'tags':['test','test1']}]);
-})
-
-test('filterRecipes test 2', () =>{
-  expect(filterRecipes(testArray,['test','test1'])).toStrictEqual([{'name':3,'tags':['test','test1']}]);
+const testArray = [{ name: 1, tags: ['test'] }, { name: 2, tags: ['test1'] }, { name: 3, tags: ['test', 'test1'] }]
+test('filterRecipes test 1', () => {
+  expect(filterRecipes(testArray, ['test'])).toStrictEqual([{ name: 1, tags: ['test'] }, { name: 3, tags: ['test', 'test1'] }])
 })
 
-let sortAlltestArray2 = [{'makeCount':3,'name':'b','created':new Date('1995-12-17T03:24:00')},
-                  {'makeCount':1,'name':'a','created':new Date('1996-12-17T03:24:00')},
-                  {'makeCount':2,'name':'c','created':new Date('1995-11-17T03:24:00')}]
-
-let sortAlltarget1 = [{'makeCount':1,'name':'a','created':new Date('1996-12-17T03:24:00')},
-                  {'makeCount':2,'name':'c','created':new Date('1995-11-17T03:24:00')},
-                  {'makeCount':3,'name':'b','created':new Date('1995-12-17T03:24:00')}]
-
-let sortAlltarget2 = [{'makeCount':1,'name':'a','created':new Date('1996-12-17T03:24:00')},
-                  {'makeCount':3,'name':'b','created':new Date('1995-12-17T03:24:00')},
-                  {'makeCount':2,'name':'c','created':new Date('1995-11-17T03:24:00')}]
-
-test('sortAll test 1', () =>{
-  expect(sortAll(sortAlltestArray2,'least-made')).toStrictEqual(sortAlltarget1);
+test('filterRecipes test 2', () => {
+  expect(filterRecipes(testArray, ['test', 'test1'])).toStrictEqual([{ name: 3, tags: ['test', 'test1'] }])
 })
 
-test('sortAll test 2', () =>{
-  expect(sortAll(sortAlltestArray2,'newest')).toStrictEqual(sortAlltarget2);
+const sortAlltestArray2 = [{ makeCount: 3, name: 'b', created: new Date('1995-12-17T03:24:00') },
+  { makeCount: 1, name: 'a', created: new Date('1996-12-17T03:24:00') },
+  { makeCount: 2, name: 'c', created: new Date('1995-11-17T03:24:00') }]
+
+const sortAlltarget1 = [{ makeCount: 1, name: 'a', created: new Date('1996-12-17T03:24:00') },
+  { makeCount: 2, name: 'c', created: new Date('1995-11-17T03:24:00') },
+  { makeCount: 3, name: 'b', created: new Date('1995-12-17T03:24:00') }]
+
+const sortAlltarget2 = [{ makeCount: 1, name: 'a', created: new Date('1996-12-17T03:24:00') },
+  { makeCount: 3, name: 'b', created: new Date('1995-12-17T03:24:00') },
+  { makeCount: 2, name: 'c', created: new Date('1995-11-17T03:24:00') }]
+
+test('sortAll test 1', () => {
+  expect(sortAll(sortAlltestArray2, 'least-made')).toStrictEqual(sortAlltarget1)
+})
+
+test('sortAll test 2', () => {
+  expect(sortAll(sortAlltestArray2, 'newest')).toStrictEqual(sortAlltarget2)
 })
 /*
  * This function returns recipe object given recipe name or id
- * 
+ *
  * @param {string} name or id of recipe to retreive
  * @returns {Object}  recipe object
  */
-function get(key) {
-    const data = JSON.parse(localStorage.getItem('recipeData'))
-    var result = data.filter(function (item) {
-        return (key == item.name || key == item.id)
-    })[0];
-    //console.log(result);
-    return result;
+function get (key) {
+  const data = JSON.parse(localStorage.getItem('recipeData'))
+  const result = data.filter(function (item) {
+    return (key == item.name || key == item.id)
+  })[0]
+  // console.log(result);
+  return result
 }
 /*
  * This function returns array of all recipe objects
- * 
+ *
  * @returns {Array} An array of recipe objects
  */
-function getAll() {
-    //console.log(JSON.parse(localStorage.getItem('recipeData')));
-    return (JSON.parse(localStorage.getItem('recipeData')));
+function getAll () {
+  // console.log(JSON.parse(localStorage.getItem('recipeData')));
+  return (JSON.parse(localStorage.getItem('recipeData')))
 }
 /*
  * This function adds unique ingredients of a recipe to the grocery list
- * 
+ *
  * @param {Object} A recipe object
  */
-function addToGroceryList(recipe) {
-    if (!localStorage.getItem('grocery')) {
-        localStorage.setItem('grocery', JSON.stringify([]));
+function addToGroceryList (recipe) {
+  if (!localStorage.getItem('grocery')) {
+    localStorage.setItem('grocery', JSON.stringify([]))
+  }
+  const groceryData = JSON.parse(localStorage.getItem('grocery'))
+  for (const ing of recipe.ingredients.ingredients) {
+    let exist = false
+    for (const curr of groceryData) {
+      if (ing.ingName.toLowerCase() == curr.name.toLowerCase()) {
+        exist = true
+        console.log(exist)
+        break
+      }
     }
-    var groceryData = JSON.parse(localStorage.getItem('grocery'));
-    for (var ing of recipe.ingredients['ingredients']) {
-        let exist = false;
-        for (var curr of groceryData) {
-            if (ing.ingName.toLowerCase() == curr.name.toLowerCase()) {
-                exist = true
-                console.log(exist)
-                break;
-            }
-        }
-        if (!exist) {
-            groceryData.push({ name: ing.ingName, done: false });
-            localStorage.setItem('grocery', JSON.stringify(groceryData));
-            console.log(localStorage.getItem('grocery'));
-        }
+    if (!exist) {
+      groceryData.push({ name: ing.ingName, done: false })
+      localStorage.setItem('grocery', JSON.stringify(groceryData))
+      console.log(localStorage.getItem('grocery'))
     }
+  }
 }
 /*
  * This function accepts converts an image (base64) to a (imgur) url link.
- * 
+ *
  * @param {string} image in base64 format
  * @returns {string} imgur image url
  */
-async function imgToURL(imgBase64) {
-    return new Promise(function (resolve, reject) {
-        $.ajax({
-            url: 'https://api.imgur.com/3/image',
-            headers: {
-                Authorization: 'Client-ID 883b97261443d3c'
-            },
-            type: 'POST',
-            data: {
-                image: imgBase64,
-                type: 'base64'
-            },
-            success: function (result) {
-                resolve(result.data.link);
-            },
-            error: function (err) {
-//                 reject(err)
-            }
-        });
-    });
-
+async function imgToURL (imgBase64) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      url: 'https://api.imgur.com/3/image',
+      headers: {
+        Authorization: 'Client-ID 883b97261443d3c'
+      },
+      type: 'POST',
+      data: {
+        image: imgBase64,
+        type: 'base64'
+      },
+      success: function (result) {
+        resolve(result.data.link)
+      },
+      error: function (err) {
+        //                 reject(err)
+      }
+    })
+  })
 }
 
 /*
  * This function stores/updates the recipe object in localstorage
- * 
+ *
  * @param {Object} an array object
  */
-function save(recipe) {
-    if (!localStorage.getItem('recipeData')) {
-        localStorage.setItem('recipeData', JSON.stringify([]))
-    }
-    if (get(recipe.id)) {
-        deleteRecipe(recipe.id)
-    }
-    var data = JSON.parse(localStorage.getItem('recipeData'))
-    data.push(recipe)
-    saveToLocalStorage(data)
-    let imgURL = ''
-    console.log(localStorage.getItem('recipeData'))
+function save (recipe) {
+  if (!localStorage.getItem('recipeData')) {
+    localStorage.setItem('recipeData', JSON.stringify([]))
+  }
+  if (get(recipe.id)) {
+    deleteRecipe(recipe.id)
+  }
+  const data = JSON.parse(localStorage.getItem('recipeData'))
+  data.push(recipe)
+  saveToLocalStorage(data)
+  const imgURL = ''
+  console.log(localStorage.getItem('recipeData'))
 }
 
 /*
- * A helper function to stringify and save/update recipes 
+ * A helper function to stringify and save/update recipes
  * data into local storage
- * 
+ *
  * @param {Array} Array of recipes object
  */
-function saveToLocalStorage(data) {
-    localStorage.setItem('recipeData', JSON.stringify(data))
+function saveToLocalStorage (data) {
+  localStorage.setItem('recipeData', JSON.stringify(data))
 }
 /*
  * This function deletes a recipe given its id from localstorage
- * 
+ *
  * @param {string} id of the recipe
  */
-function deleteRecipe(id) {
-    saveToLocalStorage(getAll().filter(recipe => id != recipe.id));
+function deleteRecipe (id) {
+  saveToLocalStorage(getAll().filter(recipe => id != recipe.id))
 }
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
+const { JSDOM } = require('jsdom')
+const { window } = new JSDOM('')
+const $ = require('jquery')(window)
 global.$ = $
 jest.useFakeTimers()
 const mockedRecipies = [
   {
-    id: 1,                                                
-    name: 'Recipie1',                                           
-    img: 'https://placehold.it/200/300',                                            
-    ingredients: {                                          
+    id: 1,
+    name: 'Recipie1',
+    img: 'https://placehold.it/200/300',
+    ingredients: {
       proportion: 2,
       ingredients: [
         {
@@ -282,20 +280,20 @@ const mockedRecipies = [
           amount: 100,
           unit: '10'
         }
-      ],
+      ]
     },
-    steps: 2,                                     
-    serving: 2,                                           
-    tags: ['tag1', 'tag2'],                                         
+    steps: 2,
+    serving: 2,
+    tags: ['tag1', 'tag2'],
     made: `${new Date()}`,
-    makeCount: 2,                     
+    makeCount: 2,
     created: `${new Date()}`
   },
   {
-    id: 2,                                                
-    name: 'Recipie2',                                           
-    img: 'https://placehold.it/200/300',                                            
-    ingredients: {                                          
+    id: 2,
+    name: 'Recipie2',
+    img: 'https://placehold.it/200/300',
+    ingredients: {
       proportion: 2,
       ingredients: [
         {
@@ -303,40 +301,40 @@ const mockedRecipies = [
           amount: 200,
           unit: '20'
         }
-      ],
+      ]
     },
-    steps: 2,                                     
-    serving: 2,                                           
-    tags: ['tag1', 'tag2'],                                         
+    steps: 2,
+    serving: 2,
+    tags: ['tag1', 'tag2'],
     made: `${new Date()}`,
-    makeCount: 2,                     
+    makeCount: 2,
     created: `${new Date()}`
   }
 ]
 /** mock local storage */
-const fakeLocalStorage = (function() {
+const fakeLocalStorage = (function () {
   let store = {
-    'recipeData': JSON.stringify(mockedRecipies)
-  };
+    recipeData: JSON.stringify(mockedRecipies)
+  }
   return {
-    getItem: function(key) {
-      return store[key] || null;
+    getItem: function (key) {
+      return store[key] || null
     },
-    setItem: function(key, value) {
-      store[key] = value.toString();
+    setItem: function (key, value) {
+      store[key] = value.toString()
     },
-    removeItem: function(key) {
-      delete store[key];
+    removeItem: function (key) {
+      delete store[key]
     },
-    clear: function() {
-      store = {};
+    clear: function () {
+      store = {}
     },
     ...store
-  };
-})();
+  }
+})()
 Object.defineProperty(global, 'localStorage', {
   value: fakeLocalStorage
-});
+})
 describe('backend', () => {
   it('should returns recipe object given recipe name or id', () => {
     const data = mockedRecipies[0]
@@ -397,7 +395,7 @@ describe('backend', () => {
     const ajaxSpy = jest.spyOn($, 'ajax')
       .mockImplementation((obj) => {
         options = obj
-      });
+      })
     const base64Image = 'abc'
     const response = imgToURL(base64Image)
     expect(response).toBeInstanceOf(Promise)
@@ -427,7 +425,7 @@ describe('backend', () => {
     const ajaxSpy = jest.spyOn($, 'ajax')
       .mockImplementation((obj) => {
         options = obj
-      });
+      })
     const base64Image = 'abc'
     const response = imgToURL(base64Image)
     expect(response).toBeInstanceOf(Promise)
