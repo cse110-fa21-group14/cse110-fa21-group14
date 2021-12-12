@@ -47,7 +47,7 @@ export function getAll() {
  * This function accepts converts an image (base64) to a (imgur) url link.
  * 
  * @param {string} image in base64 format
- * @returns {string} imgur image url
+ * @returns {string} imgur image urls
  */
 export async function imgToURL(imgBase64) {
     return new Promise(function (resolve, reject) {
