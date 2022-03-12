@@ -21,7 +21,11 @@ Hello ! I am a third year computer science student from Marshall College. I am l
 
 GitHub Link: [Click Here to Check Out Their GitHub!](https://github.com/harshetaa) <br />
 
+**Laurence Kuo** <br />
+About Laurence: <br />
+Hi guys I'm Laurence and I'm a third year CS major in Muir. I love surfing and playing guitar and I can't wait to work with y'all :)  <br />
 
+GitHub Link: [Click Here to Check Out Their GitHub!](https://github.com/lakuo) <br />
 **Samuel Ng** <br />
 About Sam: <br />
 Hi! I'm Sam, a senior Math-CS Major in Marshall College. I'm originally from the Australia, so I love the outdoors. I hope that we can make something great that other people can enjoy! <br />
